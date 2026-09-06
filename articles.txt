@@ -1,4 +1,4 @@
-# ===== 成都市田家炳中学公众号文章配置文件 =====
+﻿# ===== 成都市田家炳中学公众号文章配置文件 =====
 # 每行一个文章链接，以 # 开头的行为注释
 # 系统启动时读取本文件，自动解析文章元数据并接入网站
 # 新增文章只需在下方追加一行链接即可
@@ -17,3 +17,6 @@ https://mp.weixin.qq.com/s/0ol4DU9TIzB1dFq9luhrpw
 # 后续新增文章在此追加一行链接即可
 # 格式：https://mp.weixin.qq.com/s/xxxxxx
 # 也支持手动指定分类：[分类名] https://mp.weixin.qq.com/s/xxxxxx
+
+# ===== 测试文章 =====
+https://mp.weixin.qq.com/s/tODemOHMC7zzVN2W21Zj3w

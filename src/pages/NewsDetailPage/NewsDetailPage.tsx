@@ -69,7 +69,7 @@ export default function NewsDetailPage() {
   const nextNews = currentIndex < MOCK_NEWS.length - 1 ? MOCK_NEWS[currentIndex + 1] : null;
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <main className="max-w-3xl mx-auto px-4 md:px-6 py-8 md:py-12">
         {/* 面包屑导航 */}
         <nav className="flex items-center gap-1.5 text-sm text-muted-foreground mb-6 flex-wrap">

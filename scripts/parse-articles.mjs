@@ -1,4 +1,4 @@
-/**
+﻿/**
  * 公众号文章解析脚本
  * 功能：读取 articles.txt，自动抓取公众号文章，提取标题、图片、发布时间等信息
  * 输出：生成 articles.json 数据文件，供前端使用
@@ -473,7 +473,7 @@ async function main() {
     }
 
     if (i < articleLinks.length - 1) {
-      await new Promise(resolve => setTimeout(resolve, 1000));
+      await new Promise(resolve => setTimeout(resolve, 2500));
     }
   }
 

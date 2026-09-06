@@ -187,7 +187,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '全国优秀教师、正高级教师',
     subject: '',
     description: '全国优秀教师，正高级教师。深耕教育一线，教学经验丰富，教育成果显著，深受师生尊敬与爱戴。',
-    avatar: '/teachers/teacher-1.jpg',
+    avatar: '/teachers/teacher-1.webp',
   },
   {
     id: 'f2',
@@ -195,7 +195,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '四川省特级正高级教师',
     subject: '',
     description: '四川省特级教师，正高级教师。四川省中小学教学名师，教育教学理念先进，引领学科发展。',
-    avatar: '/teachers/teacher-2.jpg',
+    avatar: '/teachers/teacher-2.webp',
   },
   {
     id: 'f3',
@@ -203,7 +203,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '四川省特级正高级教师',
     subject: '',
     description: '四川省特级教师，正高级教师。成都市学科带头人，教学风格独特，育人成效突出。',
-    avatar: '/teachers/teacher-3.jpg',
+    avatar: '/teachers/teacher-3.webp',
   },
   {
     id: 'f4',
@@ -211,7 +211,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。班级管理经验丰富，关爱学生成长，所带班级班风正、学风浓。',
-    avatar: '/teachers/teacher-4.jpg',
+    avatar: '/teachers/teacher-4.webp',
   },
   {
     id: 'f5',
@@ -219,7 +219,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。注重学生全面发展，善于激发学生潜能，班级建设成果丰硕。',
-    avatar: '/teachers/teacher-5.jpg',
+    avatar: '/teachers/teacher-5.webp',
   },
   {
     id: 'f6',
@@ -227,7 +227,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。教书育人并重，管理科学民主，深受学生喜爱和家长信赖。',
-    avatar: '/teachers/teacher-6.jpg',
+    avatar: '/teachers/teacher-6.webp',
   },
   {
     id: 'f7',
@@ -235,7 +235,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。班级管理有方，注重学生品格培养，教育教学成绩优异。',
-    avatar: '/teachers/teacher-7.jpg',
+    avatar: '/teachers/teacher-7.webp',
   },
   {
     id: 'f8',
@@ -243,7 +243,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。用心呵护每一位学生，注重家校共育，班级凝聚力强。',
-    avatar: '/teachers/teacher-8.jpg',
+    avatar: '/teachers/teacher-8.webp',
   },
   {
     id: 'f9',
@@ -251,7 +251,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。教育理念先进，管理方法创新，班级整体素质全面提升。',
-    avatar: '/teachers/teacher-9.jpg',
+    avatar: '/teachers/teacher-9.webp',
   },
   {
     id: 'f10',
@@ -259,7 +259,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。爱岗敬业，关爱学生，班级学风优良，成绩突出。',
-    avatar: '/teachers/teacher-10.jpg',
+    avatar: '/teachers/teacher-10.webp',
   },
   {
     id: 'f11',
@@ -267,7 +267,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀班主任',
     subject: '',
     description: '成都市优秀班主任。注重学生个性发展，善于因材施教，育人成效显著。',
-    avatar: '/teachers/teacher-11.jpg',
+    avatar: '/teachers/teacher-11.webp',
   },
   {
     id: 'f12',
@@ -275,7 +275,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀支教教师',
     subject: '',
     description: '成都市优秀支教教师。积极投身教育帮扶，传播先进教育理念，助力教育均衡发展。',
-    avatar: '/teachers/teacher-12.jpg',
+    avatar: '/teachers/teacher-12.webp',
   },
   {
     id: 'f13',
@@ -283,7 +283,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀青年教师',
     subject: '',
     description: '成都市优秀青年教师。教学基本功扎实，勇于创新探索，是青年教师中的佼佼者。',
-    avatar: '/teachers/teacher-13.jpg',
+    avatar: '/teachers/teacher-13.webp',
   },
   {
     id: 'f14',
@@ -291,7 +291,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀青年教师',
     subject: '',
     description: '成都市优秀青年教师。课堂教学生动活泼，深受学生喜爱，教学成绩突出。',
-    avatar: '/teachers/teacher-14.jpg',
+    avatar: '/teachers/teacher-14.webp',
   },
   {
     id: 'f15',
@@ -299,7 +299,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀青年教师',
     subject: '',
     description: '成都市优秀青年教师。专业素养过硬，教学方法灵活，成长迅速，潜力巨大。',
-    avatar: '/teachers/teacher-15.jpg',
+    avatar: '/teachers/teacher-15.webp',
   },
   {
     id: 'f16',
@@ -307,7 +307,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀青年教师',
     subject: '',
     description: '成都市优秀青年教师。热爱教育事业，潜心教学研究，是学校教学骨干后备力量。',
-    avatar: '/teachers/teacher-16.jpg',
+    avatar: '/teachers/teacher-16.webp',
   },
   {
     id: 'f17',
@@ -315,7 +315,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市教坛新秀',
     subject: '',
     description: '成都市教坛新秀。教学热情饱满，课堂充满活力，是教育战线上的新生力量。',
-    avatar: '/teachers/teacher-17.jpg',
+    avatar: '/teachers/teacher-17.webp',
   },
   {
     id: 'f18',
@@ -323,7 +323,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市教坛新秀',
     subject: '',
     description: '成都市教坛新秀。人工智能名师工作室主持人，科创教育核心教师，指导学生多次获奖。',
-    avatar: '/teachers/teacher-18.jpg',
+    avatar: '/teachers/teacher-18.webp',
   },
   {
     id: 'f19',
@@ -331,7 +331,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '成都市优秀教师',
     subject: '',
     description: '成都市优秀教师。爱岗敬业，无私奉献，教育教学成果显著，深受师生好评。',
-    avatar: '/teachers/teacher-19.jpg',
+    avatar: '/teachers/teacher-19.webp',
   },
   {
     id: 'f20',
@@ -339,7 +339,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。区域学科带头人，教学经验丰富，引领区域学科发展。',
-    avatar: '/teachers/teacher-20.jpg',
+    avatar: '/teachers/teacher-20.webp',
   },
   {
     id: 'f21',
@@ -347,7 +347,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。教学风格鲜明，教育理念先进，是区域教育的中坚力量。',
-    avatar: '/teachers/teacher-21.jpg',
+    avatar: '/teachers/teacher-21.webp',
   },
   {
     id: 'f22',
@@ -355,7 +355,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。深耕教学一线，教研成果丰硕，发挥示范引领作用。',
-    avatar: '/teachers/teacher-22.jpg',
+    avatar: '/teachers/teacher-22.webp',
   },
   {
     id: 'f23',
@@ -363,7 +363,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。教育教学成绩突出，培养大批优秀学子，师德高尚。',
-    avatar: '/teachers/teacher-23.jpg',
+    avatar: '/teachers/teacher-23.webp',
   },
   {
     id: 'f24',
@@ -371,7 +371,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。专业功底深厚，教学艺术精湛，深受学生爱戴。',
-    avatar: '/teachers/teacher-24.jpg',
+    avatar: '/teachers/teacher-24.webp',
   },
   {
     id: 'f25',
@@ -379,7 +379,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。教育教学成果显著，教研能力突出，区域名师。',
-    avatar: '/teachers/teacher-25.jpg',
+    avatar: '/teachers/teacher-25.webp',
   },
   {
     id: 'f26',
@@ -387,7 +387,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。教学风格独特，育人成效显著，学生喜爱的好老师。',
-    avatar: '/teachers/teacher-26.jpg',
+    avatar: '/teachers/teacher-26.webp',
   },
   {
     id: 'f27',
@@ -395,7 +395,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。关爱学生成长，注重素质教育，班级管理卓有成效。',
-    avatar: '/teachers/teacher-27.jpg',
+    avatar: '/teachers/teacher-27.webp',
   },
   {
     id: 'f28',
@@ -403,7 +403,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。教学经验丰富，教育理念新颖，引领学科发展。',
-    avatar: '/teachers/teacher-28.jpg',
+    avatar: '/teachers/teacher-28.webp',
   },
   {
     id: 'f29',
@@ -411,7 +411,7 @@ export const MOCK_FACULTY: IFacultyMember[] = [
     title: '锦江区特级教师',
     subject: '',
     description: '锦江区特级教师。爱岗敬业，教书育人，是学生成长路上的引路人。',
-    avatar: '/teachers/teacher-29.jpg',
+    avatar: '/teachers/teacher-29.webp',
   },
 ];
 

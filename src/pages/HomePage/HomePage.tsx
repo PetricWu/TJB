@@ -16,7 +16,7 @@ export default function HomePage() {
   });
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <HeroSection />
       <FeaturesSection />
       <NewsSection />

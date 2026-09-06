@@ -12,7 +12,7 @@ export default function NotFoundPage() {
   });
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background px-4">
+    <div className="min-h-screen flex items-center justify-center bg-transparent px-4">
       <div className="animate-fade-in-up text-center max-w-md">
         {/* 404 大字：方形边框 + 校徽 */}
         <div

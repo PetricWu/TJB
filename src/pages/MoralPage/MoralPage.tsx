@@ -254,7 +254,7 @@ export default function MoralPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       {/* Hero Banner：统一 PageHero 版式 */}
       <PageHero
         no="05"

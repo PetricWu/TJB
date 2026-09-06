@@ -82,7 +82,7 @@ export default function AdmissionPage() {
     ],
   });
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <main className="space-y-16 md:space-y-24">
         {/* Hero Banner：统一 PageHero 版式 */}
         <PageHero

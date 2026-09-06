@@ -75,7 +75,7 @@ export default function AboutPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       {/* Hero Banner：统一 PageHero 版式 */}
       <PageHero
         no="01"
@@ -119,7 +119,7 @@ export default function AboutPage() {
                   <TabsTrigger
                     key={anchor.id}
                     value={anchor.id}
-                    className="h-12 px-4 data-[state=active]:bg-transparent data-[state=active]:shadow-none data-[state=active]:border-b-2 data-[state=active]:border-accent data-[state=active]:text-ink data-[state=active]:font-bold rounded-none text-muted-foreground hover:text-ink transition-colors shrink-0 gap-2"
+                    className="h-12 px-4 data-[state=active]:bg-accent data-[state=active]:text-white data-[state=active]:font-bold data-[state=active]:shadow-none rounded-none text-muted-foreground hover:text-ink hover:bg-accent/10 transition-colors shrink-0 gap-2"
                   >
                     <Icon className="size-4" />
                     <span className="hidden sm:inline">{anchor.label}</span>
@@ -460,9 +460,9 @@ export default function AboutPage() {
 
             {/* 荣誉奖状图片展示 */}
             <div className="mb-10 bg-card border-2 border-ink rounded-sm neo-shadow-sm overflow-hidden">
-              <div className="aspect-[21/9] md:aspect-[21/7] bg-muted/20">
+              <div className="aspect-[4/3] md:aspect-[21/9] bg-muted/20">
                 <Image
-                  src="/images/badge-original.jpg"
+                  src="/images/jiangzhuang.webp"
                   alt="学校荣誉奖状"
                   className="w-full h-full object-contain p-4"
                 />

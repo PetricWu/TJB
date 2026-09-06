@@ -111,7 +111,7 @@ export default function NewsListPage() {
   };
 
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       {/* 页面头部：统一 PageHero 版式 */}
       <PageHero
         no="02"

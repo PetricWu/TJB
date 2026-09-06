@@ -120,7 +120,7 @@ export function useSEO({
         publisher: {
           '@type': 'Organization',
           name: '成都市田家炳中学',
-          logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.jpg` },
+          logo: { '@type': 'ImageObject', url: `${SITE_URL}/favicon.webp` },
         },
         mainEntityOfPage: { '@type': 'WebPage', '@id': url },
         image: absImage(image),

@@ -53,8 +53,18 @@ const CONTACT_LINES = FOOTER_LINKS[3].links.map((link) => link.label);
 
 export default function Footer() {
   return (
-    <footer className="w-full bg-gradient-to-b from-primary to-primary/95 text-primary-foreground/90 border-t-4 border-accent">
-      <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20">
+    <footer className="relative overflow-hidden w-full bg-gradient-to-b from-primary to-primary/95 text-primary-foreground/90 border-t-4 border-accent">
+      {/* 与全站一致的细微网格纹理 */}
+      <div
+        aria-hidden
+        className="pointer-events-none absolute inset-0 opacity-[0.05]"
+        style={{
+          backgroundImage:
+            'linear-gradient(hsl(22 72% 60%) 1px, transparent 1px), linear-gradient(90deg, hsl(22 72% 60%) 1px, transparent 1px)',
+          backgroundSize: '36px 36px',
+        }}
+      />
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20">
         {/* 顶部：校名刊头 + 紧凑链接列（非对称 5/7） */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mb-14 md:mb-16">
           {/* 左侧：校徽 + 校名 + 校训 + 百年标识 */}
@@ -216,7 +226,7 @@ export default function Footer() {
             © <span className="font-display">{new Date().getFullYear()}</span>{' '}
             成都市田家炳中学 版权所有
           </p>
-          <p className="font-sans text-xs text-primary-foreground/40">
+          <p className="font-sans text-xs text-primary-foreground/40 flex flex-wrap items-center gap-x-3 gap-y-1">
             作者主页：
             <a
               href="https://www.petricw.com"
@@ -226,6 +236,10 @@ export default function Footer() {
             >
               petricw.com
             </a>
+            <span className="text-primary-foreground/25">·</span>
+            <span>
+              QQ：<span className="font-display font-bold text-accent/80">PetricWoo</span>
+            </span>
           </p>
         </div>
       </div>

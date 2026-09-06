@@ -51,7 +51,7 @@ export default function InnovationPage() {
     ],
   });
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <main className="space-y-16 md:space-y-24">
         {/* Hero Banner：统一 PageHero 版式 */}
         <PageHero
@@ -164,7 +164,7 @@ export default function InnovationPage() {
                   <div className="sm:w-48 shrink-0 bg-ink/5 flex items-center justify-center p-6 border-b-2 sm:border-b-0 sm:border-r-2 border-ink/10">
                     <div className="size-32 rounded-sm overflow-hidden border-2 border-ink">
                       <Image
-                        src="/teachers/teacher-18.jpg"
+                        src="/teachers/teacher-18.webp"
                         alt="张友科"
                         className="w-full h-full object-cover"
                       />

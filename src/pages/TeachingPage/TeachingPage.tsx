@@ -27,7 +27,7 @@ export default function TeachingPage() {
     ],
   });
   return (
-    <div className="min-h-screen bg-background">
+    <div className="min-h-screen bg-transparent">
       <main className="space-y-16 md:space-y-24">
         {/* Hero Banner：统一 PageHero 版式 */}
         <PageHero
@@ -131,6 +131,15 @@ export default function TeachingPage() {
                 title="师资队伍"
                 desc="专任教师260余名，省市区特级教师20余名，市区学科带头人16名，名师工作室10个"
               />
+
+              {/* 师资队伍集体照 */}
+              <div className="mb-8 relative aspect-[21/9] bg-muted border-2 border-ink rounded-sm overflow-hidden neo-shadow corner-mark">
+                <Image
+                  src="/images/shiziduiwu.webp"
+                  alt="成都市田家炳中学师资队伍"
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+              </div>
 
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-5">
                 {MOCK_TEACHERS.map((teacher) => (

@@ -48,25 +48,25 @@ export const MOCK_TEACHERS: ITeacherProfile[] = [
     subject: '信息技术',
     description:
       '锦江区第一批人工智能名师工作室主持人。其课程《机器学习分类算法》获得基础教育精品课部级优课荣誉。受邀在全国中小学人工智能教育创新学术论坛作经验分享，带领学生连续两年获全国学生信息素养活动最高荣誉"创新之星"。',
-    avatar: '/teachers/teacher-18.jpg',
+    avatar: '/teachers/teacher-18.webp',
   },
   {
-    id: 't2',
-    name: '周旭良',
-    title: '物理骨干教师',
-    subject: '物理',
-    description:
-      '区域优秀骨干科学教师，深耕物理实验教学二十余年。注重培养学生科学思维与创新实践能力，指导学生获全国中学生物理竞赛一等奖3人次，教学风格严谨而不失生动。',
-    avatar: '',
-  },
-  {
-    id: 't3',
-    name: '岳三鼎',
-    title: '化学骨干教师',
+    id: 't4',
+    name: '何拥军',
+    title: '锦江区特级教师',
     subject: '化学',
     description:
-      '区域优秀骨干科学教师，擅长在实验中引导学生探究知识。课堂精彩高效，注重培养学生科学探究精神，指导学生获省级以上化学竞赛奖项40余人次。',
-    avatar: '',
+      '锦江区特级教师。教育教学成绩突出，培养大批优秀学子，师德高尚。深耕教学一线，教研成果丰硕，发挥示范引领作用。',
+    avatar: '/teachers/teacher-23.webp',
+  },
+  {
+    id: 't5',
+    name: '曹洪义',
+    title: '成都市优秀班主任',
+    subject: '英语',
+    description:
+      '成都市优秀班主任。教书育人并重，管理科学民主，深受学生喜爱和家长信赖。注重学生全面发展，善于激发学生潜能。',
+    avatar: '/teachers/teacher-6.webp',
   },
 ];
 
