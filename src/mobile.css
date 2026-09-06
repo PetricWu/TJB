@@ -1,0 +1,63 @@
+/**
+ * Mobile optimization styles
+ * Only essential global rules — responsive layout is handled by Tailwind utilities in components.
+ */
+
+/* Prevent horizontal scroll on mobile
+   overflow-x: clip 不产生滚动容器，避免破坏 position:sticky。
+   双写 hidden+clip 供压缩器按目标浏览器取舍（实测产物仅保留 clip）；
+   不可用 @supports 包裹 —— Lightning CSS 会按构建目标把整个块删除 */
+html {
+  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-text-size-adjust: 100%;
+  scroll-behavior: smooth;
+}
+
+body {
+  overflow-x: hidden;
+  overflow-x: clip;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Ensure images are responsive */
+img {
+  max-width: 100%;
+  height: auto;
+}
+
+/* Prevent layout shift on image load */
+img[loading="lazy"] {
+  background-color: hsl(38 20% 94% / 0.5);
+}
+
+/* Prevent tap highlight on mobile */
+* {
+  -webkit-tap-highlight-color: transparent;
+}
+
+/* Better focus styles for accessibility */
+*:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+}
+
+/* Touch-friendly targets (minimum 44px on mobile) */
+@media (max-width: 768px) {
+  button,
+  a[role="button"],
+  .btn {
+    min-height: 44px;
+  }
+}
+
+/* Fix iframe maps on mobile */
+iframe {
+  max-width: 100%;
+}
+
+/* Fix overflow issues */
+.overflow-x-auto {
+  -webkit-overflow-scrolling: touch;
+}

@@ -1,0 +1,153 @@
+﻿<!doctype html>
+<html lang="zh-CN">
+  <head>
+    <meta charset="UTF-8" />
+    <link rel="icon" type="image/svg+xml" href="/favicon.svg" />
+    <link rel="apple-touch-icon" href="/favicon.jpg" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <meta name="theme-color" content="#1a2942" />
+    <!-- LCP preload: 顶栏校名图片（实际 LCP 元素） -->
+    <link rel="preload" as="image" href="/images/school-title.webp" fetchpriority="high" />
+    <!-- 首屏背景图预加载（断点与 Tailwind md=768px 对齐，确保命中实际使用的图） -->
+    <link rel="preload" as="image" href="/hero-bg-mobile.webp" fetchpriority="high" media="(max-width: 767.98px)" />
+    <link rel="preload" as="image" href="/hero-bg.webp" fetchpriority="high" media="(min-width: 768px)" />
+    <!-- 字体方案：正文=系统黑体（零下载）；标题衬线=思源宋体切片 webfont（异步非阻塞，font-display:swap） -->
+    <link rel="preload" href="/fonts.css" as="style" onload="this.onload=null;this.rel='stylesheet'" />
+    <noscript><link rel="stylesheet" href="/fonts.css" /></noscript>
+    <title>成都市田家炳中学官网 - 百年名校·四川省一级示范性普通高中</title>
+    <meta name="description" content="成都市田家炳中学官网（tjb.petricw.com）。始建于1925年，始称成城公学，百年名校。四川省一级示范性普通高中，全国国防教育示范校，教育部人工智能教育双试点单位。坐落于成都市锦江区顺江路369号（高中部），地铁6号线/13号线三官堂站A口直达。2026年面向5+2区域招收600名学生，设六年贯通培养试点班。招生咨询电话：028-84551880。" />
+    <meta name="keywords" content="成都市田家炳中学官网,成都市田家炳中学,田家炳中学,成都田中,田家炳中学官网,四川省一级示范校,成都高中排名,锦江区中学,顺江路369号,百年名校,六年贯通培养,成城公学,国防教育示范校,成都重点中学,锦江区高中,三官堂地铁站,招生简章,校园开放日,初中高中,科创教育,人工智能教育,成都田家炳中学招生,田家炳中学录取分数线" />
+    <meta name="author" content="成都市田家炳中学" />
+    <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
+    <meta name="googlebot" content="index, follow" />
+    <meta name="baiduspider" content="index, follow" />
+    <meta http-equiv="Content-Language" content="zh-CN" />
+    <meta name="revisit-after" content="1 days" />
+    <meta name="rating" content="general" />
+    <meta name="distribution" content="global" />
+    
+    <!-- Canonical URL -->
+    <link rel="canonical" href="https://tjb.petricw.com/" />
+    <link rel="alternate" hreflang="zh-Hans" href="https://tjb.petricw.com/" />
+    <link rel="alternate" hreflang="x-default" href="https://tjb.petricw.com/" />
+    <link rel="sitemap" type="application/xml" href="https://tjb.petricw.com/sitemap.xml" />
+    <!-- llms.txt for AI agents -->
+    <link rel="llms-txt" href="/llms.txt" />
+    
+    <!-- 百度SEO优化 -->
+    <meta name="baidu-site-verification" content="codeva-7VW7rzhxc4" />
+    <meta name="applicable-device" content="pc,mobile" />
+    <meta name="MobileOptimized" content="width" />
+    <meta name="HandheldFriendly" content="true" />
+    <meta name="format-detection" content="telephone=no" />
+    <meta http-equiv="Cache-Control" content="public, max-age=3600" />
+    
+    <!-- 地理位置信息 -->
+    <meta name="geo.region" content="CN-SC" />
+    <meta name="geo.placename" content="成都市锦江区" />
+    <meta name="geo.position" content="30.6383;104.0896" />
+    <meta name="ICBM" content="30.6383, 104.0896" />
+    
+    <!-- Open Graph / Facebook -->
+    <meta property="og:type" content="website" />
+    <meta property="og:title" content="成都市田家炳中学官网 - 百年名校·四川省一级示范性普通高中" />
+    <meta property="og:description" content="成都市田家炳中学官网。始建于1925年，百年名校，四川省一级示范性普通高中，全国国防教育示范校。招生咨询电话：028-84551880" />
+    <meta property="og:image" content="https://tjb.petricw.com/hero-bg.webp" />
+    <meta property="og:image:width" content="1200" />
+    <meta property="og:image:height" content="630" />
+    <meta property="og:url" content="https://tjb.petricw.com/" />
+    <meta property="og:site_name" content="成都市田家炳中学官网" />
+    <meta property="og:locale" content="zh_CN" />
+    
+    <!-- Twitter Card -->
+    <meta name="twitter:card" content="summary_large_image" />
+    <meta name="twitter:title" content="成都市田家炳中学官网 — 百年名校·四川省一级示范性普通高中" />
+    <meta name="twitter:description" content="成都市田家炳中学始建于1925年，四川省一级示范性普通高中，百年名校，薪火相传。" />
+    <meta name="twitter:image" content="https://tjb.petricw.com/hero-bg.webp" />
+    
+    <!-- 结构化数据 JSON-LD：学校官网 -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "EducationalOrganization",
+      "name": "成都市田家炳中学",
+      "alternateName": ["成都田中", "田家炳中学", "成城公学", "成都市田家炳中学官网"],
+      "url": "https://tjb.petricw.com",
+      "logo": "https://tjb.petricw.com/favicon.jpg",
+      "image": "https://tjb.petricw.com/hero-bg.webp",
+      "description": "成都市田家炳中学官网。始建于1925年，始称成城公学，百年名校。四川省一级示范性普通高中，全国国防教育示范校，教育部人工智能教育双试点单位。招生咨询电话：028-84551880。",
+      "foundingDate": "1925",
+      "telephone": "+86-28-84551880",
+      "email": "cdtjbzx@163.com",
+      "numberOfStudents": "3100",
+      "numberOfFaculty": "260",
+      "address": {
+        "@type": "PostalAddress",
+        "streetAddress": "顺江路369号",
+        "addressLocality": "成都市",
+        "addressRegion": "四川省",
+        "addressCountry": "CN",
+        "postalCode": "610061"
+      },
+      "geo": {
+        "@type": "GeoCoordinates",
+        "latitude": "30.6383",
+        "longitude": "104.0896"
+      },
+      "sameAs": [
+        "https://tjb.petricw.com"
+      ],
+      "contactPoint": {
+        "@type": "ContactPoint",
+        "telephone": "+86-28-84551880",
+        "contactType": "customer service",
+        "areaServed": "CN",
+        "availableLanguage": "Chinese"
+      },
+      "department": [
+        {
+          "@type": "EducationalOrganization",
+          "name": "成都市田家炳中学高中部",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "顺江路369号",
+            "addressLocality": "成都市",
+            "addressRegion": "四川省"
+          }
+        },
+        {
+          "@type": "EducationalOrganization",
+          "name": "成都市田家炳中学初中部",
+          "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "莲新小区",
+            "addressLocality": "成都市",
+            "addressRegion": "四川省"
+          }
+        }
+      ]
+    }
+    </script>
+    
+    <!-- WebSite 结构化数据（含百度搜索框） -->
+    <script type="application/ld+json">
+    {
+      "@context": "https://schema.org",
+      "@type": "WebSite",
+      "name": "成都市田家炳中学官网",
+      "url": "https://tjb.petricw.com",
+      "potentialAction": {
+        "@type": "SearchAction",
+        "target": "https://tjb.petricw.com/news?q={search_term_string}",
+        "query-input": "required name=search_term_string"
+      }
+    }
+    </script>
+
+  </head>
+  <body>
+    <div id="root"><div style="position:fixed;inset:0;background:#1a2942;z-index:9999"><div style="height:64px;background:hsl(38,25%,96%);border-bottom:1px solid hsl(38,12%,86%);display:flex;align-items:center;padding:0 16px;gap:12px"><div style="width:40px;height:40px;border-radius:8px;background:hsl(38,20%,90%)"></div><div style="height:20px;width:160px;background:hsl(38,20%,90%);border-radius:4px"></div></div><div style="height:calc(100vh - 64px);background:#1a2942;display:flex;flex-direction:column;justify-content:center;padding:0 24px;gap:16px"><div style="height:48px;width:180px;background:rgba(255,255,255,0.12);border-radius:6px"></div><div style="height:28px;width:140px;background:rgba(255,255,255,0.10);border-radius:6px"></div><div style="height:16px;width:280px;background:rgba(255,255,255,0.07);border-radius:4px"></div><div style="height:16px;width:220px;background:rgba(255,255,255,0.05);border-radius:4px"></div></div></div></div>
+    <script type="module" src="/src/index.tsx"></script>
+  </body>
+</html>
+
