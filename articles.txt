@@ -4,7 +4,7 @@
 # 新增文章只需在下方追加一行链接即可
 
 # ===== 核心指定文章（请勿删除、请勿调整顺序） =====
-# 顺序：525活动、春季运动会、社团、百日誓师、高三启动仪式、艺术节、百年校庆
+# 顺序：525活动、春季运动会、社团、高三启动仪式、艺术节、百年校庆
 https://mp.weixin.qq.com/s/kgdyYsIwsMRG8WL4W-vPzQ
 https://mp.weixin.qq.com/s/hKZlMYfjHIQ3azXfxQAdrQ
 https://mp.weixin.qq.com/s/ZhT_FPlWuF0LSO-MT87zhQ
