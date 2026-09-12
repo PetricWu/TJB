@@ -65,8 +65,8 @@ export const MOCK_ADMISSION_INFO: IAdmissionInfo = {
   ],
   contact: {
     address: '成都市锦江区顺江路369号',
-    phone: '028-84511688',
-    artPhone: '028-84511699',
+    phone: '028-84551880',
+    artPhone: '028-84551880',
     email: 'cdtjbzx@163.com',
     website: 'https://tjb.petricw.com',
     officeHours: '工作日 8:00-12:00, 14:30-17:30',
@@ -198,7 +198,7 @@ export const MOCK_ADMISSION_FAQ: IAdmissionFaq[] = [
     id: 'faq1',
     question: '学校今年的招生计划是多少？',
     answer:
-      '我校2026年高中计划招生12个班，共540人，其中统招生486人，调剂生54人。初中计划招生8个班，共360人。具体招生计划以成都市教育局正式公布为准。',
+      '我校2026年高中面向"5+2"区域招收600名学生，开设六年贯通培养试点班。具体招生计划以成都市教育局正式公布为准。',
   },
   {
     id: 'faq2',
@@ -245,9 +245,9 @@ export const MOCK_ADMISSION_FAQ: IAdmissionFaq[] = [
 ];
 
 export const MOCK_ADMISSION_FACULTY_STATS: IFacultyStat[] = [
-  { label: '正高级教师', value: '8', suffix: '人' },
-  { label: '特级教师', value: '12', suffix: '人' },
-  { label: '省市学科带头人', value: '26', suffix: '人' },
+  { label: '正高级教师', value: '3', suffix: '人' },
+  { label: '特级教师', value: '14', suffix: '人' },
+  { label: '省市学科带头人', value: '16', suffix: '人' },
   { label: '高级教师', value: '98', suffix: '人' },
   { label: '硕士及以上学历', value: '65', suffix: '%' },
   { label: '中高级教师占比', value: '85', suffix: '%' },

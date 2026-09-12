@@ -427,7 +427,7 @@ export const MOCK_HONORS: IHonor[] = [
   { id: 'h9', title: '成都市阳光体育示范校', year: '2018', issuer: '成都市教育局', level: '市级' },
   { id: 'h10', title: '成都市六年贯通培养试点学校', year: '2026', issuer: '成都市教育局', level: '市级' },
   { id: 'h11', title: '课程教材所人工智能教育试点单位', year: '2025', issuer: '教育部课程教材研究所', level: '国家级' },
-  { id: 'h12', title: '成都七中教育集团成员学校', year: '2009', issuer: '成都市教育局', level: '市级' },
+  { id: 'h12', title: '成都七中教育集团成员学校', year: '2019', issuer: '成都市教育局', level: '市级' },
 ];
 
 export const MOCK_CAMPUS: ICampusImage[] = [

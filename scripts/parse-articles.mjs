@@ -52,7 +52,6 @@ const FIXED_CATEGORY_MAP = {
   'kgdyYsIwsMRG8WL4W-vPzQ': '德育活动',
   'hKZlMYfjHIQ3azXfxQAdrQ': '学生发展',
   'ZhT_FPlWuF0LSO-MT87zhQ': '学生发展',
-  '8FDIFxsW0XdQ3p1qrC9o8w': '德育活动',
   'GKuaecAoTNosaqBz2x7JlQ': '德育活动',
   'GHbLqdSNx1qGWUP0Dg1ASA': '学生发展',
   '0ol4DU9TIzB1dFq9luhrpw': '校庆专题',
@@ -66,11 +65,27 @@ const FIXED_SUMMARY_MAP = {
   'kgdyYsIwsMRG8WL4W-vPzQ': '5·25心理健康节系列活动温暖开展，通过心理讲座、团体辅导、趣味游戏等多种形式，引导同学们关爱自我、关注心灵成长，在轻松愉悦的氛围中收获正能量。',
   'hKZlMYfjHIQ3azXfxQAdrQ': '2025年春季田径运动会隆重举行，运动健儿们驰骋赛场，挥洒汗水，展现了田中学子昂扬向上的精神风貌和顽强拼搏的体育精神。',
   'ZhT_FPlWuF0LSO-MT87zhQ': '社团课程全面升级，四大类30+社团助力学生多元发展。从学术科技到文化艺术，从体育运动到实践创新，每个学生都能找到属于自己的舞台。',
-  '8FDIFxsW0XdQ3p1qrC9o8w': '高考百日誓师大会震撼举行，高三学子以青春之名，赴梦想之约。铮铮誓言响彻校园，彰显了高三学子决胜高考的坚定信念和昂扬斗志。',
   'GKuaecAoTNosaqBz2x7JlQ': '高三启动仪式顺利举行，标志着新一届高三学子正式踏上高考征程。学校领导、教师代表和全体高三学生共同见证这一重要时刻。',
   'GHbLqdSNx1qGWUP0Dg1ASA': '第23届校园文化艺术节盛大开幕，青春风采闪耀田中。文艺汇演、书画展览、才艺展示等系列活动精彩纷呈，为校园增添了浓厚的艺术氛围。',
   '0ol4DU9TIzB1dFq9luhrpw': '成都市田家炳中学建校100周年庆祝大会隆重举行。各界校友、师生代表齐聚一堂，共庆百年华诞，共话学校发展新篇章。',
 };
+
+/**
+ * 自动删除文本中的英文单词，只保留中文、数字和中文标点
+ * @param {string} text - 原始文本
+ * @returns {string} - 过滤后的纯中文文本
+ */
+function stripEnglish(text) {
+  if (!text) return text;
+  // 删除所有英文字母组成的单词（含连字符的英文词如 "AI" 也一并删除）
+  // 保留中文字符、数字、中文标点、常见符号
+  return text
+    .replace(/[a-zA-Z][a-zA-Z\-']*/g, '')
+    .replace(/\s{2,}/g, ' ')
+    .replace(/^\s+|\s+$/g, '')
+    .replace(/\s+([，。、；：！？）】》])/g, '$1')  // 中文标点前不留空格
+    .replace(/([（【《])\s+/g, '$1');                // 中文标点后不留空格
+}
 
 function parseArticlesTxt() {
   console.log('📖 正在读取 articles.txt...');
@@ -222,6 +237,10 @@ function parseArticleHtml(html, url) {
 
   const category = autoClassify(title, articleId);
   const isPinned = articleId && FIXED_PINNED_MAP[articleId] ? true : false;
+
+  // 自动删除标题和摘要中的英文，只保留中文
+  title = stripEnglish(title);
+  summary = stripEnglish(summary);
 
   return {
     id: articleId || `article-${Date.now()}`,

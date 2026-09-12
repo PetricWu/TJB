@@ -39,7 +39,7 @@ export const MOCK_STUDENT_ACTIVITIES: IStudentActivity[] = [
   {
     id: 'sa-2',
     title: '2025年春季田径运动会',
-    description: '全校72个班级、3600余名学生参与为期三天的春季田径运动会。径赛12项、田赛8项，6人次打破4项校纪录，教职工趣味运动会同步开展，师生同场竞技气氛热烈。',
+    description: '全校学生参与为期三天的春季田径运动会。径赛12项、田赛8项，6人次打破4项校纪录，教职工趣味运动会同步开展，师生同场竞技气氛热烈。',
     category: '体育活动',
     coverImage: '/images/38Bp1wfimz.webp',
     date: '2025-04-12',
