@@ -38,8 +38,8 @@ export const MOCK_STUDENT_ACTIVITIES: IStudentActivity[] = [
   },
   {
     id: 'sa-2',
-    title: '2025年春季田径运动会',
-    description: '全校学生参与为期三天的春季田径运动会。径赛12项、田赛8项，6人次打破4项校纪录，教职工趣味运动会同步开展，师生同场竞技气氛热烈。',
+    title: '第十六届春季田径运动会',
+    description: '第十六届春季田径运动会隆重举行，主题"百年荣耀，体育筑梦"。前国脚魏群助阵，设足球、篮球、乒乓球等球类项目，全校学生参与竞技，展现田中学子昂扬向上的精神风貌。',
     category: '体育活动',
     coverImage: '/images/38Bp1wfimz.webp',
     date: '2025-04-12',
@@ -51,7 +51,7 @@ export const MOCK_STUDENT_ACTIVITIES: IStudentActivity[] = [
   {
     id: 'sa-3',
     title: '机器人社团出征VEX世锦赛挺进八强',
-    description: '我校机器人社团代表中国出征VEX机器人世界锦标赛，凭借出色的机械设计、编程能力和团队协作，在工程挑战赛高中组中挺进八强，展现了我校科创教育的国际竞争力。',
+    description: '我校机器人社团代表中国出征VEX机器人世界锦标赛，凭借出色的机械设计、编程能力和团队协作，在工程挑战赛高中组中挺进八强，展现了我校科创教育的国际竞争力。学校是教育部人工智能教育"双试点"单位，拥有15个高标准科学实验室。',
     category: '社团活动',
     coverImage: '/images/38Bp1wfimz.webp',
     date: '2025-04-20',

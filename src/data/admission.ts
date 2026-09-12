@@ -49,7 +49,7 @@ export const MOCK_ADMISSION_INFO: IAdmissionInfo = {
   subtitle: '四川省一级示范性普通高中',
   coverImage: '/images/38Bp1wfimz.webp',
   summary:
-    '成都市田家炳中学始建于1925年，是四川省一级示范性普通高中、全国国防教育示范校。学校秉承"履仁崇智 明德卓行"校训，坚持"崇实适性，润育心田"办学理念，致力于培养具有家国情怀、科学精神、人文素养和创新能力的优秀学子。2026年成为成都市六年贯通培养试点学校，实现初高中一体化育人。',
+    '成都市田家炳中学始建于1925年，是四川省一级示范性普通高中、全国国防教育示范校、教育部人工智能教育"双试点"单位。学校秉承"履仁崇智 明德卓行"办学思想，坚持"崇实适性，润育心田"办学理念，构建"三实"课堂和"四实"课程体系，连续多年实现"中进高出、高进优出"。2026年成为成都市六年贯通培养试点学校，与成都七中教育集团联合办学。',
   highlights: [
     { label: '办学历史', value: '101', suffix: '年', description: '百年名校，薪火相传' },
     { label: '在校学生', value: '3100', suffix: '余人', description: '初高中两个校区' },
@@ -193,6 +193,21 @@ export const MOCK_ADMISSION_PROCESS: IAdmissionProcess[] = [
   },
 ];
 
+export interface IAdmissionScore {
+  year: string;
+  unifiedScore: string;
+  adjustScore: string;
+  position?: string;
+}
+
+export const MOCK_ADMISSION_SCORES: IAdmissionScore[] = [
+  { year: '2026', unifiedScore: '594', adjustScore: '593', position: '9610' },
+  { year: '2025', unifiedScore: '594', adjustScore: '593', position: '9354' },
+  { year: '2024', unifiedScore: '579', adjustScore: '573' },
+  { year: '2023', unifiedScore: '593', adjustScore: '592' },
+  { year: '2022', unifiedScore: '591', adjustScore: '591' },
+];
+
 export const MOCK_ADMISSION_FAQ: IAdmissionFaq[] = [
   {
     id: 'faq1',
@@ -204,7 +219,7 @@ export const MOCK_ADMISSION_FAQ: IAdmissionFaq[] = [
     id: 'faq2',
     question: '学校有哪些特色班型？',
     answer:
-      '我校高中设有"火箭班"、"实验班"、"科创班"、"国防班"等特色班型，根据学生中考成绩和综合素质进行分层分类培养。其中科创班侧重人工智能与科技创新教育，国防班侧重国防教育与军事素养培养。',
+      '我校高中设有"科创班/AI实验班"、"火箭班"、"重点班/课改班"、"实验班"、"平行班"等多层次班型。科创班与香港田家炳基金会合作，侧重人工智能与科技创新教育；火箭班面向成绩优异学生，目标100%上本科、96%以上上一本。实施"大分层、小分类、个别化"的差异化教学策略。',
   },
   {
     id: 'faq3',
@@ -241,6 +256,18 @@ export const MOCK_ADMISSION_FAQ: IAdmissionFaq[] = [
     question: '如何获取最新的招生信息？',
     answer:
       '考生和家长可通过以下方式获取最新招生信息：1. 学校官网（tjb.petricw.com）招生专栏；2. 学校官方微信公众号"成都市田家炳中学"；3. 拨打招生咨询电话028-84511688；4. 参加校园开放日活动。',
+  },
+  {
+    id: 'faq9',
+    question: '学校的食堂和作息怎么样？',
+    answer:
+      '学校食堂提供午餐和晚餐，实行选餐制，每周更新食谱，提供A餐和B餐选择，师生同桌就餐、同材同价同窗口。作息方面，早上七点半到校，高一高二晚自习九点结束，高三十点结束。学校为走读制，不提供住宿。',
+  },
+  {
+    id: 'faq10',
+    question: '学校有哪些国际合作与交流？',
+    answer:
+      '学校是教育部中外人文交流项目特色学校、成都市教育国际化窗口学校。与法国巴黎东郊国际高中、香港仁爱堂田家炳中学等建立友好学校关系。2025年与香港田家炳基金会合作开设AI实验班，全国166所田家炳中学中仅上海和成都开设。学校还联合川大"博士达"研究中心开展双语教学。',
   },
 ];
 

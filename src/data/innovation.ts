@@ -14,7 +14,7 @@ export const MOCK_INNOVATION: INews[] = [
   {
     id: 'inno-1',
     title: '连续两年蝉联全国学生信息素养活动最高荣誉"创新之星"',
-    summary: '2024、2025连续两年，我校学子在全国学生信息素养提升实践活动中斩获最高荣誉"创新之星"，成都市唯一获此殊荣的学校。',
+    summary: '2024、2025连续两年，我校学子在全国学生信息素养提升实践活动中斩获最高荣誉"创新之星"。2025年高嘉煦（创意智造）、唐栎森（智能博物《成都之非遗》）获此殊荣，高嘉煦成为锦江区首位连续两年获此荣誉的学生。',
     content: '',
     category: '校园要闻',
     coverImage: '/images/BwGQ1wfhTy.webp',
@@ -38,7 +38,7 @@ export const MOCK_INNOVATION: INews[] = [
   {
     id: 'inno-3',
     title: '张友科老师《机器学习分类算法》获基础教育精品课部级优课',
-    summary: '我校人工智能课程专家张友科老师的课程《机器学习分类算法》获得基础教育精品课部级优课荣誉。',
+    summary: '张友科老师《机器学习分类算法》获基础教育精品课部级优课，参与编写区本高中人工智能教材《人工智能-可编程硬件》和《人工智能与创新实践》。',
     content: '',
     category: '教学教研',
     coverImage: '/images/38Bp1wfimz.webp',
@@ -84,6 +84,20 @@ export const MOCK_INNOVATION_ACHIEVEMENTS: IInnovationAchievement[] = [
     year: '2023-2025',
     level: '综合',
     description: '机器人、3D打印、无人机等15个高标准实验室支撑',
+  },
+  {
+    id: 'ach-6',
+    title: '宋庆龄少年儿童发明奖全国银奖',
+    year: '2025',
+    level: '国家级',
+    description: '张施琪、罗宇轩、黄玉龙"公园绿道智能AI报警系统"获全国银奖，四川省初中组第一名',
+  },
+  {
+    id: 'ach-7',
+    title: '世界机器人大赛一等奖',
+    year: '2024',
+    level: '国家级',
+    description: '张睿同学获世界机器人大赛一等奖',
   },
 ];
 
