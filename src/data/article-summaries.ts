@@ -53,19 +53,6 @@ export const articleSummaries: ArticleSummary[] = [
     coverImage4x3: "/article-images/ZhT_FPlWuF0LSO-MT87zhQ/cover-4x3.webp"
   },
   {
-    id: "8FDIFxsW0XdQ3p1qrC9o8w",
-    title: "履仁砺剑百日逐梦 崇智笃行六月折桂",
-    summary: "高考百日誓师大会震撼举行，高三学子以青春之名，赴梦想之约。铮铮誓言响彻校园，彰显了高三学子决胜高考的坚定信念和昂扬斗志。",
-    category: "德育活动",
-    publishDate: "2026-02-28",
-    author: "成都市田家炳中学",
-    viewCount: 2802,
-    isPinned: false,
-    sourceUrl: "https://mp.weixin.qq.com/s/8FDIFxsW0XdQ3p1qrC9o8w",
-    coverImage: "/article-images/8FDIFxsW0XdQ3p1qrC9o8w/cover-16x9.webp",
-    coverImage4x3: "/article-images/8FDIFxsW0XdQ3p1qrC9o8w/cover-4x3.webp"
-  },
-  {
     id: "GKuaecAoTNosaqBz2x7JlQ",
     title: "沐恩逐光向山海 立志有为踏新程",
     summary: "高三启动仪式顺利举行，标志着新一届高三学子正式踏上高考征程。学校领导、教师代表和全体高三学生共同见证这一重要时刻。",
