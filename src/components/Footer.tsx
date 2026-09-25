@@ -32,10 +32,10 @@ const FOOTER_LINKS = [
       { label: '科创特色', path: '/innovation' },
       { label: '德育园地', path: '/moral' },
       { label: '学生发展', path: '/student' },
-      { label: '招生招聘', path: '/admission' },
-      { label: '校友风采', path: '/alumni' },
       { label: '田家炳专题', path: '/tianjiabing' },
-      { label: '联系我们', path: '/contact' },
+      { label: '校友风采', path: '/alumni' },
+      { label: '招生招聘', path: '/admission' },
+      { label: '联系我们', path: '/admission#contact' },
     ],
   },
   {

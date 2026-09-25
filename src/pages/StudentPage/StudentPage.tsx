@@ -212,7 +212,7 @@ export default function StudentPage() {
       <main className="space-y-16 md:space-y-24">
         {/* Hero Banner：统一 PageHero 版式 */}
         <PageHero
-          no="06"
+          no="07"
           en="Student"
           title="多元发展 全面成才"
           desc="艺术、体育、社团、实践四位一体，让每一位田中学子找到属于自己的舞台，在体验中成长，在实践中收获。"

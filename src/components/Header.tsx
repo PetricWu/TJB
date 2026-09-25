@@ -33,6 +33,7 @@ const NAV_ITEMS: NavItem[] = [
       { label: '荣誉资质', path: '/about#honors' },
     ],
   },
+  { label: '田家炳专题', path: '/tianjiabing' },
   {
     label: '新闻中心',
     path: '/news',
@@ -59,10 +60,8 @@ const NAV_ITEMS: NavItem[] = [
       { label: '实践活动', path: '/student#practice' },
     ],
   },
-  { label: '招生招聘', path: '/admission' },
   { label: '校友风采', path: '/alumni' },
-  { label: '田家炳专题', path: '/tianjiabing' },
-  { label: '联系我们', path: '/contact' },
+  { label: '招生招聘', path: '/admission' },
 ];
 
 /** 从路径中提取 hash（如 /about#history → #history） */
@@ -170,7 +169,7 @@ export default function Header() {
       {/* 内容区顶部留空占位，防止 fixed 后被遮挡 */}
       <div className="max-w-7xl mx-auto px-4 md:px-6 flex h-16 md:h-20 items-center justify-between">
         {/* Logo */}
-        <NavLink to="/" end className="flex items-center gap-3 shrink-0" onClick={(e) => handleNavClick('/', e)}>
+        <NavLink to="/" end className="flex items-center gap-3 shrink-0 -ml-1 md:-ml-1.5" onClick={(e) => handleNavClick('/', e)}>
           <div className="size-10 md:size-12 rounded-lg overflow-hidden flex items-center justify-center">
             <Image
               src={SCHOOL_BADGE_THUMB}
@@ -193,8 +192,8 @@ export default function Header() {
           </div>
         </NavLink>
 
-        {/* Desktop Nav（11 项主导航，xl 以下收起为汉堡菜单，避免 1024-1279px 溢出） */}
-        <nav className="hidden xl:flex items-center gap-1">
+        {/* Desktop Nav（10 项主导航，xl 以下收起为汉堡菜单，避免 1024-1279px 溢出） */}
+        <nav className="hidden xl:flex items-center gap-1 xl:-mr-2.5 2xl:-mr-3.5">
           {NAV_ITEMS.map((item) => (
             <div
               key={item.path}

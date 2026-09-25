@@ -114,7 +114,7 @@ export default function NewsListPage() {
     <div className="min-h-screen bg-transparent">
       {/* 页面头部：统一 PageHero 版式 */}
       <PageHero
-        no="02"
+        no="03"
         en="News"
         title="校园资讯"
         desc="了解成都市田家炳中学最新动态，关注校园要闻、通知公告、教学教研、德育活动、学生发展、校庆专题及家校共育"

@@ -140,7 +140,7 @@ export default function AlumniPage() {
                     百年办学历程中，无数田中学子从锦江之滨走向山海四方，在各行各业默默耕耘。若您是田中校友，或知晓值得记录的校友故事，欢迎与学校联系，共同丰富这份属于全体田中人的记忆。
                   </p>
                   <Link
-                    to="/contact"
+                    to="/admission#contact"
                     className="mt-3 inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold bg-accent text-white rounded-sm neo-press"
                   >
                     联系我们

@@ -1,5 +1,5 @@
 import { Suspense, lazy } from "react";
-import { Routes, Route } from "react-router-dom";
+import { Routes, Route, Navigate } from "react-router-dom";
 import { Layout } from "@/components/Layout";
 import HomePage from "@/pages/HomePage/HomePage";
 
@@ -14,7 +14,6 @@ const StudentPage = lazy(() => import("@/pages/StudentPage/StudentPage"));
 const AdmissionPage = lazy(() => import("@/pages/AdmissionPage/AdmissionPage"));
 const AlumniPage = lazy(() => import("@/pages/AlumniPage/AlumniPage"));
 const TianjiabingPage = lazy(() => import("@/pages/TianjiabingPage/TianjiabingPage"));
-const ContactPage = lazy(() => import("@/pages/ContactPage/ContactPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage/NotFoundPage"));
 
 function PageLoading() {
@@ -52,7 +51,7 @@ export default function App() {
           <Route path="admission" element={<AdmissionPage />} />
           <Route path="alumni" element={<AlumniPage />} />
           <Route path="tianjiabing" element={<TianjiabingPage />} />
-          <Route path="contact" element={<ContactPage />} />
+          <Route path="contact" element={<Navigate to="/admission" replace />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

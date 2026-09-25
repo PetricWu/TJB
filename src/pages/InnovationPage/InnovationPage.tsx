@@ -55,7 +55,7 @@ export default function InnovationPage() {
       <main className="space-y-16 md:space-y-24">
         {/* Hero Banner：统一 PageHero 版式 */}
         <PageHero
-          no="04"
+          no="05"
           en="Innovation"
           title="科技赋能成长 创新引领未来"
           desc="课程教材所人工智能教育试点单位，成都市人工智能科普教育示范校，近三年国家级省级科创奖项300余人次，连续两年蝉联全国“创新之星”。"

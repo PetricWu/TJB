@@ -44,7 +44,7 @@ export default function TianjiabingPage() {
   return (
     <div className="min-h-screen bg-transparent">
       <PageHero
-        no="09"
+        no="02"
         en="Tin Ka Ping"
         title="田家炳专题"
         desc='"中国的希望在教育。"一位节俭到极致的实业家，却倾其所有兴学育才，捐资遍及全国34省市区，被誉为"中国百校之父"。本校即以田家炳先生之名命名，谨此致敬其"兴学育才"的教育情怀。'
@@ -352,7 +352,7 @@ export default function TianjiabingPage() {
                   招生招聘
                 </Link>
                 <Link
-                  to="/contact"
+                  to="/admission#contact"
                   className="inline-flex items-center gap-1.5 px-4 py-2 text-sm font-semibold bg-card text-ink border-2 border-ink rounded-sm neo-press"
                 >
                   联系我们

@@ -20,15 +20,14 @@
 
 - [首页](https://tjb.petricw.com/) - 学校概况、新闻动态、校园活动、招生信息、特色栏目展示
 - [学校概况](https://tjb.petricw.com/about) - 百年校史、办学理念、师资队伍、校园环境、荣誉资质
+- [田家炳专题](https://tjb.petricw.com/tianjiabing) - 田家炳先生生平、基金会捐学规模、我校与田家炳、精神传承
 - [新闻中心](https://tjb.petricw.com/news) - 校园要闻、通知公告、教学教研、校庆专题
 - [教学教研](https://tjb.petricw.com/teaching) - 课程体系、教师发展、教学成果、"深度学习"教学模式
 - [科创特色](https://tjb.petricw.com/innovation) - 人工智能教育、机器人社团、科创实验室、VEX机器人世锦赛
 - [德育园地](https://tjb.petricw.com/moral) - 主题活动、心理健康教育、高三成长指导
 - [学生发展](https://tjb.petricw.com/student) - 艺术活动、体育活动、社团活动、实践活动
-- [招生招聘](https://tjb.petricw.com/admission) - 招生简章、录取信息、教师招聘
 - [校友风采](https://tjb.petricw.com/alumni) - 创校先贤陶亮生与文百川、校友代表、百年校庆回眸
-- [田家炳专题](https://tjb.petricw.com/tianjiabing) - 田家炳先生生平、基金会捐学规模、我校与田家炳、精神传承
-- [联系我们](https://tjb.petricw.com/contact) - 双校区地址、电话邮箱、办公时间、交通指引、校园地图
+- [招生招聘](https://tjb.petricw.com/admission) - 招生简章、录取信息、教师招聘、双校区地址与交通指引、联系方式
 
 ## 办学特色
 

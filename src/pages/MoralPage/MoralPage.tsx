@@ -257,7 +257,7 @@ export default function MoralPage() {
     <div className="min-h-screen bg-transparent">
       {/* Hero Banner：统一 PageHero 版式 */}
       <PageHero
-        no="05"
+        no="06"
         en="Moral"
         title="履仁崇智 立德树人"
         desc="以“田家炳精神”为德育品牌，构建“课程+活动+文化”三位一体育人体系，培养德智体美劳全面发展的社会主义建设者和接班人。"
