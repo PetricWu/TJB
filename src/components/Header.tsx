@@ -193,7 +193,7 @@ export default function Header() {
         </NavLink>
 
         {/* Desktop Nav（10 项主导航，xl 以下收起为汉堡菜单，避免 1024-1279px 溢出） */}
-        <nav className="hidden xl:flex items-center gap-1 xl:-mr-2.5 2xl:-mr-3.5">
+        <nav className="hidden xl:flex items-center gap-1 2xl:gap-0.5 xl:-mr-2.5 2xl:-mr-3.5">
           {NAV_ITEMS.map((item) => (
             <div
               key={item.path}
@@ -204,7 +204,7 @@ export default function Header() {
               {item.children ? (
                 <button
                   type="button"
-                  className={`relative flex items-center px-2.5 2xl:px-3.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
+                  className={`relative flex items-center px-[18px] py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
                     isActive(item)
                       ? 'bg-ink text-white'
                       : 'text-muted-foreground hover:text-ink hover:bg-ink/5 nav-underline'
@@ -221,22 +221,22 @@ export default function Header() {
                     }
                   }}
                 >
-                  <span className="relative inline-flex items-center">
+                  <span className="inline-flex items-center">
                     {item.label}
-                    <ChevronDown
-                      aria-hidden="true"
-                      className={`absolute top-1/2 -translate-y-1/2 left-full ml-1.5 2xl:ml-2 size-3.5 2xl:size-4 transition-transform duration-200 ${
-                        openDropdown === item.path ? 'rotate-180' : ''
-                      }`}
-                    />
                   </span>
+                  <ChevronDown
+                    aria-hidden="true"
+                    className={`absolute top-1/2 -translate-y-1/2 right-0.5 size-3.5 transition-transform duration-200 ${
+                      openDropdown === item.path ? 'rotate-180' : ''
+                    }`}
+                  />
                 </button>
               ) : (
                 <NavLink
                   to={item.path}
                   end={item.path === '/'}
                   className={({ isActive: linkActive }) =>
-                    `block px-2.5 2xl:px-3.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
+                    `block px-2.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
                       linkActive ? 'bg-ink text-white' : 'text-muted-foreground hover:text-ink hover:bg-ink/5 nav-underline'
                     }`
                   }
