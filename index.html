@@ -21,7 +21,6 @@
     <meta name="robots" content="index, follow, max-image-preview:large, max-snippet:-1, max-video-preview:-1" />
     <meta name="googlebot" content="index, follow" />
     <meta name="baiduspider" content="index, follow" />
-    <meta http-equiv="Content-Language" content="zh-CN" />
     <meta name="revisit-after" content="1 days" />
     <meta name="rating" content="general" />
     <meta name="distribution" content="global" />
@@ -40,7 +39,6 @@
     <meta name="MobileOptimized" content="width" />
     <meta name="HandheldFriendly" content="true" />
     <meta name="format-detection" content="telephone=no" />
-    <meta http-equiv="Cache-Control" content="public, max-age=3600" />
     
     <!-- 地理位置信息 -->
     <meta name="geo.region" content="CN-SC" />
@@ -94,9 +92,6 @@
         "latitude": "30.6383",
         "longitude": "104.0896"
       },
-      "sameAs": [
-        "https://tjb.petricw.com"
-      ],
       "contactPoint": {
         "@type": "ContactPoint",
         "telephone": "+86-28-84551880",
@@ -148,6 +143,10 @@
   <body>
     <div id="root"><div style="position:fixed;inset:0;background:#1a2942;z-index:9999"><div style="height:64px;background:hsl(38,25%,96%);border-bottom:1px solid hsl(38,12%,86%);display:flex;align-items:center;padding:0 16px;gap:12px"><div style="width:40px;height:40px;border-radius:8px;background:hsl(38,20%,90%)"></div><div style="height:20px;width:160px;background:hsl(38,20%,90%);border-radius:4px"></div></div><div style="height:calc(100vh - 64px);background:#1a2942;display:flex;flex-direction:column;justify-content:center;padding:0 24px;gap:16px"><div style="height:48px;width:180px;background:rgba(255,255,255,0.12);border-radius:6px"></div><div style="height:28px;width:140px;background:rgba(255,255,255,0.10);border-radius:6px"></div><div style="height:16px;width:280px;background:rgba(255,255,255,0.07);border-radius:4px"></div><div style="height:16px;width:220px;background:rgba(255,255,255,0.05);border-radius:4px"></div></div></div></div>
     <script type="module" src="/src/index.tsx"></script>
+    <!-- 百度链接自动推送（SPA 首跳 URL，补充定时/构建期推送） -->
+    <script>
+    (function(){var bp=document.createElement('script');bp.src='https://zz.bdstatic.com/linksubmit/push.js';var s=document.getElementsByTagName('script')[0];s.parentNode.insertBefore(bp,s);})();
+    </script>
   </body>
 </html>
 

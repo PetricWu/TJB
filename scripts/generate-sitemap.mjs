@@ -83,6 +83,19 @@ function main() {
     );
   }
 
+  // 新闻分类页（/news?category=X，提升百度对分类入口的抓取与收录）
+  const categories = [...new Set(summaries.map((a) => a.category).filter(Boolean))];
+  for (const cat of categories) {
+    entries.push(
+      urlEntry(
+        `${SITE_URL}/news?category=${encodeURIComponent(cat)}`,
+        latestArticleDate,
+        'monthly',
+        '0.7'
+      )
+    );
+  }
+
   const xml = [
     '<?xml version="1.0" encoding="UTF-8"?>',
     '<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">',

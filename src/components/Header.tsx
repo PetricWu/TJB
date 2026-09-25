@@ -204,7 +204,7 @@ export default function Header() {
               {item.children ? (
                 <button
                   type="button"
-                  className={`flex items-center gap-1.5 px-2.5 2xl:px-3.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
+                  className={`relative flex items-center px-2.5 2xl:px-3.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
                     isActive(item)
                       ? 'bg-ink text-white'
                       : 'text-muted-foreground hover:text-ink hover:bg-ink/5 nav-underline'
@@ -221,12 +221,15 @@ export default function Header() {
                     }
                   }}
                 >
-                  {item.label}
-                  <ChevronDown
-                    className={`size-3.5 2xl:size-4 transition-transform duration-200 ${
-                      openDropdown === item.path ? 'rotate-180' : ''
-                    }`}
-                  />
+                  <span className="relative inline-flex items-center">
+                    {item.label}
+                    <ChevronDown
+                      aria-hidden="true"
+                      className={`absolute top-1/2 -translate-y-1/2 left-full ml-1.5 2xl:ml-2 size-3.5 2xl:size-4 transition-transform duration-200 ${
+                        openDropdown === item.path ? 'rotate-180' : ''
+                      }`}
+                    />
+                  </span>
                 </button>
               ) : (
                 <NavLink

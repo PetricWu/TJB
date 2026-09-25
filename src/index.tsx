@@ -1,5 +1,5 @@
 import { StrictMode } from "react";
-import { createRoot } from "react-dom/client";
+import { createRoot, hydrateRoot } from "react-dom/client";
 import { BrowserRouter } from "react-router-dom";
 import { ErrorBoundary } from "react-error-boundary";
 import App from "./app";
@@ -22,7 +22,8 @@ const ErrorRender: React.FC<{ error: unknown; resetErrorBoundary: () => void }> 
   </div>
 );
 
-createRoot(document.getElementById("root")!).render(
+const rootEl = document.getElementById("root")!;
+const app = (
   <StrictMode>
     <BrowserRouter basename={process.env.CLIENT_BASE_PATH || "/"}>
       <AppContainer>
@@ -35,5 +36,12 @@ createRoot(document.getElementById("root")!).render(
         </ErrorBoundary>
       </AppContainer>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 );
+
+// 预渲染产物已含正文时用 hydrate（避免闪），否则 createRoot（开发/未预渲染）
+if (rootEl.hasChildNodes()) {
+  hydrateRoot(rootEl, app);
+} else {
+  createRoot(rootEl).render(app);
+}

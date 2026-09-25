@@ -1,5 +1,5 @@
 [build]
-  command = "node scripts/parse-articles.mjs && node scripts/generate-sitemap.mjs && npx vite build && node scripts/post-build.mjs"
+  command = "node scripts/parse-articles.mjs && node scripts/generate-sitemap.mjs && npx vite build && node scripts/post-build.mjs && node scripts/prerender.mjs && node scripts/baidu-push-build.mjs"
   publish = "dist/client"
 
 [build.environment]
@@ -61,7 +61,7 @@
     Cross-Origin-Opener-Policy = "same-origin"
     Strict-Transport-Security = "max-age=63072000; includeSubDomains; preload"
     Referrer-Policy = "strict-origin-when-cross-origin"
-    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline'; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src 'self'; font-src 'self'; connect-src 'self'; frame-ancestors 'none'"
+    Content-Security-Policy = "default-src 'self'; script-src 'self' 'unsafe-inline' https://zz.bdstatic.com https://hm.baidu.com; style-src 'self' 'unsafe-inline'; img-src 'self' data: https:; media-src 'self'; font-src 'self'; connect-src 'self' https://hm.baidu.com; frame-ancestors 'none'"
 
 [[redirects]]
   from = "/contact"
@@ -71,4 +71,4 @@
 [[redirects]]
   from = "/*"
   to = "/index.html"
-  status = 200
+  status = 404
