@@ -1,4 +1,4 @@
-﻿import { useState, useEffect, useCallback, useRef } from 'react';
+import { useState, useEffect, useCallback, useRef } from 'react';
 import { NavLink, useLocation, useNavigate } from 'react-router-dom';
 import { ChevronDown, Menu, X } from 'lucide-react';
 import { Button } from '@/components/ui/button';
@@ -60,6 +60,9 @@ const NAV_ITEMS: NavItem[] = [
     ],
   },
   { label: '招生招聘', path: '/admission' },
+  { label: '校友风采', path: '/alumni' },
+  { label: '田家炳专题', path: '/tianjiabing' },
+  { label: '联系我们', path: '/contact' },
 ];
 
 /** 从路径中提取 hash（如 /about#history → #history） */
@@ -86,7 +89,7 @@ function scrollToHash(hash: string | null) {
 }
 
 export default function Header() {
-  const { pathname } = useLocation();
+  const { pathname, search } = useLocation();
   const navigate = useNavigate();
   const [mobileOpen, setMobileOpen] = useState(false);
   const [openDropdown, setOpenDropdown] = useState<string | null>(null);
@@ -139,8 +142,25 @@ export default function Header() {
 
   const isActive = (item: NavItem) => {
     if (item.path === '/') return pathname === '/';
-    return pathname === item.path || pathname.startsWith(item.path + '/') || pathname.startsWith(item.path + '?');
+    return pathname === item.path || pathname.startsWith(item.path + '/');
   };
+
+  /** 查询参数型子项（如 /news?category=X）高亮判断：NavLink 只比 pathname，会全部同时高亮，需按 search 精确匹配 */
+  const isQueryChildActive = (path: string) => {
+    const [basePath, query] = path.split('?');
+    if (!query || pathname !== basePath) return false;
+    const want = new URLSearchParams(query);
+    const cur = new URLSearchParams(search);
+    let matched = true;
+    want.forEach((value, key) => {
+      if (cur.get(key) !== value) matched = false;
+    });
+    return matched;
+  };
+
+  /** 子项统一高亮判断：查询型子项按 search 精确匹配，锚点子项沿用 NavLink 判断 */
+  const isChildActive = (child: { label: string; path: string }, linkActive: boolean) =>
+    child.path.includes('?') ? isQueryChildActive(child.path) : linkActive;
 
   return (
     <header
@@ -173,8 +193,8 @@ export default function Header() {
           </div>
         </NavLink>
 
-        {/* Desktop Nav */}
-        <nav className="hidden lg:flex items-center gap-1 xl:gap-2">
+        {/* Desktop Nav（11 项主导航，xl 以下收起为汉堡菜单，避免 1024-1279px 溢出） */}
+        <nav className="hidden xl:flex items-center gap-1">
           {NAV_ITEMS.map((item) => (
             <div
               key={item.path}
@@ -185,7 +205,7 @@ export default function Header() {
               {item.children ? (
                 <button
                   type="button"
-                  className={`flex items-center gap-1.5 px-2.5 xl:px-4 py-2 xl:py-2.5 text-sm xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
+                  className={`flex items-center gap-1.5 px-2.5 2xl:px-3.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
                     isActive(item)
                       ? 'bg-ink text-white'
                       : 'text-muted-foreground hover:text-ink hover:bg-ink/5 nav-underline'
@@ -204,7 +224,7 @@ export default function Header() {
                 >
                   {item.label}
                   <ChevronDown
-                    className={`size-4 transition-transform duration-200 ${
+                    className={`size-3.5 2xl:size-4 transition-transform duration-200 ${
                       openDropdown === item.path ? 'rotate-180' : ''
                     }`}
                   />
@@ -214,7 +234,7 @@ export default function Header() {
                   to={item.path}
                   end={item.path === '/'}
                   className={({ isActive: linkActive }) =>
-                    `block px-2.5 xl:px-4 py-2 xl:py-2.5 text-sm xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
+                    `block px-2.5 2xl:px-3.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
                       linkActive ? 'bg-ink text-white' : 'text-muted-foreground hover:text-ink hover:bg-ink/5 nav-underline'
                     }`
                   }
@@ -233,7 +253,7 @@ export default function Header() {
                         to={child.path}
                         className={({ isActive: childActive }) =>
                           `flex items-center gap-2 px-5 py-2.5 text-sm transition-colors ${
-                            childActive
+                            isChildActive(child, childActive)
                               ? 'text-accent font-bold'
                               : 'text-muted-foreground hover:text-ink hover:bg-ink/5'
                           }`
@@ -254,7 +274,7 @@ export default function Header() {
         <Button
           variant="ghost"
           size="icon"
-          className="lg:hidden"
+          className="xl:hidden"
           onClick={() => setMobileOpen(!mobileOpen)}
           aria-label={mobileOpen ? '关闭菜单' : '打开菜单'}
         >
@@ -264,7 +284,7 @@ export default function Header() {
 
       {/* Mobile Nav */}
       {mobileOpen && (
-        <div className="lg:hidden border-t-2 border-ink/10 bg-background">
+        <div className="xl:hidden border-t-2 border-ink/10 bg-background">
           <nav className="max-w-7xl mx-auto px-4 py-3 space-y-1">
             {NAV_ITEMS.map((item) => (
               <div key={item.path}>
@@ -303,7 +323,7 @@ export default function Header() {
                             to={child.path}
                             className={({ isActive: childActive }) =>
                               `block px-3 py-2 text-sm rounded-sm transition-colors ${
-                                childActive
+                                isChildActive(child, childActive)
                                   ? 'text-accent font-bold'
                                   : 'text-muted-foreground hover:text-ink hover:bg-ink/5'
                               }`

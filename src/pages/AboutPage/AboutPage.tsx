@@ -168,7 +168,7 @@ export default function AboutPage() {
                     { icon: School, label: '学校性质', value: '公办完全中学' },
                     { icon: Calendar, label: '创办时间', value: '1925年' },
                     { icon: MapPin, label: '高中部', value: '锦江区顺江路369号' },
-                    { icon: MapPin, label: '初中部', value: '锦江区莲新小区' },
+                    { icon: MapPin, label: '初中部', value: '锦江区工农院街69号（莲新片区）' },
                     { icon: Building2, label: '占地面积', value: '两校区共57亩' },
                     { icon: Building2, label: '建筑面积', value: '45940余平米' },
                   ].map((info) => {

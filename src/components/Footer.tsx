@@ -19,10 +19,10 @@ const FOOTER_LINKS = [
   {
     title: '新闻中心',
     links: [
-      { label: '校园要闻', path: '/news' },
-      { label: '通知公告', path: '/news' },
-      { label: '媒体报道', path: '/news' },
-      { label: '校庆专题', path: '/news' },
+      { label: '德育活动', path: '/news?category=德育活动' },
+      { label: '学生发展', path: '/news?category=学生发展' },
+      { label: '校庆专题', path: '/news?category=校庆专题' },
+      { label: '全部新闻', path: '/news' },
     ],
   },
   {
@@ -33,15 +33,17 @@ const FOOTER_LINKS = [
       { label: '德育园地', path: '/moral' },
       { label: '学生发展', path: '/student' },
       { label: '招生招聘', path: '/admission' },
+      { label: '校友风采', path: '/alumni' },
+      { label: '田家炳专题', path: '/tianjiabing' },
+      { label: '联系我们', path: '/contact' },
     ],
   },
   {
     title: '联系我们',
     links: [
       { label: '高中部：锦江区顺江路369号', path: '#' },
+      { label: '初中部：锦江区工农院街69号（莲新片区）', path: '#' },
       { label: '联系电话：028-84551880', path: '#' },
-      { label: '教务处：028-84513739', path: '#' },
-      { label: '艺体专线：028-84551677', path: '#' },
       { label: '邮编：610061', path: '#' },
     ],
   },
@@ -160,7 +162,7 @@ export default function Footer() {
                     初中部
                   </p>
                   <p className="font-sans text-sm text-primary-foreground/60 leading-relaxed">
-                    成都市锦江区莲新小区
+                    锦江区工农院街69号（莲新片区）
                   </p>
                 </div>
               </div>

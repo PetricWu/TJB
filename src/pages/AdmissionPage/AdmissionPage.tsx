@@ -74,7 +74,7 @@ function FeatureCard({ feature, index }: { feature: IAdmissionFeature; index: nu
 export default function AdmissionPage() {
   useSEO({
     title: '招生招聘',
-    description: '成都市田家炳中学2026年招生简章，含招生计划、特色班型、艺体特长生招生、报名流程、常见问题等。招生咨询电话：028-84511688。',
+    description: '成都市田家炳中学2026年招生简章，含招生计划、特色班型、艺体特长生招生、报名流程、常见问题等。招生咨询电话：028-84551880。',
     canonical: 'https://tjb.petricw.com/admission',
     breadcrumbs: [
       { name: '首页', url: '/' },
@@ -276,13 +276,6 @@ export default function AdmissionPage() {
                     </div>
                   </div>
                   <div className="flex items-start gap-3">
-                    <Phone className="size-5 text-accent shrink-0 mt-0.5" />
-                    <div>
-                      <div className="text-sm font-bold text-white/90">艺体专线</div>
-                      <div className="text-sm text-white/70">{MOCK_ADMISSION_INFO.contact.artPhone}</div>
-                    </div>
-                  </div>
-                  <div className="flex items-start gap-3">
                     <Mail className="size-5 text-accent shrink-0 mt-0.5" />
                     <div>
                       <div className="text-sm font-bold text-white/90">电子邮箱</div>
@@ -336,7 +329,7 @@ export default function AdmissionPage() {
                   {
                     icon: Utensils,
                     title: '安心食堂',
-                    description: '食堂可同时容纳1000多名学生就餐，提供一日三餐，安全卫生。午餐实行套餐制，菜品丰富、营养均衡。',
+                    description: '食堂可同时容纳2000余人就餐，提供一日三餐，安全卫生。午餐实行选餐制，提供A餐和B餐，每周更新食谱，菜品丰富、营养均衡。',
                   },
                   {
                     icon: Moon,

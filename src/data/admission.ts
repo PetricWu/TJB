@@ -1,4 +1,4 @@
-﻿export interface IAdmissionInfo {
+export interface IAdmissionInfo {
   title: string;
   subtitle: string;
   coverImage: string;
@@ -8,7 +8,6 @@
   contact: {
     address: string;
     phone: string;
-    artPhone: string;
     email: string;
     website: string;
     officeHours: string;
@@ -64,9 +63,8 @@ export const MOCK_ADMISSION_INFO: IAdmissionInfo = {
     '艺体特长生需参加我校专业测试并达到合格标准',
   ],
   contact: {
-    address: '成都市锦江区顺江路369号',
+    address: '初中部：锦江区工农院街69号（莲新片区）　高中部：锦江区顺江路369号',
     phone: '028-84551880',
-    artPhone: '028-84551880',
     email: 'cdtjbzx@163.com',
     website: 'https://tjb.petricw.com',
     officeHours: '工作日 8:00-12:00, 14:30-17:30',
@@ -142,7 +140,7 @@ export const MOCK_ADMISSION_FEATURES: IAdmissionFeature[] = [
     icon: 'users',
     highlights: [
       '正高级教师、特级教师领衔',
-      '省市学科带头人26名',
+      '省市学科带头人16名',
       '90%以上教师具有毕业班经验',
     ],
   },
@@ -255,7 +253,7 @@ export const MOCK_ADMISSION_FAQ: IAdmissionFaq[] = [
     id: 'faq8',
     question: '如何获取最新的招生信息？',
     answer:
-      '考生和家长可通过以下方式获取最新招生信息：1. 学校官网（tjb.petricw.com）招生专栏；2. 学校官方微信公众号"成都市田家炳中学"；3. 拨打招生咨询电话028-84511688；4. 参加校园开放日活动。',
+      '考生和家长可通过以下方式获取最新招生信息：1. 学校官网（tjb.petricw.com）招生专栏；2. 学校官方微信公众号"成都市田家炳中学"；3. 拨打招生咨询电话028-84551880；4. 参加校园开放日活动。',
   },
   {
     id: 'faq9',

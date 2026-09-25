@@ -1,7 +1,7 @@
 import { cn } from '@/lib/utils';
 
 interface PageHeroProps {
-  /** 板块序号（按主导航顺序：01 学校概况 … 07 招生招聘） */
+  /** 板块序号（按主导航顺序：01 学校概况 … 07 招生招聘、08 校友风采、09 田家炳专题、10 联系我们） */
   no: string;
   /** 英文标签，如 'About' */
   en: string;

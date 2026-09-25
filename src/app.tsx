@@ -12,6 +12,9 @@ const InnovationPage = lazy(() => import("@/pages/InnovationPage/InnovationPage"
 const MoralPage = lazy(() => import("@/pages/MoralPage/MoralPage"));
 const StudentPage = lazy(() => import("@/pages/StudentPage/StudentPage"));
 const AdmissionPage = lazy(() => import("@/pages/AdmissionPage/AdmissionPage"));
+const AlumniPage = lazy(() => import("@/pages/AlumniPage/AlumniPage"));
+const TianjiabingPage = lazy(() => import("@/pages/TianjiabingPage/TianjiabingPage"));
+const ContactPage = lazy(() => import("@/pages/ContactPage/ContactPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage/NotFoundPage"));
 
 function PageLoading() {
@@ -47,6 +50,9 @@ export default function App() {
           <Route path="moral" element={<MoralPage />} />
           <Route path="student" element={<StudentPage />} />
           <Route path="admission" element={<AdmissionPage />} />
+          <Route path="alumni" element={<AlumniPage />} />
+          <Route path="tianjiabing" element={<TianjiabingPage />} />
+          <Route path="contact" element={<ContactPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

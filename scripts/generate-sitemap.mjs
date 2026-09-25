@@ -16,8 +16,8 @@ const SUMMARIES_JSON = path.join(ROOT_DIR, 'src', 'data', 'article-summaries-aut
 const SITEMAP_XML = path.join(ROOT_DIR, 'public', 'sitemap.xml');
 
 const SITE_URL = 'https://tjb.petricw.com';
-// 静态板块页内容修订日期（设计统一改版）
-const STATIC_LASTMOD = '2026-09-06';
+// 静态板块页内容修订日期（新增校友风采/田家炳专题/联系我们）
+const STATIC_LASTMOD = '2026-09-25';
 
 /** 静态路由：path / changefreq / priority */
 const STATIC_ROUTES = [
@@ -28,6 +28,9 @@ const STATIC_ROUTES = [
   { path: '/moral', changefreq: 'monthly', priority: '0.7' },
   { path: '/student', changefreq: 'monthly', priority: '0.7' },
   { path: '/admission', changefreq: 'monthly', priority: '0.9' },
+  { path: '/alumni', changefreq: 'monthly', priority: '0.7' },
+  { path: '/tianjiabing', changefreq: 'monthly', priority: '0.8' },
+  { path: '/contact', changefreq: 'monthly', priority: '0.7' },
   { path: '/news', changefreq: 'weekly', priority: '0.8', lastmod: 'dynamic' },
 ];
 
