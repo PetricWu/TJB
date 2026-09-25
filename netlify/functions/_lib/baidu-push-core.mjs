@@ -20,7 +20,7 @@ export async function fetchSitemapUrls() {
 
 /** 分批推送（百度单次上限 2000 条，按 100 条/批稳妥），遇配额用尽即停保留剩余 */
 export async function pushUrls(urls) {
-  const endpoint = `http://data.zz.baidu.com/urls?site=${encodeURIComponent(SITE_URL)}&token=${TOKEN}`;
+  const endpoint = `http://data.zz.baidu.com/urls?site=${SITE_URL}&token=${TOKEN}`;
   const results = [];
   for (let i = 0; i < urls.length; i += 100) {
     const batch = urls.slice(i, i + 100);
