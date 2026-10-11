@@ -35,6 +35,18 @@ const NAV_ITEMS: NavItem[] = [
   },
   { label: '田家炳专题', path: '/tianjiabing' },
   {
+    label: '百年田中',
+    path: '/centenary',
+    children: [
+      { label: '百年精神', path: '/centenary#spirit' },
+      { label: '百年历路', path: '/centenary#timeline' },
+      { label: '百年树人', path: '/centenary#mentors' },
+      { label: '桃李芬芳', path: '/centenary#alumni' },
+      { label: '校庆纪实', path: '/centenary#gala' },
+      { label: '荣誉百年', path: '/centenary#honors' },
+    ],
+  },
+  {
     label: '新闻中心',
     path: '/news',
     children: newsCategoryChildren,
@@ -204,7 +216,7 @@ export default function Header() {
               {item.children ? (
                 <button
                   type="button"
-                  className={`relative flex items-center px-[18px] py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
+                  className={`relative flex items-center px-[18px] py-2 2xl:py-2.5 text-[13px] 2xl:text-[14px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
                     isActive(item)
                       ? 'bg-ink text-white'
                       : 'text-muted-foreground hover:text-ink hover:bg-ink/5 nav-underline'
@@ -236,7 +248,7 @@ export default function Header() {
                   to={item.path}
                   end={item.path === '/'}
                   className={({ isActive: linkActive }) =>
-                    `block px-2.5 py-2 2xl:py-2.5 text-[13px] 2xl:text-[15px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
+                    `block px-2.5 2xl:px-2 py-2 2xl:py-2.5 text-[13px] 2xl:text-[14px] font-sans font-semibold rounded-sm transition-colors whitespace-nowrap ${
                       linkActive ? 'bg-ink text-white' : 'text-muted-foreground hover:text-ink hover:bg-ink/5 nav-underline'
                     }`
                   }

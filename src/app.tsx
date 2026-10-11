@@ -14,6 +14,7 @@ const StudentPage = lazy(() => import("@/pages/StudentPage/StudentPage"));
 const AdmissionPage = lazy(() => import("@/pages/AdmissionPage/AdmissionPage"));
 const AlumniPage = lazy(() => import("@/pages/AlumniPage/AlumniPage"));
 const TianjiabingPage = lazy(() => import("@/pages/TianjiabingPage/TianjiabingPage"));
+const CentenaryPage = lazy(() => import("@/pages/CentenaryPage/CentenaryPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage/NotFoundPage"));
 
 function PageLoading() {
@@ -51,6 +52,7 @@ export default function App() {
           <Route path="admission" element={<AdmissionPage />} />
           <Route path="alumni" element={<AlumniPage />} />
           <Route path="tianjiabing" element={<TianjiabingPage />} />
+          <Route path="centenary" element={<CentenaryPage />} />
           <Route path="contact" element={<Navigate to="/admission" replace />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />

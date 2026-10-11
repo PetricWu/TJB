@@ -31,8 +31,8 @@ export default function TeachingPage() {
       <main className="space-y-16 md:space-y-24">
         {/* Hero Banner：统一 PageHero 版式 */}
         <PageHero
-          no="04"
-          en="Teaching"
+            no="05"
+            en="Teaching"
           title="科研兴校 质量立校"
           desc={MOCK_TEACHING_SECTION.description}
         />

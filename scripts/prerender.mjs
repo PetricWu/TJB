@@ -32,6 +32,7 @@ const staticRoutes = [
   { path: '/admission', title: '招生招聘 — 成都市田家炳中学官网', desc: '招生简章、录取信息、教师招聘、双校区地址与交通指引、联系方式。' },
   { path: '/alumni', title: '校友风采 — 成都市田家炳中学官网', desc: '创校先贤、校友代表、百年校庆回眸。' },
   { path: '/tianjiabing', title: '田家炳专题 — 成都市田家炳中学官网', desc: '田家炳先生生平、基金会捐学规模、精神传承。' },
+  { path: '/centenary', title: '百年田中 — 成都市田家炳中学官网', desc: '「公学成城 百年田中」——成都市田家炳中学建校百年（1925—2025）：百年校名沿革、创校先贤与育人典范、杰出校友、2025 年 12 月百年办学成果展纪实、办学特色与荣誉。校训「养仁爱之心 塑智慧人生」。' },
 ];
 const articleRoutes = summaries
   .filter((a) => a.id)

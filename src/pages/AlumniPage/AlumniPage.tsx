@@ -79,7 +79,7 @@ export default function AlumniPage() {
   return (
     <div className="min-h-screen bg-transparent">
       <PageHero
-        no="08"
+        no="09"
         en="Alumni"
         title={MOCK_ALUMNI_INTRO.title}
         desc={MOCK_ALUMNI_INTRO.description}

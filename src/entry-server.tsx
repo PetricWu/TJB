@@ -14,6 +14,7 @@ import StudentPage from '@/pages/StudentPage/StudentPage';
 import AdmissionPage from '@/pages/AdmissionPage/AdmissionPage';
 import AlumniPage from '@/pages/AlumniPage/AlumniPage';
 import TianjiabingPage from '@/pages/TianjiabingPage/TianjiabingPage';
+import CentenaryPage from '@/pages/CentenaryPage/CentenaryPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
 /** 渲染指定路由为 HTML 字符串（与 app.tsx 路由结构保持一致） */
@@ -33,6 +34,7 @@ export function render(url: string): string {
           <Route path="admission" element={<AdmissionPage />} />
           <Route path="alumni" element={<AlumniPage />} />
           <Route path="tianjiabing" element={<TianjiabingPage />} />
+          <Route path="centenary" element={<CentenaryPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
       </Routes>

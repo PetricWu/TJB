@@ -21,6 +21,7 @@
 - [首页](https://tjb.petricw.com/) - 学校概况、新闻动态、校园活动、招生信息、特色栏目展示
 - [学校概况](https://tjb.petricw.com/about) - 百年校史、办学理念、师资队伍、校园环境、荣誉资质
 - [田家炳专题](https://tjb.petricw.com/tianjiabing) - 田家炳先生生平、基金会捐学规模、我校与田家炳、精神传承
+- [百年田中](https://tjb.petricw.com/centenary) - "公学成城 百年田中"建校百年（1925—2025）：百年校名沿革、创校先贤、杰出校友、百年办学成果展纪实、荣誉百年
 - [新闻中心](https://tjb.petricw.com/news) - 校园要闻、通知公告、教学教研、校庆专题
 - [教学教研](https://tjb.petricw.com/teaching) - 课程体系、教师发展、教学成果、"深度学习"教学模式
 - [科创特色](https://tjb.petricw.com/innovation) - 人工智能教育、机器人社团、科创实验室、VEX机器人世锦赛

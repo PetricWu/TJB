@@ -92,8 +92,8 @@ export default function AdmissionPage() {
       <main className="space-y-16 md:space-y-24">
         {/* Hero Banner：统一 PageHero 版式 */}
         <PageHero
-          no="09"
-          en="Admission"
+            no="10"
+            en="Admission"
           title={MOCK_ADMISSION_INFO.title}
           desc={MOCK_ADMISSION_INFO.subtitle}
           image={MOCK_ADMISSION_INFO.coverImage}
