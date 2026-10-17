@@ -1,5 +1,5 @@
 import { useState, useMemo, useEffect } from 'react';
-import { useSearchParams } from 'react-router-dom';
+import { useSearchParams, Link } from 'react-router-dom';
 import { Search, ChevronLeft, ChevronRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import { Input } from '@/components/ui/input';
@@ -283,19 +283,30 @@ export default function NewsListPage() {
                     <Search className="size-7 text-ink/50" />
                   </div>
                   <h3 className="text-lg font-bold text-ink font-serif mb-2">
-                    暂无相关新闻
+                    {category !== 'all' ? '该分类下暂无文章' : '暂无相关新闻'}
                   </h3>
                   <p className="text-sm text-muted-foreground mb-6">
-                    尝试更换筛选条件或搜索关键词
+                    {category !== 'all' ? '可切换其他分类，或返回新闻中心查看全部新闻' : '尝试更换筛选条件或搜索关键词'}
                   </p>
-                  <Button
-                    variant="outline"
-                    size="sm"
-                    onClick={resetAll}
-                    className="border-2 border-ink rounded-sm neo-press bg-card"
-                  >
-                    重置筛选
-                  </Button>
+                  <div className="flex flex-wrap items-center justify-center gap-3">
+                    <Button
+                      variant="outline"
+                      size="sm"
+                      onClick={resetAll}
+                      className="border-2 border-ink rounded-sm neo-press bg-card"
+                    >
+                      重置筛选
+                    </Button>
+                    {category !== 'all' && (
+                      <Link
+                        to="/news"
+                        onClick={resetAll}
+                        className="inline-flex items-center px-4 py-2 text-sm font-semibold border-2 border-ink rounded-sm bg-card text-ink neo-shadow-sm neo-press"
+                      >
+                        返回新闻中心
+                      </Link>
+                    )}
+                  </div>
                 </div>
               ) : (
                 <>

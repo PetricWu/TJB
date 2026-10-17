@@ -231,7 +231,7 @@ export default function StudentPage() {
 
               <Tabs value={activeTab} onValueChange={setActiveTab} className="w-full">
                 <div className="flex flex-wrap items-center gap-2 mb-8">
-                  <TabsList className="bg-card border-2 border-ink rounded-sm p-1 h-auto">
+                  <TabsList className="bg-card border-2 border-ink rounded-sm p-1 h-auto max-w-full overflow-x-auto">
                     {(['all', '艺术活动', '体育活动', '社团活动', '实践活动'] as const).map((tab) => (
                       <TabsTrigger
                         key={tab}

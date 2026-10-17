@@ -81,9 +81,9 @@ export default function CentenaryPage() {
             </div>
             <div className="relative rounded-sm overflow-hidden border-2 border-white/15">
               <Image
-                src="/images/centenary/centenary-logo.jpg"
+                src="/images/centenary/centenary-logo.webp"
                 alt="百年校庆标识：门楼图案与 1925—2025，公学成城 百年田中"
-                className="w-full h-auto"
+                className="w-full aspect-[423/312] object-cover"
                 loading="lazy"
               />
             </div>
@@ -125,9 +125,9 @@ export default function CentenaryPage() {
           </div>
           <div className="mt-8 rounded-sm overflow-hidden border-2 border-ink/15">
             <Image
-              src="/images/centenary/name-history.jpg"
+              src="/images/centenary/name-history.webp"
               alt="校名沿革：1925 私立成城公学、1957 成都市第十九中学、2003 成都市田家炳中学"
-              className="w-full h-auto"
+              className="w-full aspect-[1442/365] object-cover"
               loading="lazy"
             />
           </div>
@@ -146,9 +146,9 @@ export default function CentenaryPage() {
             />
             <div className="rounded-sm overflow-hidden border-2 border-ink/15 mb-10">
               <Image
-                src="/images/centenary/timeline-100.jpg"
+                src="/images/centenary/timeline-100.webp"
                 alt="百年历路 世纪跫音——1925 至 2025 百年大事记长卷"
-                className="w-full h-auto"
+                className="w-full aspect-[1500/789] object-cover"
                 loading="lazy"
               />
               <p className="px-4 py-2 text-xs text-muted-foreground bg-card border-t-2 border-ink/10">
@@ -201,13 +201,13 @@ export default function CentenaryPage() {
             </div>
             <div className="mt-10 grid grid-cols-2 lg:grid-cols-4 gap-4">
               {[
-                { src: '/images/centenary/history-declaration.jpg', alt: '1925 年成城公学宣言' },
-                { src: '/images/centenary/history-map.jpg', alt: '成城中学校址平面图' },
-                { src: '/images/centenary/history-1946.jpg', alt: '1946 年毕业照' },
-                { src: '/images/centenary/history-gate.jpg', alt: '20 世纪 60 年代成都市第十九中学校门' },
+                { src: '/images/centenary/history-declaration.webp', alt: '1925 年成城公学宣言' },
+                { src: '/images/centenary/history-map.webp', alt: '成城中学校址平面图' },
+                { src: '/images/centenary/history-1946.webp', alt: '1946 年毕业照' },
+                { src: '/images/centenary/history-gate.webp', alt: '20 世纪 60 年代成都市第十九中学校门' },
               ].map((img) => (
-                <figure key={img.src} className="rounded-sm overflow-hidden border-2 border-ink/15">
-                  <Image src={img.src} alt={img.alt} className="w-full h-auto" loading="lazy" />
+                <figure key={img.src} className="rounded-sm overflow-hidden border-2 border-ink/15 bg-card">
+                  <Image src={img.src} alt={img.alt} className="w-full aspect-[4/3] object-contain" loading="lazy" />
                 </figure>
               ))}
             </div>
@@ -240,9 +240,9 @@ export default function CentenaryPage() {
             <div className="mt-6 grid grid-cols-1 lg:grid-cols-3 gap-6 items-center">
               <div className="lg:col-span-1 rounded-sm overflow-hidden border-2 border-ink/15">
                 <Image
-                  src="/images/centenary/sculpture.jpg"
+                  src="/images/centenary/sculpture.webp"
                   alt="校园雕塑线稿：履仁崇智 明德卓行"
-                  className="w-full h-auto"
+                  className="w-full aspect-[4/5] object-contain"
                   loading="lazy"
                 />
               </div>
@@ -312,17 +312,17 @@ export default function CentenaryPage() {
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
               <figure className="rounded-sm overflow-hidden border-2 border-ink/15">
                 <Image
-                  src="/images/centenary/mentors.jpg"
+                  src="/images/centenary/mentors.webp"
                   alt="20 世纪 20 年代到 80 年代的育人典范（校庆纪念画册）"
-                  className="w-full h-auto"
+                  className="w-full aspect-[744/895] object-cover"
                   loading="lazy"
                 />
               </figure>
               <figure className="rounded-sm overflow-hidden border-2 border-ink/15">
                 <Image
-                  src="/images/centenary/tin-visit.jpg"
+                  src="/images/centenary/tin-visit.webp"
                   alt="学生与田家炳先生合影"
-                  className="w-full h-auto"
+                  className="w-full aspect-[454/275] object-cover"
                   loading="lazy"
                 />
               </figure>
@@ -372,17 +372,17 @@ export default function CentenaryPage() {
             <div className="mt-8 grid grid-cols-1 lg:grid-cols-2 gap-6">
               <figure className="rounded-sm overflow-hidden border-2 border-ink/15">
                 <Image
-                  src="/images/centenary/alumni-1.jpg"
+                  src="/images/centenary/alumni-1.webp"
                   alt="杰出校友风采（校庆纪念画册）"
-                  className="w-full h-auto"
+                  className="w-full aspect-[748/865] object-cover"
                   loading="lazy"
                 />
               </figure>
               <figure className="rounded-sm overflow-hidden border-2 border-ink/15">
                 <Image
-                  src="/images/centenary/alumni-2.jpg"
+                  src="/images/centenary/alumni-2.webp"
                   alt="杰出校友祝福（校庆纪念画册）"
-                  className="w-full h-auto"
+                  className="w-full aspect-[653/797] object-cover"
                   loading="lazy"
                 />
               </figure>
@@ -424,26 +424,26 @@ export default function CentenaryPage() {
             <div className="mt-6 grid grid-cols-1 lg:grid-cols-2 gap-6">
               <figure className="rounded-sm overflow-hidden border-2 border-ink/15">
                 <Image
-                  src="/images/centenary/campus-main.jpg"
+                  src="/images/centenary/campus-main.webp"
                   alt="崇智楼与校园花圃"
-                  className="w-full h-auto"
+                  className="w-full aspect-[681/535] object-cover"
                   loading="lazy"
                 />
               </figure>
               <div className="grid grid-cols-1 gap-6">
                 <figure className="rounded-sm overflow-hidden border-2 border-ink/15">
                   <Image
-                    src="/images/centenary/campus-2.jpg"
+                    src="/images/centenary/campus-2.webp"
                     alt="校园艺术节航拍与惜时园一角"
-                    className="w-full h-auto"
+                    className="w-full aspect-[631/232] object-cover"
                     loading="lazy"
                   />
                 </figure>
                 <figure className="rounded-sm overflow-hidden border-2 border-ink/15">
                   <Image
-                    src="/images/centenary/campus-4.jpg"
+                    src="/images/centenary/campus-4.webp"
                     alt="科创走廊与创客室、学术厅"
-                    className="w-full h-auto"
+                    className="w-full aspect-[641/305] object-cover"
                     loading="lazy"
                   />
                 </figure>
@@ -464,9 +464,9 @@ export default function CentenaryPage() {
             />
             <div className="rounded-sm overflow-hidden border-2 border-ink/15 mb-8">
               <Image
-                src="/images/centenary/honors-wall.jpg"
+                src="/images/centenary/honors-wall.webp"
                 alt="荣誉墙：四川省二级示范性普通高中等牌匾（校庆纪念画册）"
-                className="w-full h-auto"
+                className="w-full aspect-[1389/698] object-cover"
                 loading="lazy"
               />
             </div>

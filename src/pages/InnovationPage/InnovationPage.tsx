@@ -208,7 +208,7 @@ export default function InnovationPage() {
                 {MOCK_INNOVATION.map((item, i) => (
                   <Link
                     key={item.id}
-                    to={item.sourceUrl || `/news/${item.id}`}
+                    to={item.sourceUrl || '/news'}
                     {...(item.sourceUrl ? { target: '_blank', rel: 'noopener noreferrer' } : {})}
                     className="group block h-full"
                   >
