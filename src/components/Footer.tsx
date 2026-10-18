@@ -227,7 +227,7 @@ export default function Footer() {
         <div className="border-t border-primary-foreground/10 pt-6 flex flex-col md:flex-row md:items-center justify-between gap-3">
           <p className="font-sans text-xs text-primary-foreground/40 leading-relaxed">
             © <span className="font-display">{new Date().getFullYear()}</span>{' '}
-            成都市田家炳中学 版权所有
+            Petric 版权所有
           </p>
           <p className="font-sans text-xs text-primary-foreground/40 flex flex-wrap items-center gap-x-3 gap-y-1">
             作者主页：
