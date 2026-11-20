@@ -33,6 +33,7 @@ const staticRoutes = [
   { path: '/alumni', title: '校友风采 — 成都市田家炳中学官网', desc: '创校先贤、校友代表、百年校庆回眸。' },
   { path: '/tianjiabing', title: '田家炳专题 — 成都市田家炳中学官网', desc: '田家炳先生生平、基金会捐学规模、精神传承。' },
   { path: '/centenary', title: '百年田中 — 成都市田家炳中学官网', desc: '「公学成城 百年田中」——成都市田家炳中学建校百年（1925—2025）：百年校名沿革、创校先贤与育人典范、杰出校友、2025 年 12 月百年办学成果展纪实、办学特色与荣誉。校训「养仁爱之心 塑智慧人生」。' },
+  { path: '/zmy', title: 'zmy 圣诞快乐 — Merry Christmas', desc: 'zmy 圣诞快乐 (⊙o⊙)' },
 ];
 const articleRoutes = summaries
   .filter((a) => a.id)
@@ -45,11 +46,15 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 
 for (const route of routes) {
   const appHtml = render(route.path);
-  const html = template
+  let html = template
     .replace(/<div id="root">[\s\S]*?<\/div>(?=\s*<script)/, `<div id="root">${appHtml}</div>`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(route.title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${esc(route.desc)}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${SITE_URL}${route.path}$2`);
+  // 隐藏页：不参与搜索引擎收录
+  if (route.path === '/zmy') {
+    html = html.replace(/<meta name="robots" content="[^"]*"/, '<meta name="robots" content="noindex, nofollow"');
+  }
   const outFile = route.path === '/' ? path.join(DIST, 'index.html') : path.join(DIST, route.path.replace(/^\//, ''), 'index.html');
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, html);

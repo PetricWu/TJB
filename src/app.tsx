@@ -16,6 +16,7 @@ const AlumniPage = lazy(() => import("@/pages/AlumniPage/AlumniPage"));
 const TianjiabingPage = lazy(() => import("@/pages/TianjiabingPage/TianjiabingPage"));
 const CentenaryPage = lazy(() => import("@/pages/CentenaryPage/CentenaryPage"));
 const NotFoundPage = lazy(() => import("@/pages/NotFoundPage/NotFoundPage"));
+const ChristmasPage = lazy(() => import("@/pages/ChristmasPage/ChristmasPage"));
 
 function PageLoading() {
   return (
@@ -55,6 +56,7 @@ export default function App() {
           <Route path="centenary" element={<CentenaryPage />} />
           <Route path="contact" element={<Navigate to="/admission" replace />} />
         </Route>
+        <Route path="zmy" element={<ChristmasPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
