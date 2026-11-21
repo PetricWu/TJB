@@ -10,6 +10,7 @@ import { Separator } from '@/components/ui/separator';
 import { Accordion, AccordionContent, AccordionItem, AccordionTrigger } from '@/components/ui/accordion';
 import {
   MOCK_ADMISSION_INFO, MOCK_ADMISSION_FEATURES, MOCK_ADMISSION_FAQ, MOCK_ADMISSION_PROCESS, MOCK_ADMISSION_FACULTY_STATS,
+  MOCK_ADMISSION_PLAN, ADMISSION_PHONES,
   MOCK_CAMPUSES, MOCK_TRANSPORT, MOCK_CONTACT_LINKS, MOCK_CONTACT_SOURCES,
 } from '@/data/admission';
 import type { IAdmissionFeature } from '@/data/admission';
@@ -189,12 +190,87 @@ export default function AdmissionPage() {
           </div>
         </section>
 
+        {/* 03 招生计划 */}
+        <section id="plan" className="w-full scroll-mt-32">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="reveal-up">
+              <SectionHeader
+                no="03"
+                en="Plan"
+                title="招生计划"
+                desc={`${MOCK_ADMISSION_PLAN.year}年高中招生计划结构（面向成都市「5+2」区域）`}
+              />
+              <div className="grid grid-cols-1 lg:grid-cols-3 gap-6 items-start">
+                <div className="lg:col-span-2 overflow-hidden bg-card border-2 border-ink rounded-sm neo-shadow-sm">
+                  <table className="w-full text-sm">
+                    <thead>
+                      <tr className="bg-ink text-white">
+                        <th scope="col" className="text-left px-4 md:px-6 py-3 font-bold">计划类别</th>
+                        <th scope="col" className="text-right px-4 md:px-6 py-3 font-bold tabular-nums">人数</th>
+                        <th scope="col" className="text-left px-4 md:px-6 py-3 font-bold">说明</th>
+                      </tr>
+                    </thead>
+                    <tbody>
+                      {MOCK_ADMISSION_PLAN.rows.map((row) => (
+                        <tr key={row.label} className="border-b-2 border-ink/10">
+                          <th scope="row" className="text-left px-4 md:px-6 py-4 font-bold text-ink">{row.label}</th>
+                          <td className="text-right px-4 md:px-6 py-4 font-black text-ink tabular-nums">
+                            {row.count}
+                            <span className="ml-1 text-xs font-bold text-muted-foreground">名</span>
+                          </td>
+                          <td className="text-left px-4 md:px-6 py-4 text-muted-foreground">{row.note}</td>
+                        </tr>
+                      ))}
+                    </tbody>
+                    <tfoot>
+                      <tr className="bg-accent/10 border-t-2 border-ink">
+                        <th scope="row" className="text-left px-4 md:px-6 py-4 font-black text-ink">合计</th>
+                        <td className="text-right px-4 md:px-6 py-4 font-black text-accent tabular-nums">
+                          {MOCK_ADMISSION_PLAN.total}
+                          <span className="ml-1 text-xs font-bold text-accent/80">名</span>
+                        </td>
+                        <td className="text-left px-4 md:px-6 py-4 text-xs text-muted-foreground">统招与调剂合计</td>
+                      </tr>
+                    </tfoot>
+                  </table>
+                  <p className="px-4 md:px-6 py-3 text-xs text-muted-foreground leading-relaxed border-t-2 border-ink/10">
+                    {MOCK_ADMISSION_PLAN.note}
+                  </p>
+                </div>
+
+                <div className="bg-ink text-white border-2 border-ink rounded-sm p-6">
+                  <h3 className="text-base font-black flex items-center gap-2">
+                    <Phone className="size-4 text-accent" />
+                    咨询电话
+                  </h3>
+                  <ul className="mt-4 space-y-4">
+                    {ADMISSION_PHONES.map((item) => (
+                      <li key={item.label}>
+                        <p className="text-xs text-white/60">{item.label}</p>
+                        <UniversalLink
+                          to={`tel:${item.value.replace(/-/g, '')}`}
+                          className="text-base font-black text-white tabular-nums hover:text-accent transition-colors"
+                        >
+                          {item.value}
+                        </UniversalLink>
+                      </li>
+                    ))}
+                  </ul>
+                  <p className="mt-5 text-xs text-white/60 leading-relaxed">
+                    建议工作日办公时间来电；招生政策以成都市教育局当年公布为准。
+                  </p>
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 五大办学特色 */}
         <section className="w-full">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="reveal-up">
               <SectionHeader
-                no="03"
+                no="04"
                 en="Features"
                 title="五大办学特色"
                 desc="依托田家炳基金会全国平台，构建多元特色教育体系，助力每一位学子全面发展"
@@ -214,10 +290,10 @@ export default function AdmissionPage() {
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
             <div className="reveal-up">
               <SectionHeader
-                no="04"
+                no="05"
                 en="Faculty"
                 title="师资力量"
-                desc="专任教师260余名，90%以上的新高一教师来自原高三毕业班，实战经验丰富"
+                desc="教职工273人，90%以上的新高一教师来自原高三毕业班，实战经验丰富"
               />
 
               <div className="grid grid-cols-2 md:grid-cols-5 gap-4 mb-8">
@@ -253,7 +329,7 @@ export default function AdmissionPage() {
         <section className="w-full">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="reveal-up">
-              <SectionHeader no="05" en="Process" title="招生流程" desc="五个环节，环环相扣" />
+              <SectionHeader no="06" en="Process" title="招生流程" desc="五个环节，环环相扣" />
 
               <div className="relative">
                 <div className="hidden lg:block absolute top-7 left-[10%] right-[10%] h-0.5 bg-ink/15 z-0" aria-hidden />
@@ -292,7 +368,7 @@ export default function AdmissionPage() {
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="reveal-up">
               <SectionHeader
-                no="06"
+                no="07"
                 en="Apply"
                 title="报名条件与联系方式"
                 desc="确认符合报名条件后，欢迎通过电话或邮件联系我们"
@@ -372,12 +448,12 @@ export default function AdmissionPage() {
           </div>
         </section>
 
-        {/* 07 两校区与校园地图 */}
+        {/* 08 两校区与校园地图 */}
         <section id="campuses" className="w-full scroll-mt-32">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="reveal-up">
               <SectionHeader
-                no="07"
+                no="08"
                 en="Campuses"
                 title="两校区与校园地图"
                 desc="学校分设高中部、初中部两个校区，均位于成都市锦江区，交通便利。点击下方按钮即可在地图中导航。"
@@ -438,12 +514,12 @@ export default function AdmissionPage() {
           </div>
         </section>
 
-        {/* 08 交通指引 */}
+        {/* 09 交通指引 */}
         <section id="transport" className="w-full scroll-mt-32">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="reveal-up">
               <SectionHeader
-                no="08"
+                no="09"
                 en="Getting Here"
                 title="交通指引"
                 desc="以高中部（顺江路369号）为例，公共交通便捷，欢迎莅临参观。"
@@ -473,7 +549,7 @@ export default function AdmissionPage() {
               <div className="mt-6 p-5 rounded-sm bg-accent/8 border-l-2 border-accent">
                 <p className="text-sm text-foreground/80 leading-relaxed">
                   <strong className="text-ink">温馨提示：</strong>
-                  高中部紧邻地铁6号线／13号线「三官堂」站，A口出站步行约50米即达；与四川大学隔江相望，区位优越。具体公交线路以实际运营为准，如有疑问欢迎来电咨询
+                  高中部位于地铁6号线／13号线「三官堂」站附近，出站后可换乘公交前往；与四川大学隔江相望，区位优越。具体公交线路与换乘方式以实际运营为准，如有疑问欢迎来电咨询
                   <UniversalLink to={`tel:${MOCK_ADMISSION_INFO.contact.phone.replace(/-/g, '')}`} className="mx-1 text-accent font-semibold hover:underline">
                     {MOCK_ADMISSION_INFO.contact.phone}
                   </UniversalLink>
@@ -489,7 +565,7 @@ export default function AdmissionPage() {
           <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
             <div className="reveal-up">
               <SectionHeader
-                no="09"
+                no="10"
                 en="Campus Life"
                 title="校园生活与后勤保障"
                 desc="完善的校园设施与贴心的后勤服务，为每一位田中学子提供安心舒适的学习生活环境"
@@ -500,7 +576,7 @@ export default function AdmissionPage() {
                   {
                     icon: Bus,
                     title: '便捷交通',
-                    description: '地铁6号线、13号线三官堂站A口出站50米即达，多路公交可达。学校位于锦江区核心地段，交通网络四通八达。',
+                    description: '紧邻地铁6号线、13号线三官堂站，可在站附近换乘公交前往。学校位于锦江区核心地段，交通网络四通八达。',
                   },
                   {
                     icon: Utensils,
@@ -547,7 +623,7 @@ export default function AdmissionPage() {
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="reveal-up">
               <SectionHeader
-                no="10"
+                no="11"
                 en="FAQ"
                 title="常见问题"
                 desc="关于招生录取的常见疑问，我们为您一一解答"
@@ -576,11 +652,11 @@ export default function AdmissionPage() {
           </div>
         </section>
 
-        {/* 11 相关链接 + 资料来源 */}
+        {/* 12 相关链接 + 资料来源 */}
         <section id="links" className="w-full scroll-mt-32">
           <div className="max-w-7xl mx-auto px-4 md:px-6">
             <div className="reveal-up">
-              <SectionHeader no="11" en="Explore" title="相关链接" desc="了解更多田中信息" />
+              <SectionHeader no="12" en="Explore" title="相关链接" desc="了解更多田中信息" />
               <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
                 {MOCK_CONTACT_LINKS.map((link) => (
                   <UniversalLink
@@ -628,7 +704,7 @@ export default function AdmissionPage() {
         </section>
 
         {/* 底部 CTA */}
-        <section className="w-full py-16 md:py-20">
+        <section className="w-full section-y">
           <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
             <div className="reveal-up">
               <div className="inline-flex items-center gap-2 px-4 py-1.5 rounded-sm bg-accent text-white text-sm font-bold mb-6">

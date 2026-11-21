@@ -30,13 +30,14 @@ export function PageHero({ no, en, title, desc, image }: PageHeroProps) {
         className="absolute top-6 right-6 hidden md:block size-5 border-t-2.5 border-r-2.5 border-accent"
       />
 
-      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-24 animate-fade-in-up">
-        <div className="flex items-center gap-3 mb-4">
+      <div className="relative z-10 max-w-7xl mx-auto px-4 md:px-6 section-y animate-fade-in-up">
+        <div className="flex items-center gap-3 mb-3">
           <span className="size-2 bg-accent shrink-0" aria-hidden />
           <span className="font-english text-xs font-bold tracking-[0.28em] uppercase text-white/80">
             {no} — {en}
           </span>
         </div>
+        <div className="w-6 h-px bg-white/20 mb-4" aria-hidden />
         <h1 className="font-serif text-3xl md:text-5xl font-black text-white tracking-tight leading-tight">
           {title}
         </h1>
@@ -45,7 +46,11 @@ export function PageHero({ no, en, title, desc, image }: PageHeroProps) {
             {desc}
           </p>
         )}
-        <div className={cn('mt-6 w-12 h-1 bg-accent')} aria-hidden />
+        <div
+          className={cn('mt-6 w-12 h-1 bg-accent')}
+          style={{ boxShadow: '3px 3px 0 0 hsl(215 50% 16%)' }}
+          aria-hidden
+        />
       </div>
     </section>
   );

@@ -2,6 +2,7 @@ import { ArrowRight } from 'lucide-react';
 import { Button } from '@/components/ui/button';
 import CountUp from '@/components/CountUp';
 import { useNavigate } from 'react-router-dom';
+import { SCHOOL_FACTS, yearsSinceFounded } from '@/data/school-facts';
 
 /** 右侧数据卡（参考站「倒计时卡」版式：深色底 + 强调色边框 + 大数字） */
 function StatsCard() {
@@ -15,7 +16,7 @@ function StatsCard() {
       </div>
       <div className="py-5 flex items-baseline gap-3">
         <CountUp
-          value={101}
+          value={yearsSinceFounded()}
           duration={1800}
           className="font-display text-6xl md:text-7xl font-black text-accent tabular-nums leading-none"
         />
@@ -23,10 +24,10 @@ function StatsCard() {
       </div>
       <div className="grid grid-cols-2 border-t border-white/15">
         {[
-          { value: 3100, suffix: '+', label: '在校学生' },
-          { value: 260, suffix: '+', label: '专任教师' },
-          { value: 60, suffix: '', label: '教学班' },
-          { value: 57, suffix: '亩', label: '校园面积' },
+          { value: SCHOOL_FACTS.students, suffix: '+', label: '在校学生' },
+          { value: SCHOOL_FACTS.staff, suffix: '', label: '教职工' },
+          { value: SCHOOL_FACTS.classes, suffix: '', label: '教学班' },
+          { value: Math.round(SCHOOL_FACTS.campusAreaMu), suffix: '亩', label: '校园面积' },
         ].map((item, i) => (
           <div
             key={item.label}
@@ -104,7 +105,7 @@ export default function HeroSection() {
             className="animate-fade-in-up text-base lg:text-lg text-white/80 leading-relaxed max-w-xl mb-9"
             style={{ animationDelay: '0.2s' }}
           >
-            始建于1925年，四川省一级示范性普通高中，秉承"履仁崇智 明德卓行"校训，
+            始建于1925年，四川省二级示范性普通高中，秉承"履仁崇智 明德卓行"校训，
             以百年积淀培育时代英才，以卓越品质铸就教育品牌。
           </p>
 
@@ -145,18 +146,18 @@ export default function HeroSection() {
       >
         <div className="flex items-center justify-between gap-2 border-2 border-accent/70 rounded-sm bg-ink/50 backdrop-blur-md px-4 py-3">
           <div className="flex items-baseline gap-1.5">
-            <CountUp value={101} duration={1600} className="font-display text-2xl font-black text-accent tabular-nums" />
+            <CountUp value={yearsSinceFounded()} duration={1600} className="font-display text-2xl font-black text-accent tabular-nums" />
             <span className="text-[11px] text-white/70">年办学</span>
           </div>
           <span className="text-white/25">|</span>
           <div className="flex items-baseline gap-1.5">
-            <CountUp value={3100} suffix="+" duration={1300} delay={200} className="font-display text-2xl font-bold text-white tabular-nums" />
+            <CountUp value={SCHOOL_FACTS.students} suffix="+" duration={1300} delay={200} className="font-display text-2xl font-bold text-white tabular-nums" />
             <span className="text-[11px] text-white/70">学生</span>
           </div>
           <span className="text-white/25">|</span>
           <div className="flex items-baseline gap-1.5">
-            <CountUp value={260} suffix="+" duration={1300} delay={350} className="font-display text-2xl font-bold text-white tabular-nums" />
-            <span className="text-[11px] text-white/70">教师</span>
+            <CountUp value={SCHOOL_FACTS.staff} suffix="" duration={1300} delay={350} className="font-display text-2xl font-bold text-white tabular-nums" />
+            <span className="text-[11px] text-white/70">教职工</span>
           </div>
         </div>
       </div>

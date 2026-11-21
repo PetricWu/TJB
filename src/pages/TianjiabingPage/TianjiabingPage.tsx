@@ -1,4 +1,4 @@
-﻿import { Link } from 'react-router-dom';
+import { Link } from 'react-router-dom';
 import {
   BookOpen,
   Building2,
@@ -22,6 +22,8 @@ import {
   MOCK_TKP_QUOTES,
   MOCK_TKP_STATS,
   MOCK_TKP_MILESTONES,
+  MOCK_TKP_LIFE_TIMELINE,
+  TKP_FOUNDATION_FACTS,
   MOCK_SCHOOL_BONDS,
   MOCK_TKP_SPIRIT,
   MOCK_TKP_SOURCES,
@@ -104,7 +106,7 @@ export default function TianjiabingPage() {
         </div>
       </section>
 
-      <main className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 space-y-20 md:space-y-24">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 section-y-sm space-y-20 md:space-y-24">
         {/* 02 生平简介 */}
         <section id="profile" className="scroll-mt-32">
           <div className="reveal-up">
@@ -166,11 +168,45 @@ export default function TianjiabingPage() {
           </div>
         </section>
 
-        {/* 03 基金会发展时间轴 */}
-        <section id="timeline" className="scroll-mt-32">
+        {/* 03 先生生平年表 */}
+        <section id="life" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
               no="03"
+              en="Life"
+              title="先生生平年表"
+              desc="从大埔少年到香港实业家，再到倾其所有兴学育才的慈善家。"
+            />
+            <div className="relative">
+              <div className="absolute left-[7px] md:left-[11px] top-2 bottom-2 w-0.5 bg-ink/15" aria-hidden />
+              <ol className="space-y-7">
+                {MOCK_TKP_LIFE_TIMELINE.map((node) => (
+                  <li key={node.date} className="relative pl-8 md:pl-10">
+                    <span
+                      className="absolute left-0 top-1.5 size-4 rounded-full bg-ink border-2 border-accent"
+                      aria-hidden
+                    />
+                    <div className="flex flex-wrap items-baseline gap-x-3 gap-y-1">
+                      <span className="font-english text-sm md:text-base font-black text-accent tabular-nums">
+                        {node.date}
+                      </span>
+                      <h3 className="text-base md:text-lg font-black text-ink font-serif">{node.title}</h3>
+                    </div>
+                    <p className="mt-1.5 text-sm leading-relaxed text-foreground/85">
+                      {node.description}
+                    </p>
+                  </li>
+                ))}
+              </ol>
+            </div>
+          </div>
+        </section>
+
+        {/* 04 基金会发展时间轴 */}
+        <section id="timeline" className="scroll-mt-32">
+          <div className="reveal-up">
+            <SectionHeader
+              no="04"
               en="Timeline"
               title="田家炳基金会发展时间轴"
               desc="从1982年基金会成立，到捐办命名学校遍布全国34省市区，一条以教育为名的公益长路。"
@@ -225,14 +261,14 @@ export default function TianjiabingPage() {
           </div>
         </section>
 
-        {/* 04 我校与田家炳 */}
+        {/* 05 我校与田家炳 */}
         <section id="bonds" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
-              no="04"
+              no="05"
               en="Our Bond"
               title="我校与田家炳"
-              desc="2003年，田家炳先生捐资250万元，「成都市第十九中学」正式更名为成都市田家炳中学，成为全国166所田家炳系列学校之一。"
+              desc="2003年，田家炳先生捐资250万元，「成都市第十九中学」正式更名为成都市田家炳中学，成为全国田家炳系列学校之一。"
             />
             <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
               {MOCK_SCHOOL_BONDS.map((bond) => (
@@ -248,25 +284,38 @@ export default function TianjiabingPage() {
                 </article>
               ))}
             </div>
-            <div className="mt-6 p-6 rounded-sm bg-accent/8 border-2 border-accent/30">
-              <div className="flex items-start gap-3">
-                <Users className="size-6 text-accent shrink-0 mt-0.5" />
-                <div>
-                  <p className="text-sm font-bold text-ink">全国田家炳学校大家庭</p>
-                  <p className="mt-1.5 text-sm text-foreground/80 leading-relaxed">
-                    在中国内地，所有田家炳学校均属公办政府学校，基金会不参与日常管理。成都市田家炳中学作为全国166所田家炳系列学校之一，与各地田校一道，延续田家炳先生「兴学育才、回馈社会」的教育理想。
-                  </p>
+            <div className="mt-8 rounded-sm bg-card border-2 border-ink neo-shadow overflow-hidden">
+              <div className="p-5 md:p-6 bg-ink text-white">
+                <div className="flex items-center gap-3">
+                  <Users className="size-6 text-accent shrink-0" />
+                  <div>
+                    <h3 className="text-lg font-black font-serif">基金会与全国田校</h3>
+                    <p className="mt-1 text-xs text-white/60">田家炳基金会 · 1982 年注册于香港</p>
+                  </div>
                 </div>
               </div>
+              <dl>
+                {TKP_FOUNDATION_FACTS.map((fact, i) => (
+                  <div
+                    key={fact.label}
+                    className={`grid grid-cols-1 sm:grid-cols-[7rem_1fr] gap-1 sm:gap-4 px-5 md:px-6 py-3.5 ${
+                      i > 0 ? 'border-t-2 border-ink/5' : ''
+                    }`}
+                  >
+                    <dt className="text-xs font-bold text-muted-foreground sm:pt-0.5">{fact.label}</dt>
+                    <dd className="text-sm text-foreground/85 leading-relaxed">{fact.value}</dd>
+                  </div>
+                ))}
+              </dl>
             </div>
           </div>
         </section>
 
-        {/* 05 精神传承 */}
+        {/* 06 精神传承 */}
         <section id="spirit" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
-              no="05"
+              no="06"
               en="Spirit"
               title="精神传承"
               desc="田家炳精神以「爱国、勤俭、廉洁」为核心，润泽一代代田中人。"
@@ -299,11 +348,11 @@ export default function TianjiabingPage() {
           </div>
         </section>
 
-        {/* 06 资料来源 */}
+        {/* 07 资料来源 */}
         <section id="sources" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
-              no="06"
+              no="07"
               en="Sources"
               title="资料来源"
               desc="本页生平、数据、里程碑均以田家炳基金会官网及权威媒体报道为准，逐条可溯源。"

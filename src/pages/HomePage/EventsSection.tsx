@@ -17,7 +17,7 @@ export default function EventsSection() {
   const events = useMemo<ArticleSummary[]>(() => sortedByDate().slice(0, 6), []);
 
   return (
-    <section className="w-full py-16 md:py-20">
+    <section className="w-full section-y">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* 标题区 */}
         <div className="reveal-up">

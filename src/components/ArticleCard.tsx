@@ -91,7 +91,7 @@ export function ArticleCard({
     const EditorialContent = (
       <div className="group flex gap-5 items-start">
         {coverImage && (
-          <div className="w-32 md:w-40 shrink-0 aspect-[4/3] overflow-hidden rounded-sm border-2 border-ink/80 bg-muted">
+          <div className="w-32 md:w-40 shrink-0 aspect-[16/10] overflow-hidden rounded-sm border-2 border-ink/80 bg-muted">
             <Image
               src={coverImage4x3 || coverImage}
               alt={title}

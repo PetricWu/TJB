@@ -6,7 +6,7 @@ import { Input } from '@/components/ui/input';
 import { PageHero } from '@/components/PageHero';
 import { ArticleCard } from '@/components/ArticleCard';
 import { useSEO } from '@/hooks/useSEO';
-import { mergedArticles, articleCategories } from '@/data/merged-articles';
+import { mergedArticles, articleCategories, sortedByDate } from '@/data/merged-articles';
 
 const PAGE_SIZE = 5;
 
@@ -46,6 +46,12 @@ export default function NewsListPage() {
   };
 
   const categories = articleCategories();
+
+  /** 分类导览卡：分类名 + 篇数 + 一条代表标题（复用现有筛选条件） */
+  const categoryCards = categories.map((name) => {
+    const list = mergedArticles.filter((item) => item.category === name);
+    return { name, count: list.length, latest: sortedByDate(list)[0]?.title ?? '' };
+  });
 
   const filtered = useMemo(() => {
     let result = [...mergedArticles];
@@ -123,6 +129,71 @@ export default function NewsListPage() {
       {/* 主体：左侧分类导航 + 右侧文章列表 */}
       <section className="w-full py-10 md:py-14">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
+          {/* 分类导览卡 + 热门标签云：点击复用现有分类筛选 */}
+          <div className="mb-10 md:mb-12">
+            <div className="flex items-center gap-2.5 mb-4">
+              <span className="w-1.5 h-5 bg-accent shrink-0" aria-hidden />
+              <h2 className="font-english text-xs font-bold tracking-[0.28em] uppercase text-muted-foreground">
+                Categories — 分类导览
+              </h2>
+            </div>
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {categoryCards.map((card, i) => {
+                const isActive = category === card.name;
+                return (
+                  <button
+                    key={card.name}
+                    type="button"
+                    onClick={() => handleCategoryChange(card.name)}
+                    className={`group relative h-full text-left bg-card border-2 rounded-sm p-5 transition-all duration-200 hover-neo-shadow ${
+                      isActive ? 'border-ink neo-shadow-sm' : 'border-ink/25 hover:border-ink'
+                    }`}
+                  >
+                    <div className="flex items-start justify-between gap-2 mb-2">
+                      <h3 className="text-base font-bold font-serif text-ink group-hover:text-accent transition-colors">
+                        {card.name}
+                      </h3>
+                      <span className="shrink-0 text-xs tabular-nums px-1.5 py-0.5 rounded-sm bg-muted text-muted-foreground">
+                        {card.count} 篇
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed line-clamp-2">
+                      {card.latest}
+                    </p>
+                    <span
+                      aria-hidden
+                      className="absolute bottom-4 right-5 font-english text-2xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </button>
+                );
+              })}
+            </div>
+
+            <div className="mt-6 flex flex-wrap items-center gap-2.5">
+              <span className="text-xs font-bold tracking-wider text-muted-foreground">热门标签</span>
+              {categories.map((cat) => {
+                const isActive = category === cat;
+                return (
+                  <button
+                    key={cat}
+                    type="button"
+                    onClick={() => handleCategoryChange(cat)}
+                    className={`px-3 py-1.5 rounded-sm text-xs font-bold border-2 transition-colors ${
+                      isActive
+                        ? 'bg-ink text-white border-ink'
+                        : 'bg-card text-foreground border-ink/40 hover:border-ink hover:text-accent'
+                    }`}
+                  >
+                    #{cat}
+                  </button>
+                );
+              })}
+            </div>
+          </div>
+
           <div className="flex flex-col lg:flex-row gap-8 lg:gap-10">
             {/* ===== 左侧固定分类导航 ===== */}
             <aside className="shrink-0 lg:w-60">

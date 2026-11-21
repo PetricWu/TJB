@@ -1,6 +1,7 @@
 import { Link } from 'react-router-dom';
 import { Button } from '@/components/ui/button';
 import { SectionHeader } from '@/components/SectionHeader';
+import { SCHOOL_FACTS, yearsSinceFounded } from '@/data/school-facts';
 
 interface IFeatureCard {
   id: string;
@@ -42,30 +43,30 @@ const FEATURES: IFeatureCard[] = [
   {
     id: 'honors',
     title: '荣誉资质',
-    description: '四川省一级示范性普通高中（2023年通过验收），全国国防教育示范校，四川省校风示范校。',
+    description: '四川省二级示范性普通高中（已通过省一级现场评审），全国国防教育示范校，四川省校风示范校。',
     icon: 'Trophy',
     path: '/about#honors',
   },
   {
     id: 'admission',
     title: '招生招聘',
-    description: '2026年面向"5+2"区域招收600名学生，开设六年贯通培养试点班，欢迎优秀初中毕业生报考。',
+    description: '面向"5+2"区域招生，2025年招收550名，具体招生计划以当年成都市教育局公布为准。',
     icon: 'GraduationCap',
     path: '/admission',
   },
 ];
 
 const HONORS = [
-  '四川省一级示范性普通高中',
+  '四川省二级示范性普通高中',
   '全国国防教育示范校',
   '四川省校风示范校',
 ];
 
 const STATS = [
-  { label: '建校历史', value: '101', suffix: '年' },
-  { label: '在校学生', value: '3100', suffix: '人' },
-  { label: '专任教师', value: '260', suffix: '人' },
-  { label: '教学班', value: '60', suffix: '个' },
+  { label: '建校历史', value: String(yearsSinceFounded()), suffix: '年' },
+  { label: '在校学生', value: String(SCHOOL_FACTS.students), suffix: '人' },
+  { label: '教职工', value: String(SCHOOL_FACTS.staff), suffix: '人' },
+  { label: '教学班', value: String(SCHOOL_FACTS.classes), suffix: '个' },
 ];
 
 // 桌面端 4 列横向条 + 移动端 2x2 网格的分隔边框
@@ -96,7 +97,7 @@ export default function FeaturesSection() {
   const [teaching, innovation, moral, student, honors, admission] = FEATURES;
 
   return (
-    <section className="w-full py-16 md:py-24">
+    <section className="w-full section-y">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* 标题区 */}
         <div className="reveal-up">

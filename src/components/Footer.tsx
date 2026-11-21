@@ -63,11 +63,11 @@ export default function Footer() {
         className="pointer-events-none absolute inset-0 opacity-[0.05]"
         style={{
           backgroundImage:
-            'linear-gradient(hsl(22 72% 60%) 1px, transparent 1px), linear-gradient(90deg, hsl(22 72% 60%) 1px, transparent 1px)',
+            'linear-gradient(var(--accent-on-dark) 1px, transparent 1px), linear-gradient(90deg, var(--accent-on-dark) 1px, transparent 1px)',
           backgroundSize: '36px 36px',
         }}
       />
-      <div className="relative max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20">
+      <div className="relative max-w-7xl mx-auto px-4 md:px-6 section-y">
         {/* 顶部：校名刊头 + 紧凑链接列（非对称 5/7） */}
         <div className="grid grid-cols-1 md:grid-cols-12 gap-10 md:gap-12 mb-14 md:mb-16">
           {/* 左侧：校徽 + 校名 + 校训 + 百年标识 */}
@@ -95,7 +95,7 @@ export default function Footer() {
               履仁崇智 明德卓行
             </p>
             <p className="font-sans text-xs text-primary-foreground/40 mt-2 tracking-wide">
-              校训 · 四川省一级示范性普通高中
+              校训 · 四川省二级示范性普通高中
             </p>
 
             {/* 百年图标 */}
@@ -155,7 +155,7 @@ export default function Footer() {
                     成都市锦江区顺江路369号
                   </p>
                   <p className="font-sans text-xs text-primary-foreground/40 mt-1.5 leading-relaxed">
-                    地铁6号线/13号线三官堂站A口出站50米即达
+                    地铁6号线/13号线三官堂站附近
                   </p>
                 </div>
                 <div>

@@ -29,6 +29,8 @@ import {
   CENTENARY_ALUMNI,
   CENTENARY_YOUNG_ALUMNI,
   CENTENARY_GALA,
+  CENTENARY_ANNIVERSARY_ACTIVITIES,
+  CENTENARY_STORY_CALL,
   CENTENARY_FEATURES,
   CENTENARY_HONORS,
   CENTENARY_SOURCES,
@@ -126,7 +128,7 @@ export default function CentenaryPage() {
           <div className="mt-8 rounded-sm overflow-hidden border-2 border-ink/15">
             <Image
               src="/images/centenary/name-history.webp"
-              alt="校名沿革：1925 私立成城公学、1957 成都市第十九中学、2003 成都市田家炳中学"
+              alt="校名沿革：1925 私立成城公学、1952 定名成都市第十九中学、2003 成都市田家炳中学"
               className="w-full aspect-[1442/365] object-cover"
               loading="lazy"
             />
@@ -134,7 +136,7 @@ export default function CentenaryPage() {
         </div>
       </section>
 
-      <main className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 space-y-20 md:space-y-24">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 section-y-sm space-y-20 md:space-y-24">
         {/* 02 百年历路 */}
         <section id="timeline" className="scroll-mt-32">
           <div className="reveal-up">
@@ -453,11 +455,58 @@ export default function CentenaryPage() {
           </div>
         </section>
 
-        {/* 07 荣誉百年 */}
-        <section id="honors" className="scroll-mt-32">
+        {/* 07 成果展与年会回顾 */}
+        <section id="review" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
               no="07"
+              en="Review"
+              title="百年办学成果展暨西部田家炳中学年会回顾"
+              desc="2025 年 12 月 5 日，四项主题活动串联起百年田中的高光时刻。"
+            />
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-4">
+              {CENTENARY_ANNIVERSARY_ACTIVITIES.map((activity) => (
+                <article
+                  key={activity.no}
+                  className="p-5 rounded-sm bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200"
+                >
+                  <span className="font-english text-3xl font-black text-accent/25 tabular-nums leading-none select-none">
+                    {activity.no}
+                  </span>
+                  <h3 className="mt-3 text-base font-black text-ink font-serif">{activity.title}</h3>
+                  <p className="mt-2 text-sm text-muted-foreground leading-relaxed">{activity.desc}</p>
+                </article>
+              ))}
+            </div>
+
+            {/* 校友故事征集 */}
+            <div className="mt-6 rounded-sm bg-ink text-white border-2 border-ink neo-shadow overflow-hidden">
+              <div className="p-6 md:p-8">
+                <div className="flex items-center gap-3">
+                  <Users className="size-6 text-accent shrink-0" />
+                  <h3 className="text-xl font-black font-serif">{CENTENARY_STORY_CALL.title}</h3>
+                </div>
+                <p className="mt-3 text-sm text-white/80 leading-relaxed max-w-3xl">
+                  {CENTENARY_STORY_CALL.desc}
+                </p>
+                <div className="mt-5 grid grid-cols-1 sm:grid-cols-2 gap-3">
+                  {CENTENARY_STORY_CALL.channels.map((channel) => (
+                    <div key={channel.label} className="p-4 rounded-sm border-2 border-white/15 bg-white/5">
+                      <p className="text-sm font-bold text-white">{channel.label}</p>
+                      <p className="mt-1 text-xs text-white/60">{channel.note}</p>
+                    </div>
+                  ))}
+                </div>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 08 荣誉百年 */}
+        <section id="honors" className="scroll-mt-32">
+          <div className="reveal-up">
+            <SectionHeader
+              no="08"
               en="Honors"
               title="荣誉百年"
               desc="从「校风示范学校」到「教育部人工智能教育试点校」，百年积淀，实至名归。"
@@ -495,11 +544,11 @@ export default function CentenaryPage() {
           </div>
         </section>
 
-        {/* 08 资料来源 */}
+        {/* 09 资料来源 */}
         <section id="sources" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
-              no="08"
+              no="09"
               en="Sources"
               title="资料来源"
               desc="本页内容以建校百年纪念画册为准，校庆活动信息以权威媒体报道补充，逐条可溯源。"

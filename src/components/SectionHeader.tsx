@@ -26,8 +26,10 @@ export function SectionHeader({ no, en, title, desc, link, center }: SectionHead
     >
       <div className={cn('min-w-0', center && 'flex flex-col items-center')}>
         <div className="flex items-center gap-3 mb-2.5">
-          <span className="w-1.5 h-5 bg-accent shrink-0" aria-hidden />
-          <span className="font-english text-xs font-bold tracking-[0.28em] uppercase text-muted-foreground">
+          <span className="relative w-1.5 h-5 bg-accent shrink-0" aria-hidden>
+            <span className="size-1 bg-accent absolute -top-1.5 left-1/2 -translate-x-1/2" />
+          </span>
+          <span className="font-english text-xs font-bold tracking-[0.28em] uppercase text-ink-mute">
             {no} — {en}
           </span>
         </div>
@@ -45,7 +47,7 @@ export function SectionHeader({ no, en, title, desc, link, center }: SectionHead
           to={link.to}
           className={cn(
             'hidden sm:inline-flex items-center gap-1.5 shrink-0 px-4 py-2 text-sm font-semibold',
-            'bg-card text-ink border-2 border-ink rounded-sm neo-shadow-sm neo-press',
+            'bg-card text-ink border-2 border-ink rounded-sm neo-shadow-sm neo-press hover:bg-ink hover:text-white',
           )}
         >
           {link.label}

@@ -2,19 +2,20 @@ import { memo } from 'react';
 import { GraduationCap, Users, BookOpen, Trophy } from 'lucide-react';
 import CountUp from '@/components/CountUp';
 import type { IStatItem } from '@/types/common';
+import { SCHOOL_FACTS, yearsSinceFounded } from '@/data/school-facts';
 
 const STATS: IStatItem[] = [
-  { label: '建校历史', value: '101', suffix: '年' },
-  { label: '在校学生', value: '3100', suffix: '人' },
-  { label: '专任教师', value: '260', suffix: '人' },
-  { label: '教学班', value: '60', suffix: '个' },
+  { label: '建校历史', value: String(yearsSinceFounded()), suffix: '年' },
+  { label: '在校学生', value: String(SCHOOL_FACTS.students), suffix: '人' },
+  { label: '教职工', value: String(SCHOOL_FACTS.staff), suffix: '人' },
+  { label: '教学班', value: String(SCHOOL_FACTS.classes), suffix: '个' },
 ];
 
 const STAT_ICONS = [GraduationCap, Users, BookOpen, Trophy];
 
 export default memo(function StatsSection() {
   return (
-    <section className="w-full py-16 md:py-20 bg-primary">
+    <section className="w-full section-y bg-primary">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         <div className="grid grid-cols-2 md:grid-cols-4 gap-6 md:gap-8">
           {STATS.map((stat, i) => {

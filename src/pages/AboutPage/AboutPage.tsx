@@ -9,9 +9,7 @@ import {
   Award,
   Calendar,
   Globe,
-  Microscope,
   School,
-  Star,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Tabs, TabsList, TabsTrigger } from '@/components/ui/tabs';
@@ -24,10 +22,11 @@ import {
   MOCK_HISTORY,
   MOCK_PHILOSOPHY,
   MOCK_FACULTY,
-  MOCK_HONORS,
   MOCK_CAMPUS,
   MOCK_ABOUT_STATS,
 } from '@/data/about';
+import { SCHOOL_FACTS, FACULTY_TIERS, FACULTY_OUTSTANDING } from '@/data/school-facts';
+import { SCHOOL_HONORS, type IHonorItem } from '@/data/honors';
 
 const SECTION_ANCHORS = [
   { id: 'overview', label: '学校概况', icon: Building2 },
@@ -38,10 +37,36 @@ const SECTION_ANCHORS = [
   { id: 'honors', label: '荣誉资质', icon: Trophy },
 ];
 
+/** 校园数据一览（全部取自 SCHOOL_FACTS） */
+const CAMPUS_FACTS = [
+  { icon: Calendar, label: '建校时间', value: `${SCHOOL_FACTS.foundedYear} 年` },
+  { icon: MapPin, label: '高中部地址', value: SCHOOL_FACTS.seniorAddress },
+  { icon: MapPin, label: '初中部地址', value: SCHOOL_FACTS.juniorAddress },
+  {
+    icon: Building2,
+    label: '占地面积',
+    value: `约 ${SCHOOL_FACTS.campusAreaMu} 亩（高中 ${SCHOOL_FACTS.seniorAreaMu} 亩 / 初中 ${SCHOOL_FACTS.juniorAreaMu} 亩）`,
+  },
+  { icon: Building2, label: '建筑面积', value: `约 ${SCHOOL_FACTS.buildingAreaSqm} ㎡` },
+  { icon: Users, label: '教学班', value: `${SCHOOL_FACTS.classes} 个` },
+  { icon: Users, label: '在校学生', value: `约 ${SCHOOL_FACTS.students} 人` },
+  { icon: School, label: '教职工', value: `${SCHOOL_FACTS.staff} 人` },
+];
+
+const FACULTY_TIER_LIST: ReadonlyArray<{ label: string; value: number; note?: string }> = FACULTY_TIERS;
+const MAX_TIER = Math.max(...FACULTY_TIER_LIST.map((tier) => tier.value));
+
+const HONOR_LEVELS: IHonorItem['level'][] = ['国家级', '省级', '市级'];
+const LEVEL_BADGE: Record<IHonorItem['level'], string> = {
+  国家级: 'bg-ink text-white',
+  省级: 'bg-accent text-white',
+  市级: 'bg-secondary text-ink',
+};
+
 export default function AboutPage() {
   useSEO({
     title: '学校概况',
-    description: '了解成都市田家炳中学的百年历史、办学理念、师资力量、校园环境及荣誉资质。始建于1925年，四川省一级示范性普通高中。',
+    description: '了解成都市田家炳中学的百年历史、办学理念、师资力量、校园环境及荣誉资质。始建于1925年，四川省二级示范性普通高中。',
     canonical: 'https://tjb.petricw.com/about',
     breadcrumbs: [
       { name: '首页', url: '/' },
@@ -81,7 +106,7 @@ export default function AboutPage() {
         no="01"
         en="About"
         title="百年名校 薪火相传"
-        desc="成都市田家炳中学始建于1925年，始称“成城公学”，2023年通过四川省一级示范性普通高中验收，2026年成为成都市六年贯通培养试点学校。学校秉承“履仁崇智 明德卓行”的校训，以百年积淀培育时代英才。"
+        desc="成都市田家炳中学始建于1925年，始称“成城公学”，是四川省二级示范性普通高中（已通过四川省一级示范性普通高中现场评审）。学校秉承“履仁崇智 明德卓行”的校训，以百年积淀培育时代英才。"
       />
 
       {/* 数据概览条 */}
@@ -131,7 +156,7 @@ export default function AboutPage() {
         </div>
       </section>
 
-      <main className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 space-y-20 md:space-y-24">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 section-y-sm space-y-20 md:space-y-24">
         {/* 学校概况 */}
         <section id="overview" className="scroll-mt-32">
           <div className="reveal-up">
@@ -148,11 +173,10 @@ export default function AboutPage() {
                 </p>
                 <div className="flex flex-wrap gap-2.5 pt-2">
                   {[
-                    '四川省一级示范校',
+                    '四川省二级示范性普通高中',
                     '百年名校',
                     '公办完全中学',
                     '田家炳系列',
-                    '六年贯通试点',
                   ].map((tag) => (
                     <Badge
                       key={tag}
@@ -162,30 +186,26 @@ export default function AboutPage() {
                     </Badge>
                   ))}
                 </div>
-                {/* 基本信息卡片 */}
-                <div className="grid grid-cols-1 sm:grid-cols-2 gap-3 pt-2">
-                  {[
-                    { icon: School, label: '学校性质', value: '公办完全中学' },
-                    { icon: Calendar, label: '创办时间', value: '1925年' },
-                    { icon: MapPin, label: '高中部', value: '锦江区顺江路369号' },
-                    { icon: MapPin, label: '初中部', value: '锦江区工农院街69号（莲新片区）' },
-                    { icon: Building2, label: '占地面积', value: '两校区共57亩' },
-                    { icon: Building2, label: '建筑面积', value: '45940余平米' },
-                  ].map((info) => {
-                    const InfoIcon = info.icon;
-                    return (
-                      <div
-                        key={info.label}
-                        className="flex items-start gap-2.5 p-3 rounded-sm bg-card border-2 border-ink/20"
-                      >
-                        <InfoIcon className="size-4 text-accent shrink-0 mt-0.5" />
-                        <div className="min-w-0">
-                          <p className="text-xs text-muted-foreground">{info.label}</p>
-                          <p className="text-sm font-semibold text-foreground">{info.value}</p>
+                {/* 校园数据一览 */}
+                <div className="pt-2">
+                  <h3 className="text-sm font-bold text-ink mb-3 font-serif">校园数据一览</h3>
+                  <dl className="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                    {CAMPUS_FACTS.map((info) => {
+                      const InfoIcon = info.icon;
+                      return (
+                        <div
+                          key={info.label}
+                          className="flex items-start gap-2.5 p-3 rounded-sm bg-card border-2 border-ink/20"
+                        >
+                          <InfoIcon className="size-4 text-accent shrink-0 mt-0.5" />
+                          <div className="min-w-0">
+                            <dt className="text-xs text-muted-foreground">{info.label}</dt>
+                            <dd className="text-sm font-semibold text-foreground">{info.value}</dd>
+                          </div>
                         </div>
-                      </div>
-                    );
-                  })}
+                      );
+                    })}
+                  </dl>
                 </div>
               </div>
               <div className="lg:col-span-2">
@@ -333,29 +353,40 @@ export default function AboutPage() {
               desc="名师荟萃，匠心育人"
             />
 
-            {/* 师资总体数据 */}
-            <div className="grid grid-cols-2 md:grid-cols-4 gap-4 mb-10">
-              {[
-                { icon: Users, label: '专任教师', value: '260', suffix: '余名' },
-                { icon: Star, label: '市区学科带头人', value: '16', suffix: '名' },
-                { icon: Award, label: '省市区特级教师', value: '20', suffix: '余名' },
-                { icon: Microscope, label: '名师工作室', value: '10', suffix: '个' },
-              ].map((item) => {
-                const Icon = item.icon;
-                return (
-                  <div
-                    key={item.label}
-                    className="text-center p-4 rounded-sm bg-card border-2 border-ink/20 corner-mark"
-                  >
-                    <Icon className="size-6 text-accent mx-auto mb-2" />
-                    <div className="flex items-baseline justify-center gap-0.5">
-                      <span className="text-2xl font-black text-ink tabular-nums">{item.value}</span>
-                      <span className="text-sm text-muted-foreground">{item.suffix}</span>
+            {/* 师资结构：六级梯队 */}
+            <div className="mb-10 rounded-sm bg-card border-2 border-ink/20 p-5 md:p-6">
+              <div className="flex flex-wrap items-baseline gap-x-2 gap-y-1 mb-6">
+                <span className="font-display text-3xl font-black text-ink tabular-nums">
+                  {SCHOOL_FACTS.staff}
+                </span>
+                <span className="text-sm text-muted-foreground">名教职工 · 六级骨干梯队</span>
+              </div>
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-x-10 gap-y-5">
+                {FACULTY_TIER_LIST.map((tier) => (
+                  <div key={tier.label}>
+                    <div className="flex items-baseline justify-between gap-3">
+                      <span className="text-sm text-foreground/85">{tier.label}</span>
+                      <span className="font-english text-base font-black text-ink tabular-nums">
+                        {tier.value}
+                      </span>
                     </div>
-                    <p className="text-xs text-muted-foreground mt-1">{item.label}</p>
+                    <div className="mt-1.5 h-2.5 w-full rounded-sm bg-ink/10 overflow-hidden">
+                      <div
+                        className="h-full bg-accent"
+                        style={{ width: `${(tier.value / MAX_TIER) * 100}%` }}
+                      />
+                    </div>
+                    {tier.note && (
+                      <p className="mt-1 text-xs text-muted-foreground">{tier.note}</p>
+                    )}
                   </div>
-                );
-              })}
+                ))}
+              </div>
+              <p className="mt-6 pt-4 border-t-2 border-ink/10 text-sm text-muted-foreground leading-relaxed">
+                全国（省、市、区）优秀教师、班主任、青年教师、教学能手、教坛新秀等
+                <span className="mx-1 font-bold text-ink">{FACULTY_OUTSTANDING}</span>
+                余名。
+              </p>
             </div>
 
             {/* 教师卡片 */}
@@ -400,7 +431,7 @@ export default function AboutPage() {
                 <div>
                   <p className="text-sm font-bold text-white mb-2">师资建设成果</p>
                   <p className="text-sm text-white/75 leading-relaxed">
-                    学校获评"四川省普通高中课程改革省级样本校"、"成都市第二批教师发展基地校"。市区学科带头人16名，市区优秀班主任、优秀教师等80余名。90%以上的新高一教师来自原高三毕业班，实战经验丰富。心理健康教师团队：专职教师5人，兼职教师70余人，其中国家心理咨询师8人，班主任B证持有率70%，教师全员持有C证，构建"专职教师+班主任+学科教师+家长"四支心育队伍。
+                    学校获评"四川省普通高中课程改革省级样本校"、"成都市第二批教师发展基地校"。90%以上的新高一教师来自原高三毕业班，实战经验丰富。心理健康教师团队：专职教师5人，兼职教师70余人，其中国家心理咨询师8人，班主任B证持有率70%，教师全员持有C证，构建"专职教师+班主任+学科教师+家长"四支心育队伍。
                   </p>
                 </div>
               </div>
@@ -469,32 +500,53 @@ export default function AboutPage() {
               </div>
             </div>
 
-            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
-              {MOCK_HONORS.map((honor) => (
-                <div
-                  key={honor.id}
-                  className="h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-5"
-                >
-                  <div className="flex items-start gap-4">
-                    <div className="size-10 rounded-sm bg-accent flex items-center justify-center shrink-0 mt-0.5">
-                      <Trophy className="size-5 text-white" />
+            <div className="space-y-10">
+              {HONOR_LEVELS.map((level) => {
+                const items = SCHOOL_HONORS.filter((honor) => honor.level === level);
+                return (
+                  <div key={level}>
+                    <div className="flex items-center gap-3 mb-4">
+                      <span
+                        className={`inline-block px-2.5 py-1 text-xs font-bold rounded-sm ${LEVEL_BADGE[level]}`}
+                      >
+                        {level}
+                      </span>
+                      <span className="text-xs text-muted-foreground">{items.length} 项</span>
+                      <span className="flex-1 h-0.5 bg-ink/10" aria-hidden />
                     </div>
-                    <div className="min-w-0">
-                      <h3 className="font-bold text-ink font-serif mb-1.5 leading-snug">
-                        {honor.title}
-                      </h3>
-                      <div className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
-                        <span className="tabular-nums">{honor.year}</span>
-                        <span className="text-ink/25">·</span>
-                        <span>{honor.issuer}</span>
-                        <Badge className="text-[10px] h-5 rounded-sm bg-ink text-white border-0 py-0 px-1.5">
-                          {honor.level}
-                        </Badge>
-                      </div>
+                    <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-5">
+                      {items.map((honor) => (
+                        <div
+                          key={honor.id}
+                          className="h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-5"
+                        >
+                          <div className="flex items-start gap-4">
+                            <div className="size-10 rounded-sm bg-accent flex items-center justify-center shrink-0 mt-0.5">
+                              <Trophy className="size-5 text-white" />
+                            </div>
+                            <div className="min-w-0">
+                              <h3 className="font-bold text-ink font-serif mb-1.5 leading-snug">
+                                {honor.title}
+                              </h3>
+                              {(honor.year || honor.issuer) && (
+                                <p className="flex flex-wrap items-center gap-2 text-xs text-muted-foreground">
+                                  {honor.year && (
+                                    <>
+                                      <span className="tabular-nums">{honor.year}</span>
+                                      <span className="text-ink/25">·</span>
+                                    </>
+                                  )}
+                                  {honor.issuer && <span>{honor.issuer}</span>}
+                                </p>
+                              )}
+                            </div>
+                          </div>
+                        </div>
+                      ))}
                     </div>
                   </div>
-                </div>
-              ))}
+                );
+              })}
             </div>
           </div>
         </section>

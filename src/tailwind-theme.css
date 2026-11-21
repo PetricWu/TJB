@@ -21,8 +21,9 @@ html, body {
 body {
   background-color: var(--background);
   background-image:
-    linear-gradient(hsl(215 25% 12% / 0.06) 1px, transparent 1px),
-    linear-gradient(90deg, hsl(215 25% 12% / 0.06) 1px, transparent 1px);
+    radial-gradient(ellipse 120% 80% at 50% 0%, transparent 40%, hsl(38 25% 90% / 0.45) 100%),
+    linear-gradient(hsl(215 25% 12% / 0.045) 1px, transparent 1px),
+    linear-gradient(90deg, hsl(215 25% 12% / 0.045) 1px, transparent 1px);
   background-size: 36px 36px;
 }
 
@@ -83,6 +84,16 @@ body {
   --sidebar-border: hsl(215 50% 24%);
   --sidebar-ring: hsl(22 75% 45%);
 
+  /* 层次色阶：纸感与墨色的中间层 */
+  --ink-soft: hsl(215 20% 20%);
+  --ink-mute: hsl(215 16% 34%);
+  --paper-deep: hsl(38 21% 93%);
+  --paper-line: hsl(38 14% 88%);
+  --accent-strong: hsl(22 76% 30%);
+  --accent-soft: hsl(22 60% 94%);
+  --accent-on-dark: hsl(24 82% 62%);
+  --gold: hsl(40 62% 46%);
+
   /* Computed borders using hsl relative color syntax */
   --primary-border: hsl(from hsl(215 50% 18%) h s calc(l + var(--opaque-button-border-intensity)));
   --secondary-border: hsl(from hsl(36 20% 92%) h s calc(l + var(--opaque-button-border-intensity)));
@@ -121,16 +132,17 @@ body {
   --shadow-2xs: 0px 2px 12px 0px hsl(0 0% 0% / 0.01);
   --shadow-xs: 0px 2px 12px 0px hsl(0 0% 0% / 0.01);
   --shadow-sm:
-    0px 2px 12px 0px hsl(0 0% 0% / 0.02), 0px 1px 2px -1px hsl(0 0% 0% / 0.02);
+    0px 2px 12px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
   --shadow:
-    0px 2px 12px 0px hsl(0 0% 0% / 0.02), 0px 1px 2px -1px hsl(0 0% 0% / 0.02);
+    0px 2px 12px 0px hsl(0 0% 0% / 0.05), 0px 1px 2px -1px hsl(0 0% 0% / 0.05);
   --shadow-md:
-    0px 2px 12px 0px hsl(0 0% 0% / 0.02), 0px 2px 4px -1px hsl(0 0% 0% / 0.02);
+    0px 2px 12px 0px hsl(0 0% 0% / 0.05), 0px 2px 4px -1px hsl(0 0% 0% / 0.05);
   --shadow-lg:
-    0px 2px 12px 0px hsl(0 0% 0% / 0.02), 0px 4px 6px -1px hsl(0 0% 0% / 0.02);
+    0px 2px 12px 0px hsl(0 0% 0% / 0.05), 0px 4px 6px -1px hsl(0 0% 0% / 0.05);
   --shadow-xl:
-    0px 2px 12px 0px hsl(0 0% 0% / 0.02), 0px 8px 10px -1px hsl(0 0% 0% / 0.02);
+    0px 2px 12px 0px hsl(0 0% 0% / 0.05), 0px 8px 10px -1px hsl(0 0% 0% / 0.05);
   --shadow-2xl: 0px 2px 12px 0px hsl(0 0% 0% / 0.05);
+  --shadow-lift: 0px 12px 32px 0px hsl(215 25% 12% / 0.10);
   --tracking-normal: 0em;
   --spacing: 0.25rem;
 }
@@ -176,6 +188,14 @@ body {
   --color-sidebar-accent-foreground: var(--sidebar-accent-foreground);
   --color-sidebar-border: var(--sidebar-border);
   --color-sidebar-ring: var(--sidebar-ring);
+  --color-ink-soft: var(--ink-soft);
+  --color-ink-mute: var(--ink-mute);
+  --color-paper-deep: var(--paper-deep);
+  --color-paper-line: var(--paper-line);
+  --color-accent-strong: var(--accent-strong);
+  --color-accent-soft: var(--accent-soft);
+  --color-accent-on-dark: var(--accent-on-dark);
+  --color-gold: var(--gold);
 
   --font-sans: var(--font-sans);
   --font-mono: var(--font-mono);
@@ -196,6 +216,7 @@ body {
   --shadow-lg: var(--shadow-lg);
   --shadow-xl: var(--shadow-xl);
   --shadow-2xl: var(--shadow-2xl);
+  --shadow-lift: var(--shadow-lift);
 }
 
 /**

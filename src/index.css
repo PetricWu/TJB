@@ -147,6 +147,12 @@
 .fluid-body { font-size: clamp(0.875rem, 0.5vw + 0.75rem, 1.125rem); line-height: 1.6; }
 .fluid-small { font-size: clamp(0.75rem, 0.3vw + 0.7rem, 0.875rem); line-height: 1.5; }
 
+/* ====== 统一区块垂直节奏 ====== */
+.section-y { padding-block: 4rem; }
+@media (min-width: 768px) { .section-y { padding-block: 6rem; } }
+.section-y-sm { padding-block: 3rem; }
+@media (min-width: 768px) { .section-y-sm { padding-block: 4rem; } }
+
 /* ====== 新版式设计系统（学习自参考站版式语言，适配学校红橙/藏青） ====== */
 
 /* 硬边偏移投影（新粗野主义） */

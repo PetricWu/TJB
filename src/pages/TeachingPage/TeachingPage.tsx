@@ -5,7 +5,7 @@ import { PageHero } from '@/components/PageHero';
 import { SectionHeader } from '@/components/SectionHeader';
 import { UniversalLink } from '@/components/UniversalLink';
 import { useSEO } from '@/hooks/useSEO';
-import { MOCK_TEACHING_SECTION, MOCK_TEACHERS, MOCK_ACHIEVEMENTS } from '@/data/teaching';
+import { MOCK_TEACHING_SECTION, MOCK_TEACHERS, MOCK_ACHIEVEMENTS, FOUR_REAL_COURSES, THREE_REAL_CLASSROOM } from '@/data/teaching';
 
 const FEATURE_ICONS: Record<number, React.ComponentType<{ className?: string }>> = {
   0: BookOpen,
@@ -129,7 +129,7 @@ export default function TeachingPage() {
                 no="04"
                 en="Faculty"
                 title="师资队伍"
-                desc="专任教师260余名，省市区特级教师20余名，市区学科带头人16名，名师工作室10个"
+                desc="教职工273人，省市区特级教师20余名，市区学科带头人16名，名师工作室10个"
               />
 
               {/* 师资队伍集体照 */}
@@ -261,6 +261,105 @@ export default function TeachingPage() {
                     </div>
                   );
                 })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 「四实」课程图谱 */}
+        <section className="w-full">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="reveal-up">
+              <SectionHeader
+                no="06"
+                en="Curriculum"
+                title="「四实」课程图谱"
+                desc="实学筑基、实用立身、实慧启思、实德润心，构建五育融合的校本课程体系"
+              />
+
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5 md:gap-6">
+                {FOUR_REAL_COURSES.map((quadrant, i) => (
+                  <div
+                    key={quadrant.key}
+                    className="group relative h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                  >
+                    <div className="flex items-start justify-between mb-4">
+                      <span className="inline-flex items-center justify-center px-2.5 py-1 rounded-sm bg-ink text-white font-serif font-bold text-sm group-hover:bg-accent transition-colors">
+                        {quadrant.title}
+                      </span>
+                      <span
+                        aria-hidden
+                        className="font-english text-3xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <p className="text-xs font-bold tracking-wider text-muted-foreground mb-1.5">
+                      {quadrant.subtitle}
+                    </p>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      {quadrant.description}
+                    </p>
+                    <ul className="space-y-2 border-t-2 border-ink/10 pt-4">
+                      {quadrant.items.map((item) => (
+                        <li key={item} className="flex items-start gap-2 text-sm text-foreground leading-relaxed">
+                          <span className="size-1.5 bg-accent shrink-0 mt-1.5" aria-hidden />
+                          {item}
+                        </li>
+                      ))}
+                    </ul>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 「三实」课堂 + 课程改革省级样本校 */}
+        <section className="w-full bg-muted/40 border-y-2 border-ink/10">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
+            <div className="reveal-up">
+              <SectionHeader
+                no="07"
+                en="Classroom"
+                title="「三实」课堂与课程改革成果"
+                desc="实际、实在、实效——以真实学情为起点，以扎实过程为路径，以学习实效为检验"
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 mb-6">
+                {THREE_REAL_CLASSROOM.dimensions.map((dimension, i) => (
+                  <div
+                    key={dimension.label}
+                    className="group h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                  >
+                    <div className="flex items-center justify-between mb-3">
+                      <h3 className="text-lg font-black font-serif text-ink">{dimension.label}</h3>
+                      <span
+                        aria-hidden
+                        className="font-english text-2xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <p className="text-sm text-muted-foreground leading-relaxed">
+                      {dimension.description}
+                    </p>
+                  </div>
+                ))}
+              </div>
+
+              <div className="bg-card border-2 border-ink rounded-sm neo-shadow-sm p-5 md:p-6">
+                <div className="flex flex-wrap items-center gap-2.5 mb-3">
+                  <Badge className="text-xs rounded-sm bg-ink text-white border-0 py-0.5 px-2">
+                    {THREE_REAL_CLASSROOM.achievement.level}
+                  </Badge>
+                  <h3 className="text-base font-bold font-serif text-ink">
+                    {THREE_REAL_CLASSROOM.achievement.title}
+                  </h3>
+                </div>
+                <p className="text-sm text-muted-foreground leading-relaxed">
+                  {THREE_REAL_CLASSROOM.achievement.description}
+                </p>
               </div>
             </div>
           </div>

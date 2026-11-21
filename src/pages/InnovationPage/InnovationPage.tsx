@@ -5,7 +5,8 @@ import { Button } from '@/components/ui/button';
 import { Image } from '@/components/ui/image';
 import { PageHero } from '@/components/PageHero';
 import { SectionHeader } from '@/components/SectionHeader';
-import { MOCK_INNOVATION, MOCK_INNOVATION_ACHIEVEMENTS } from '@/data/innovation';
+import { MOCK_INNOVATION, MOCK_INNOVATION_ACHIEVEMENTS, INNOVATION_COURSE_TIERS, INNOVATION_STATS, INNOVATION_STARS, INNOVATION_FACILITIES } from '@/data/innovation';
+import CountUp from '@/components/CountUp';
 import { useSEO } from '@/hooks/useSEO';
 
 const HERO_IMAGE = '/images/BwGQ1wfhTy.webp';
@@ -259,9 +260,211 @@ export default function InnovationPage() {
           </div>
         </section>
 
+        {/* 层级化科创课程集群 */}
+        <section className="w-full bg-muted/40 border-y-2 border-ink/10">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
+            <div className="reveal-up">
+              <SectionHeader
+                no="06"
+                en="Courses"
+                title="层级化科创课程集群"
+                desc="通识课程面向全体、竞赛课程面向梯队，让每个学生都能拾级而上"
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                {INNOVATION_COURSE_TIERS.map((tier, i) => {
+                  const isAdvanced = i === 1;
+                  return (
+                    <div
+                      key={tier.tier}
+                      className={`group h-full border-2 rounded-sm p-6 transition-all duration-200 ${
+                        isAdvanced
+                          ? 'bg-ink text-white border-ink neo-shadow-accent'
+                          : 'bg-card border-ink/25 hover:border-ink hover-neo-shadow'
+                      }`}
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div>
+                          <span
+                            className={`inline-block text-xs font-bold tracking-wider px-2 py-0.5 rounded-sm mb-2 ${
+                              isAdvanced ? 'bg-accent text-white' : 'bg-ink text-white'
+                            }`}
+                          >
+                            {isAdvanced ? '提高层' : '基础层'}
+                          </span>
+                          <h3 className="text-xl font-black font-serif">{tier.tier}</h3>
+                          <p className={`text-xs mt-1 ${isAdvanced ? 'text-white/60' : 'text-muted-foreground'}`}>
+                            {tier.audience}
+                          </p>
+                        </div>
+                        <span
+                          aria-hidden
+                          className={`font-english text-3xl font-black tabular-nums leading-none select-none ${
+                            isAdvanced ? 'text-white/15' : 'text-ink/10 group-hover:text-accent/30'
+                          } transition-colors`}
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                      <p className={`text-sm leading-relaxed mb-5 ${isAdvanced ? 'text-white/70' : 'text-muted-foreground'}`}>
+                        {tier.description}
+                      </p>
+                      <div className="flex flex-wrap gap-2">
+                        {tier.courses.map((course) => (
+                          <span
+                            key={course}
+                            className={`text-sm font-bold px-3 py-1.5 rounded-sm border-2 ${
+                              isAdvanced
+                                ? 'border-white/40 text-white'
+                                : 'border-ink/20 bg-background text-foreground'
+                            }`}
+                          >
+                            {course}
+                          </span>
+                        ))}
+                      </div>
+                    </div>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 赛事成绩 */}
+        <section className="w-full">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="reveal-up">
+              <SectionHeader
+                no="07"
+                en="Results"
+                title="2025 年赛事成绩"
+                desc="以赛促学、以赛促教，科创竞赛成果持续突破"
+              />
+
+              <div className="grid grid-cols-2 lg:grid-cols-4 gap-4 md:gap-5">
+                {INNOVATION_STATS.map((stat, i) => (
+                  <div
+                    key={stat.id}
+                    className="group relative bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-5 md:p-6 text-center"
+                  >
+                    <CountUp
+                      value={stat.value}
+                      suffix={stat.suffix}
+                      delay={i * 100}
+                      className="block font-english text-3xl md:text-4xl font-black text-ink tabular-nums leading-none mb-3"
+                    />
+                    <p className="text-sm text-muted-foreground leading-relaxed">{stat.label}</p>
+                    <span
+                      aria-hidden
+                      className="absolute top-3 right-4 font-english text-xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 创新之星案例 */}
+        <section className="w-full bg-muted/40 border-y-2 border-ink/10">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 py-14 md:py-20">
+            <div className="reveal-up">
+              <SectionHeader
+                no="08"
+                en="Stars"
+                title="「创新之星」案例"
+                desc="全国学生信息素养提升实践活动最高荣誉，见证田中学子的创新实践"
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-5 md:gap-6">
+                {INNOVATION_STARS.map((star, i) => (
+                  <div
+                    key={star.name}
+                    className="group relative h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                  >
+                    <div className="flex items-center gap-3 mb-4">
+                      <div className="size-14 rounded-sm border-2 border-ink/80 bg-background flex items-center justify-center shrink-0">
+                        <span className="text-xl font-black font-serif text-ink/50">
+                          {star.name.charAt(0)}
+                        </span>
+                      </div>
+                      <div>
+                        <h3 className="text-lg font-black font-serif text-ink">{star.name}</h3>
+                        <span className="inline-block mt-1 text-xs font-bold px-2 py-0.5 rounded-sm bg-accent text-white">
+                          创新之星
+                        </span>
+                      </div>
+                    </div>
+                    <p className="text-sm text-foreground leading-relaxed mb-2">{star.award}</p>
+                    <p className="text-xs text-muted-foreground">{star.project}</p>
+                    <span
+                      aria-hidden
+                      className="absolute top-4 right-5 font-english text-2xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 科创设施 */}
+        <section className="w-full">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="reveal-up">
+              <SectionHeader
+                no="09"
+                en="Facilities"
+                title="科创设施"
+                desc="从主题教室到高标准实验室，为创意落地提供真实场景"
+              />
+
+              <div className="grid grid-cols-1 md:grid-cols-2 gap-5 md:gap-6">
+                {INNOVATION_FACILITIES.map((facility, i) => (
+                  <div
+                    key={facility.id}
+                    className="group relative h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                  >
+                    <div className="flex items-start justify-between mb-3">
+                      <div className="size-10 rounded-sm bg-ink flex items-center justify-center shrink-0 group-hover:bg-accent transition-colors">
+                        <Rocket className="size-5 text-white" strokeWidth={1.5} />
+                      </div>
+                      <span
+                        aria-hidden
+                        className="font-english text-2xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                      >
+                        {String(i + 1).padStart(2, '0')}
+                      </span>
+                    </div>
+                    <h3 className="text-base font-bold font-serif text-ink mb-2.5">{facility.name}</h3>
+                    <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                      {facility.description}
+                    </p>
+                    <div className="flex flex-wrap gap-2">
+                      {facility.tags.map((tag) => (
+                        <span
+                          key={tag}
+                          className="text-xs font-bold px-2 py-1 rounded-sm bg-muted text-muted-foreground"
+                        >
+                          {tag}
+                        </span>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* CTA */}
         <section className="w-full bg-ink border-t-2 border-ink">
-          <div className="max-w-7xl mx-auto px-4 md:px-6 py-16 md:py-20 text-center">
+          <div className="max-w-7xl mx-auto px-4 md:px-6 section-y text-center">
             <Rocket className="size-12 text-accent mx-auto mb-6" strokeWidth={1.5} />
             <h2 className="text-2xl md:text-3xl font-black font-serif text-white mb-4 tracking-tight">
               加入田中科创大家庭

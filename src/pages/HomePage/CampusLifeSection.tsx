@@ -38,7 +38,7 @@ export default function CampusLifeSection() {
   };
 
   return (
-    <div className="w-full py-16 md:py-20">
+    <div className="w-full section-y">
       <div className="max-w-7xl mx-auto px-4 md:px-6">
         {/* Section header（参考站「藏品一览」标题行：竖线标题 + 强调色徽标） */}
         <div className="reveal-up">

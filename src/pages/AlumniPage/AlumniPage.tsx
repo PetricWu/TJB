@@ -1,6 +1,6 @@
-﻿import { useMemo } from 'react';
+import { useMemo } from 'react';
 import { Link } from 'react-router-dom';
-import { BookOpen, GraduationCap, Quote, Users, ArrowUpRight, ExternalLink, Link2 } from 'lucide-react';
+import { BookOpen, GraduationCap, Quote, Users, ArrowUpRight, ExternalLink, Link2, Calendar, MessageSquare, Phone } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { PageHero } from '@/components/PageHero';
 import { SectionHeader } from '@/components/SectionHeader';
@@ -10,11 +10,16 @@ import {
   MOCK_ALUMNI_INTRO,
   MOCK_ALUMNI_FOUNDERS,
   MOCK_ALUMNI_REPRESENTATIVES,
+  MOCK_ALUMNI_ERAS,
+  ALUMNI_STORY_CALL,
+  MOCK_ALUMNI_HOMECOMING,
   MOCK_ALUMNI_NEWS,
   MOCK_ALUMNI_SOURCES,
   type IAlumniFigure,
 } from '@/data/alumni';
 import { mergedArticles } from '@/data/merged-articles';
+
+const CHANNEL_ICONS = [Phone, MessageSquare];
 
 function FigureCard({ figure, accentIndex }: { figure: IAlumniFigure; accentIndex: number }) {
   return (
@@ -99,7 +104,7 @@ export default function AlumniPage() {
         </div>
       </section>
 
-      <main className="max-w-7xl mx-auto px-4 md:px-6 py-12 md:py-16 space-y-20 md:space-y-24">
+      <main className="max-w-7xl mx-auto px-4 md:px-6 section-y-sm space-y-20 md:space-y-24">
         {/* 02 创校先贤 */}
         <section id="founders" className="scroll-mt-32">
           <div className="reveal-up">
@@ -152,11 +157,146 @@ export default function AlumniPage() {
           </div>
         </section>
 
-        {/* 04 百年校庆回眸 */}
-        <section id="anniversary" className="scroll-mt-32">
+        {/* 04 校友名录 · 按年代 */}
+        <section id="roster" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
               no="04"
+              en="Roster"
+              title="校友名录 · 按年代"
+              desc="以年代为经纬，串起这所百年学府的师生身影。仅收录可溯源人物，其余年代持续征集。"
+            />
+            <div className="space-y-6">
+              {MOCK_ALUMNI_ERAS.map((era) => (
+                <div key={era.id} className="bg-card border-2 border-ink/25 rounded-sm">
+                  <div className="flex flex-wrap items-center gap-x-4 gap-y-1 px-5 py-3 border-b-2 border-ink/10">
+                    <span className="font-english text-sm font-black tracking-[0.12em] text-accent tabular-nums">
+                      {era.label}
+                    </span>
+                    <span className="text-xs text-muted-foreground">
+                      {era.figures.length > 0 ? `${era.figures.length} 位` : '征集中'}
+                    </span>
+                    {era.note && <span className="ml-auto text-xs text-muted-foreground">{era.note}</span>}
+                  </div>
+                  {era.figures.length > 0 ? (
+                    <div className="grid grid-cols-1 md:grid-cols-2 gap-4 p-5">
+                      {era.figures.map((figure) => (
+                        <article key={figure.id} className="flex gap-4 rounded-sm border-2 border-ink/15 p-4">
+                          <div className="size-11 shrink-0 rounded-sm bg-ink text-white flex items-center justify-center">
+                            <span className="font-serif text-lg font-black leading-none">{figure.name.slice(0, 1)}</span>
+                          </div>
+                          <div className="min-w-0">
+                            <div className="flex items-center gap-2 flex-wrap">
+                              <h3 className="text-base font-black text-ink">{figure.name}</h3>
+                              <Badge className="text-[10px] rounded-sm bg-accent/12 text-accent border-0">{figure.role}</Badge>
+                            </div>
+                            <p className="text-xs text-muted-foreground mt-0.5">{figure.identity}</p>
+                            <p className="text-sm text-foreground/80 leading-relaxed mt-2 line-clamp-2">{figure.description}</p>
+                          </div>
+                        </article>
+                      ))}
+                    </div>
+                  ) : (
+                    <div className="px-5 py-6 text-sm text-muted-foreground">
+                      暂无公开的校友资料，欢迎知情的校友与学校联系，补充这个年代的名字与故事。
+                    </div>
+                  )}
+                </div>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 05 校友故事征集 */}
+        <section id="story-call" className="scroll-mt-32">
+          <div className="reveal-up">
+            <SectionHeader
+              no="05"
+              en="Story Call"
+              title={ALUMNI_STORY_CALL.title}
+              desc="长期征集在校记忆、师长故事与成长经历，让个人记忆汇入学校的百年叙事"
+            />
+            <div className="grid grid-cols-1 lg:grid-cols-3 gap-6">
+              <div className="lg:col-span-2 bg-card border-2 border-ink rounded-sm neo-shadow-sm p-6 md:p-8">
+                <p className="text-sm md:text-base text-foreground/80 leading-relaxed">
+                  {ALUMNI_STORY_CALL.description}
+                </p>
+                <div className="mt-5 flex flex-wrap gap-2">
+                  {ALUMNI_STORY_CALL.topics.map((topic) => (
+                    <span
+                      key={topic}
+                      className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-accent/10 text-accent text-xs font-bold border border-accent/25"
+                    >
+                      <Quote className="size-3" />
+                      {topic}
+                    </span>
+                  ))}
+                </div>
+              </div>
+              <div className="bg-ink text-white border-2 border-ink rounded-sm p-6 md:p-8">
+                <h3 className="text-base font-black flex items-center gap-2">
+                  <MessageSquare className="size-4 text-accent" />
+                  投稿方式
+                </h3>
+                <ul className="mt-4 space-y-4">
+                  {ALUMNI_STORY_CALL.channels.map((channel, i) => {
+                    const Icon = CHANNEL_ICONS[i] ?? MessageSquare;
+                    return (
+                      <li key={channel.label} className="flex items-start gap-2.5">
+                        <Icon className="size-4 text-accent shrink-0 mt-0.5" />
+                        <div>
+                          <p className="text-sm font-bold">{channel.label}</p>
+                          <p className="text-xs text-white/70 leading-relaxed mt-0.5">{channel.detail}</p>
+                        </div>
+                      </li>
+                    );
+                  })}
+                </ul>
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 06 返校活动 */}
+        <section id="homecoming" className="scroll-mt-32">
+          <div className="reveal-up">
+            <SectionHeader
+              no="06"
+              en="Homecoming"
+              title="返校活动"
+              desc="百年办学成果展、校友返校日、校友讲堂，让校友与母校保持长期联结"
+            />
+            <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+              {MOCK_ALUMNI_HOMECOMING.map((item, i) => (
+                <article
+                  key={item.id}
+                  className="group relative h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                >
+                  <div className="flex items-start justify-between mb-4">
+                    <div className="size-11 rounded-sm bg-ink flex items-center justify-center group-hover:bg-accent transition-colors">
+                      <Calendar className="size-5 text-white" />
+                    </div>
+                    <span
+                      aria-hidden
+                      className="font-english text-3xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <p className="text-xs text-accent font-bold mb-1">{item.timing}</p>
+                  <h3 className="text-base font-bold font-serif text-ink mb-2">{item.title}</h3>
+                  <p className="text-sm text-muted-foreground leading-relaxed">{item.description}</p>
+                </article>
+              ))}
+            </div>
+          </div>
+        </section>
+
+        {/* 07 百年校庆回眸 */}
+        <section id="anniversary" className="scroll-mt-32">
+          <div className="reveal-up">
+            <SectionHeader
+              no="07"
               en="Centennial"
               title="百年校庆回眸"
               desc="2025年，学校以「百年成城　炳新而行」为主题举办百年校庆，各界校友、师生代表齐聚一堂，共忆同窗岁月、共话学校发展。"
@@ -199,11 +339,11 @@ export default function AlumniPage() {
           </div>
         </section>
 
-        {/* 05 资料来源 */}
+        {/* 08 资料来源 */}
         <section id="sources" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
-              no="05"
+              no="08"
               en="Sources"
               title="资料来源"
               desc="本页人物与事迹均取自权威媒体报道与本站校史记载，逐条可溯源。"

@@ -1,10 +1,17 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, type ComponentType } from 'react';
 import { useLocation } from 'react-router-dom';
-import { Calendar, MapPin, Users, Award, ArrowRight, ExternalLink } from 'lucide-react';
+import { Calendar, MapPin, Users, Award, ArrowRight, ExternalLink, Flag, LayoutGrid, Heart, Compass, ShieldCheck, Sparkles } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
 import { Button } from '@/components/ui/button';
 import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
-import { MOCK_STUDENT_ACTIVITIES, MOCK_STUDENT_NEWS, type IStudentActivity } from '@/data/student';
+import {
+  MOCK_STUDENT_ACTIVITIES,
+  MOCK_STUDENT_NEWS,
+  STUDENT_ORGANIZATIONS,
+  STUDENT_CLUB_CATEGORIES,
+  GROWTH_SUPPORTS,
+  type IStudentActivity,
+} from '@/data/student';
 import { Image } from '@/components/ui/image';
 import { PageHero } from '@/components/PageHero';
 import { SectionHeader } from '@/components/SectionHeader';
@@ -32,6 +39,20 @@ const HASH_TAB_MAP: Record<string, string> = {
   '#sports': '体育活动',
   '#clubs': '社团活动',
   '#practice': '实践活动',
+};
+
+// 学生组织 / 成长支持 图标映射
+const ORG_ICONS: Record<string, ComponentType<{ className?: string }>> = {
+  flag: Flag,
+  users: Users,
+  grid: LayoutGrid,
+  heart: Heart,
+};
+
+const GROWTH_ICONS: Record<string, ComponentType<{ className?: string }>> = {
+  heart: Heart,
+  compass: Compass,
+  shield: ShieldCheck,
 };
 
 function ActivityCard({ activity, index }: { activity: IStudentActivity; index: number }) {
@@ -289,8 +310,108 @@ export default function StudentPage() {
           </div>
         </section>
 
+        {/* 学生组织与社团 */}
+        <section id="organizations" className="w-full py-14 md:py-20 bg-muted/40 border-y-2 border-ink/10 scroll-mt-32">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="reveal-up">
+              <SectionHeader
+                no="04"
+                en="Organizations"
+                title="学生组织与社团"
+                desc="从团委、学生会到社团与志愿服务，学生在组织中学会担当、协作与创造"
+              />
+              <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
+                {STUDENT_ORGANIZATIONS.map((org, i) => {
+                  const Icon = ORG_ICONS[org.icon] || Users;
+                  return (
+                    <article
+                      key={org.id}
+                      className="group relative h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="size-11 rounded-sm bg-ink flex items-center justify-center group-hover:bg-accent transition-colors">
+                          <Icon className="size-5 text-white" />
+                        </div>
+                        <span
+                          aria-hidden
+                          className="font-english text-3xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                      <h3 className="text-base font-bold font-serif text-ink">{org.name}</h3>
+                      <p className="text-xs text-accent font-bold mt-0.5 mb-2">{org.en}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed">{org.description}</p>
+                    </article>
+                  );
+                })}
+              </div>
+              <div className="mt-6 flex flex-wrap items-center gap-2">
+                <span className="text-sm font-bold text-ink">社团门类</span>
+                {STUDENT_CLUB_CATEGORIES.map((category) => (
+                  <span
+                    key={category}
+                    className="inline-flex items-center gap-1.5 px-3 py-1 rounded-sm bg-card border-2 border-ink/20 text-xs font-bold text-ink/80"
+                  >
+                    <Sparkles className="size-3 text-accent" />
+                    {category}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </section>
+
+        {/* 成长支持体系 */}
+        <section id="growth" className="w-full py-14 md:py-20 scroll-mt-32">
+          <div className="max-w-7xl mx-auto px-4 md:px-6">
+            <div className="reveal-up">
+              <SectionHeader
+                no="05"
+                en="Growth Support"
+                title="成长支持体系"
+                desc="心理健康、生涯规划、资助帮扶三条主线，托举每一位学生的成长"
+              />
+              <div className="grid grid-cols-1 md:grid-cols-3 gap-6">
+                {GROWTH_SUPPORTS.map((item, i) => {
+                  const Icon = GROWTH_ICONS[item.icon] || Heart;
+                  return (
+                    <article
+                      key={item.id}
+                      className="group relative h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                    >
+                      <div className="flex items-start justify-between mb-4">
+                        <div className="size-12 rounded-sm bg-ink flex items-center justify-center group-hover:bg-accent transition-colors">
+                          <Icon className="size-6 text-white" />
+                        </div>
+                        <span
+                          aria-hidden
+                          className="font-english text-3xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                        >
+                          {String(i + 1).padStart(2, '0')}
+                        </span>
+                      </div>
+                      <h3 className="text-lg font-black font-serif text-ink">{item.title}</h3>
+                      <p className="text-xs text-accent font-bold mt-0.5 mb-3">{item.en}</p>
+                      <p className="text-sm text-muted-foreground leading-relaxed mb-4">{item.description}</p>
+                      <ul className="space-y-2">
+                        {item.points.map((point) => (
+                          <li key={point} className="flex items-start gap-2.5 text-sm text-foreground/80">
+                            <span className="size-1.5 bg-accent shrink-0 mt-2" aria-hidden />
+                            {point}
+                          </li>
+                        ))}
+                      </ul>
+                    </article>
+                  );
+                })}
+              </div>
+            </div>
+          </div>
+        </section>
+
         {/* 底部 CTA */}
-        <section className="w-full py-16 md:py-20 bg-ink border-t-2 border-ink">
+        <section className="w-full section-y bg-ink border-t-2 border-ink">
           <div className="max-w-7xl mx-auto px-4 md:px-6 text-center">
             <h2 className="text-2xl md:text-3xl font-black font-serif text-white mb-4 tracking-tight">
               加入田中，绽放青春

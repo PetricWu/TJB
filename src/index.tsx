@@ -18,7 +18,7 @@ const AppContainer: React.FC<{ children: React.ReactNode }> = ({ children }) => 
 const ErrorRender: React.FC<{ error: unknown; resetErrorBoundary: () => void }> = ({ error }) => (
   <div style={{ padding: '2rem', textAlign: 'center' }}>
     <h2>页面出错了</h2>
-    <p style={{ color: '#999' }}>{error instanceof Error ? error.message : '请刷新页面重试'}</p>
+    <p style={{ color: 'var(--muted-foreground)' }}>{error instanceof Error ? error.message : '请刷新页面重试'}</p>
   </div>
 );
 

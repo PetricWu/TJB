@@ -5,7 +5,7 @@ import { Tabs, TabsList, TabsTrigger, TabsContent } from '@/components/ui/tabs';
 import { Button } from '@/components/ui/button';
 import { Dialog, DialogContent, DialogHeader, DialogTitle, DialogDescription } from '@/components/ui/dialog';
 import { Separator } from '@/components/ui/separator';
-import { MOCK_MORAL_ACTIVITIES, MOCK_PSYCHOLOGY_ARTICLES, MOCK_SENIOR_GROWTH, type IMoralActivity, type IArticleDetail } from '@/data/moral';
+import { MOCK_MORAL_ACTIVITIES, MOCK_PSYCHOLOGY_ARTICLES, MOCK_SENIOR_GROWTH, MORAL_MATRIX, type IMoralActivity, type IArticleDetail } from '@/data/moral';
 import { mergedArticles, type ArticleSummary } from '@/data/merged-articles';
 import { Image } from '@/components/ui/image';
 import { PageHero } from '@/components/PageHero';
@@ -213,7 +213,7 @@ function ArticleDetailDialog({
 export default function MoralPage() {
   useSEO({
     title: '德育心育',
-    description: '成都市田家炳中学德育与心理健康教育，四川省首批中小学心理健康教育引领校，5名专职心理教师，"馨田"心育课程体系。',
+    description: '成都市田家炳中学德育与心理健康教育，成都市中小学心理健康教育特色学校，5名专职心理教师，"馨田"心育课程体系。',
     canonical: 'https://tjb.petricw.com/moral',
     breadcrumbs: [
       { name: '首页', url: '/' },
@@ -290,6 +290,57 @@ export default function MoralPage() {
                 </div>
               );
             })}
+          </div>
+        </div>
+      </section>
+
+      {/* 德育课程矩阵 */}
+      <section className="w-full pb-14 md:pb-16">
+        <div className="max-w-7xl mx-auto px-4 md:px-6">
+          <div className="reveal-up">
+            <SectionHeader
+              no="01"
+              en="Matrix"
+              title="德育课程矩阵"
+              desc="课程、文化、活动、实践四维协同，把德育融入学生成长全过程"
+            />
+
+            <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-5">
+              {MORAL_MATRIX.map((dimension, i) => (
+                <div
+                  key={dimension.key}
+                  className="group relative h-full bg-card border-2 border-ink/25 hover:border-ink hover-neo-shadow transition-all duration-200 rounded-sm p-6"
+                >
+                  <div className="flex items-start justify-between mb-3">
+                    <div>
+                      <span className="font-english text-xs font-bold tracking-[0.24em] uppercase text-muted-foreground">
+                        {dimension.en}
+                      </span>
+                      <h3 className="text-lg font-black font-serif text-ink mt-1">
+                        {dimension.title}
+                      </h3>
+                    </div>
+                    <span
+                      aria-hidden
+                      className="font-english text-2xl font-black text-ink/10 tabular-nums leading-none select-none group-hover:text-accent/30 transition-colors"
+                    >
+                      {String(i + 1).padStart(2, '0')}
+                    </span>
+                  </div>
+                  <p className="text-sm text-muted-foreground leading-relaxed mb-4">
+                    {dimension.description}
+                  </p>
+                  <ul className="space-y-2 border-t-2 border-ink/10 pt-4">
+                    {dimension.items.map((item) => (
+                      <li key={item} className="flex items-start gap-2 text-sm text-foreground leading-relaxed">
+                        <span className="size-1.5 bg-accent shrink-0 mt-1.5" aria-hidden />
+                        {item}
+                      </li>
+                    ))}
+                  </ul>
+                </div>
+              ))}
+            </div>
           </div>
         </div>
       </section>
@@ -462,7 +513,7 @@ export default function MoralPage() {
       </section>
 
       {/* 底部 CTA */}
-      <section className="w-full py-16 md:py-20">
+      <section className="w-full section-y">
         <div className="max-w-7xl mx-auto px-4 md:px-6">
           <div className="reveal-up relative bg-ink text-white border-2 border-ink rounded-sm neo-shadow-accent overflow-hidden">
             <span className="absolute top-6 right-6 size-5 border-t-2.5 border-r-2.5 border-accent" aria-hidden />
