@@ -69,12 +69,6 @@
   status = 301
 
 [[redirects]]
-  from = "/zmy"
-  to = "/christmas"
-  status = 301
-  force = true
-
-[[redirects]]
   from = "/*"
   to = "/index.html"
   status = 404
