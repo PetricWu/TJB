@@ -1,5 +1,5 @@
 [build]
-  command = "node scripts/parse-articles.mjs && node scripts/generate-sitemap.mjs && npx vite build && node scripts/post-build.mjs && node scripts/prerender.mjs && node scripts/baidu-push-build.mjs"
+  command = "rm -rf dist/client && node scripts/parse-articles.mjs && node scripts/generate-sitemap.mjs && npx vite build && node scripts/post-build.mjs && node scripts/prerender.mjs && node scripts/baidu-push-build.mjs"
   publish = "dist/client"
 
 [build.environment]
