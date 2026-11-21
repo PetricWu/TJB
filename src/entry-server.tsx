@@ -37,7 +37,7 @@ export function render(url: string): string {
           <Route path="tianjiabing" element={<TianjiabingPage />} />
           <Route path="centenary" element={<CentenaryPage />} />
         </Route>
-        <Route path="zmy" element={<ChristmasPage />} />
+        <Route path="christmas" element={<ChristmasPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </MemoryRouter>

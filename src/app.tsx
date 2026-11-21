@@ -56,7 +56,7 @@ export default function App() {
           <Route path="centenary" element={<CentenaryPage />} />
           <Route path="contact" element={<Navigate to="/admission" replace />} />
         </Route>
-        <Route path="zmy" element={<ChristmasPage />} />
+        <Route path="christmas" element={<ChristmasPage />} />
         <Route path="*" element={<NotFoundPage />} />
       </Routes>
     </Suspense>
