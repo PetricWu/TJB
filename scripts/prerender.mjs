@@ -55,7 +55,13 @@ for (const route of routes) {
   if (route.path === '/christmas') {
     html = html.replace(/<meta name="robots" content="[^"]*"/, '<meta name="robots" content="noindex, nofollow"');
   }
-  const outFile = route.path === '/' ? path.join(DIST, 'index.html') : path.join(DIST, route.path.replace(/^\//, ''), 'index.html');
+  // 隐藏页输出为 christmas.html，Netlify 会以 /christmas 直接返回 200，不产生斜杠跳转
+  const outFile =
+    route.path === '/'
+      ? path.join(DIST, 'index.html')
+      : route.path === '/christmas'
+        ? path.join(DIST, 'christmas.html')
+        : path.join(DIST, route.path.replace(/^\//, ''), 'index.html');
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, html);
 }
