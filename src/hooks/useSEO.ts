@@ -22,8 +22,8 @@ interface SEOOptions {
 
 const SITE_URL = 'https://tjb.petricw.com';
 const BASE_TITLE = '成都市田家炳中学官网';
-const BASE_DESC = '成都市田家炳中学官网（tjb.petricw.com）。始建于1925年，始称成城公学，百年名校。四川省一级示范性普通高中，全国国防教育示范校，教育部人工智能教育双试点单位。坐落于成都市锦江区顺江路369号，地铁6号线/13号线三官堂站A口直达。招生咨询电话：028-84551880。';
-const BASE_KEYWORDS = '成都市田家炳中学官网,成都市田家炳中学,田家炳中学,成都田中,田家炳中学官网,四川省一级示范校,成都高中排名,锦江区中学,顺江路369号,百年名校,六年贯通培养,成城公学,国防教育示范校,人工智能教育';
+const BASE_DESC = '成都市田家炳中学官网（tjb.petricw.com）。始建于1925年，前身为成城公学，四川省二级示范性普通高中（已通过省一级现场评审），全国国防教育示范校。坐落于成都市锦江区顺江路369号。招生咨询电话：028-84551880。';
+const BASE_KEYWORDS = '成都市田家炳中学官网,成都市田家炳中学,田家炳中学,成都田中,田家炳中学官网,四川省二级示范性普通高中,成都高中排名,锦江区中学,顺江路369号,百年名校,成城公学,国防教育示范校,人工智能教育';
 const DEFAULT_OG_IMAGE = `${SITE_URL}/hero-bg.webp`;
 
 /**
@@ -44,7 +44,7 @@ export function useSEO({
   const prevJsonLd = useRef<HTMLScriptElement[]>([]);
 
   useEffect(() => {
-    const fullTitle = title ? `${title} — ${BASE_TITLE}` : `${BASE_TITLE} — 百年名校·四川省一级示范性普通高中`;
+    const fullTitle = title ? `${title} — ${BASE_TITLE}` : `${BASE_TITLE} — 百年名校·四川省二级示范性普通高中`;
     const desc = description || BASE_DESC;
     const kw = keywords || BASE_KEYWORDS;
     const url = canonical || `${SITE_URL}${window.location.pathname}`;

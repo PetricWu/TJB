@@ -101,3 +101,87 @@ export const MOCK_INNOVATION_ACHIEVEMENTS: IInnovationAchievement[] = [
   },
 ];
 
+export interface IInnovationCourseTier {
+  tier: string;
+  audience: string;
+  description: string;
+  courses: string[];
+}
+
+/** 通识 + 竞赛层级化科创课程集群 */
+export const INNOVATION_COURSE_TIERS: IInnovationCourseTier[] = [
+  {
+    tier: '通识课程',
+    audience: '面向全体学生',
+    description: '普及科学素养与数字素养，为每一位学生打下科创基础。',
+    courses: ['科学素养', '信息科技', 'AI 通识'],
+  },
+  {
+    tier: '竞赛课程',
+    audience: '面向社团与梯队',
+    description: '面向科创社团与竞赛梯队，开展项目化训练与专项备赛。',
+    courses: ['机器人', '信息素养', '智能博物', 'FLL'],
+  },
+];
+
+export interface IInnovationStat {
+  id: string;
+  value: number;
+  suffix: string;
+  label: string;
+}
+
+/** 2025 年科创赛事成绩 */
+export const INNOVATION_STATS: IInnovationStat[] = [
+  { id: 'participants', value: 216, suffix: '人次', label: '2025 年参与各级科创赛事' },
+  { id: 'national', value: 30, suffix: '余项', label: '国家级奖项' },
+  { id: 'province', value: 60, suffix: '余项', label: '省级奖项' },
+  { id: 'stars', value: 2, suffix: '年', label: '连续获评全国「创新之星」' },
+];
+
+export interface IInnovationStar {
+  name: string;
+  award: string;
+  project: string;
+}
+
+export const INNOVATION_STARS: IInnovationStar[] = [
+  {
+    name: '高嘉煦',
+    award: '第 25 届全国学生信息素养提升实践活动「创新之星」',
+    project: '两人合作项目',
+  },
+  {
+    name: '文佳怡',
+    award: '第 25 届全国学生信息素养提升实践活动「创新之星」',
+    project: '两人合作项目',
+  },
+  {
+    name: '唐栎森',
+    award: '全国学生信息素养提升实践活动「创新之星」',
+    project: '智能博物项目 · 单人参赛',
+  },
+];
+
+export interface IInnovationFacility {
+  id: string;
+  name: string;
+  description: string;
+  tags: string[];
+}
+
+export const INNOVATION_FACILITIES: IInnovationFacility[] = [
+  {
+    id: 'fac-room',
+    name: '航空主题科创教室',
+    description: '集「航天 + 国防 + 科创」功能于一体，为学生提供沉浸式科创实践场景。',
+    tags: ['航天', '国防', '科创'],
+  },
+  {
+    id: 'fac-lab',
+    name: '15 个高标准科学实验室',
+    description: '配备机器人、3D 打印、无人机等设备，支撑课程实施与项目探究。',
+    tags: ['机器人', '3D 打印', '无人机'],
+  },
+];
+

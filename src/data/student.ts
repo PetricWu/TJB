@@ -1,6 +1,7 @@
 ﻿// EXPORTS: MOCK_STUDENT_ACTIVITIES, STUDENT_CATEGORIES
 
 import type { INews } from '@/types/news';
+import { SCHOOL_HONORS } from './honors';
 
 export interface IStudentActivity {
   id: string;
@@ -51,7 +52,7 @@ export const MOCK_STUDENT_ACTIVITIES: IStudentActivity[] = [
   {
     id: 'sa-3',
     title: '机器人社团出征VEX世锦赛挺进八强',
-    description: '我校机器人社团代表中国出征VEX机器人世界锦标赛，凭借出色的机械设计、编程能力和团队协作，在工程挑战赛高中组中挺进八强，展现了我校科创教育的国际竞争力。学校是教育部人工智能教育"双试点"单位，拥有15个高标准科学实验室。',
+    description: '我校机器人社团代表中国出征VEX机器人世界锦标赛，凭借出色的机械设计、编程能力和团队协作，在工程挑战赛高中组中挺进八强，展现了我校科创教育的国际竞争力。学校拥有15个高标准科学实验室。',
     category: '社团活动',
     coverImage: '/images/38Bp1wfimz.webp',
     date: '2025-04-20',
@@ -119,6 +120,93 @@ export const MOCK_STUDENT_NEWS: INews[] = [
     author: '校团委',
     viewCount: 2100,
     isPinned: true,
+  },
+];
+
+/* ===== 学生组织与社团 ===== */
+
+export interface IStudentOrganization {
+  id: string;
+  name: string;
+  en: string;
+  /** 图标键，页面侧映射为 lucide 图标 */
+  icon: string;
+  description: string;
+}
+
+export const STUDENT_ORGANIZATIONS: IStudentOrganization[] = [
+  {
+    id: 'org-youth-league',
+    name: '校团委',
+    en: 'Youth League',
+    icon: 'flag',
+    description: '统筹团员发展与主题教育，组织学雷锋志愿服务月、社区实践等校内外活动。',
+  },
+  {
+    id: 'org-student-union',
+    name: '校学生会',
+    en: 'Student Union',
+    icon: 'users',
+    description: '学生自我管理、自我服务的骨干力量，承办校园歌手大赛、艺术节等校园文化活动。',
+  },
+  {
+    id: 'org-club-union',
+    name: '社团联合会',
+    en: 'Clubs Union',
+    icon: 'grid',
+    description: '统筹全校社团招新与日常管理，科技创新社团等团队在 VEX 世锦赛等赛事中崭露头角。',
+  },
+  {
+    id: 'org-volunteers',
+    name: '青年志愿服务队',
+    en: 'Volunteers',
+    icon: 'heart',
+    description: '走进社区开展环境美化、助老扶幼、科普宣传等志愿服务，践行"崇实适性，润育心田"的办学理念。',
+  },
+];
+
+/** 社团门类：只列类别，不编造具体社团名称 */
+export const STUDENT_CLUB_CATEGORIES = ['科技创新类', '体育竞技类', '人文艺术类', '公益实践类'] as const;
+
+/* ===== 成长支持体系 ===== */
+
+export interface IGrowthSupport {
+  id: string;
+  title: string;
+  en: string;
+  /** 图标键，页面侧映射为 lucide 图标 */
+  icon: string;
+  description: string;
+  points: string[];
+}
+
+const PSYCHOLOGY_HONOR =
+  SCHOOL_HONORS.find((honor) => honor.id === 'cd-psy')?.title ?? '成都市中小学心理健康教育特色学校';
+
+export const GROWTH_SUPPORTS: IGrowthSupport[] = [
+  {
+    id: 'growth-psychology',
+    title: '心理健康',
+    en: 'Wellbeing',
+    icon: 'heart',
+    description: `学校为${PSYCHOLOGY_HONOR}，配备专兼职心理教师队伍，关注每一位学生的情绪状态与成长节奏。`,
+    points: ['心理健康课程与主题活动常态化开展', '个体辅导与团体辅导相结合', '班主任与心理教师协同关注'],
+  },
+  {
+    id: 'growth-career',
+    title: '生涯规划',
+    en: 'Career',
+    icon: 'compass',
+    description: '面向新高考，帮助学生认识自我、认识专业，把选科与长远发展衔接起来。',
+    points: ['新高考选科指导', '职业体验与生涯课程', '高校与专业认知分享'],
+  },
+  {
+    id: 'growth-support',
+    title: '资助帮扶',
+    en: 'Support',
+    icon: 'shield',
+    description: '奖助学金与困难帮扶并举，让家庭经济困难学生安心完成学业。',
+    points: ['奖助学金激励品学兼优', '家庭经济困难学生帮扶', '资助政策咨询与办理指导'],
   },
 ];
 

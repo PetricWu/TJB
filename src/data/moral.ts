@@ -46,6 +46,46 @@ export interface IArticleDetail {
   sourceUrl?: string;
 }
 
+export interface IMoralMatrixDimension {
+  key: string;
+  title: string;
+  en: string;
+  description: string;
+  items: string[];
+}
+
+/** 德育课程矩阵：课程 / 文化 / 活动 / 实践 四维 */
+export const MORAL_MATRIX: IMoralMatrixDimension[] = [
+  {
+    key: 'course',
+    title: '课程育人',
+    en: 'Course',
+    description: '以课程为主渠道，把德育内容系统化、常态化。',
+    items: ['主题班会课程', '「馨田」心育课程体系', '心理健康教育课程', '生涯规划课程'],
+  },
+  {
+    key: 'culture',
+    title: '文化育人',
+    en: 'Culture',
+    description: '以文化浸润心灵，让校训与田家炳精神可感可传。',
+    items: ['校训「履仁崇智 明德卓行」', '校园心理报《馨田》', '校园文化节', '班级文化建设'],
+  },
+  {
+    key: 'activity',
+    title: '活动育人',
+    en: 'Activity',
+    description: '以仪式与活动为载体，在体验中生长品格。',
+    items: ['5·25 心理健康节', '高三成人礼暨百日誓师', '优秀毕业生返校分享', '心理游园会'],
+  },
+  {
+    key: 'practice',
+    title: '实践育人',
+    en: 'Practice',
+    description: '以实践为课堂，在真实行动中锤炼责任与担当。',
+    items: ['志愿服务', '社会实践', '研学实践', '劳动教育'],
+  },
+];
+
 export const MOCK_PSYCHOLOGY_ARTICLES: IArticleDetail[] = [
   {
     id: 'psy-1',
@@ -134,7 +174,7 @@ export const MOCK_PSYCHOLOGY_ARTICLES: IArticleDetail[] = [
 
 学校还特别邀请了四川大学心理健康教育中心专家为高三学生做考前心理辅导，帮助考生调整心态、缓解焦虑。专家从"合理期望"、"积极暗示"、"放松训练"三个方面给出了具体建议。
 
-作为四川省首批中小学心理健康教育引领校，我校构建了"专职教师+班主任+学科教师+家长"四支心育队伍，专职心理健康教师5人，兼职教师70余人，其中国家心理咨询师8人，班主任B证持有率70%，教师全员持有C证。`,
+作为成都市中小学心理健康教育特色学校，我校构建了"专职教师+班主任+学科教师+家长"四支心育队伍，专职心理健康教师5人，兼职教师70余人，其中国家心理咨询师8人，班主任B证持有率70%，教师全员持有C证。`,
   },
   {
     id: 'psy-5',
@@ -143,7 +183,7 @@ export const MOCK_PSYCHOLOGY_ARTICLES: IArticleDetail[] = [
     author: '心理健康中心',
     date: '2025-05-20',
     sourceUrl: '',
-    content: `成都市田家炳中学作为四川省首批中小学心理健康教育引领校、成都市中小学心理健康教育特色学校，始终将心理健康教育作为学校办学的重要特色。
+    content: `成都市田家炳中学作为成都市中小学心理健康教育特色学校，始终将心理健康教育作为学校办学的重要特色。
 
 学校以"崇实适性，润育心田"为办学理念，构建了覆盖全学段的"馨田"心育课程体系。该体系通过心理发展、实践拓展、社会支持三维课程，系统培养学生积极心理品质。
 

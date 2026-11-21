@@ -1,3 +1,8 @@
+import { SCHOOL_FACTS, yearsSinceFounded } from './school-facts';
+
+/** 招生监督电话（学校公布口径，SCHOOL_FACTS 未收录） */
+const SUPERVISION_PHONE = '028-84551399';
+
 export interface IAdmissionInfo {
   title: string;
   subtitle: string;
@@ -46,15 +51,15 @@ export interface IFacultyStat {
 
 export const MOCK_ADMISSION_INFO: IAdmissionInfo = {
   title: '成都市田家炳中学',
-  subtitle: '四川省一级示范性普通高中',
+  subtitle: '四川省二级示范性普通高中',
   coverImage: '/images/38Bp1wfimz.webp',
   summary:
-    '成都市田家炳中学始建于1925年，是四川省一级示范性普通高中、全国国防教育示范校、教育部人工智能教育"双试点"单位。学校秉承"履仁崇智 明德卓行"办学思想，坚持"崇实适性，润育心田"办学理念，构建"三实"课堂和"四实"课程体系，连续多年实现"中进高出、高进优出"。2026年成为成都市六年贯通培养试点学校，与成都七中教育集团联合办学。',
+    '成都市田家炳中学始建于1925年，是四川省二级示范性普通高中（已通过四川省一级示范性普通高中现场评审）、全国国防教育示范校、成都七中教育集团成员学校。学校秉承"履仁崇智 明德卓行"办学思想，坚持"崇实适性，润育心田"办学理念，构建"三实"课堂和"四实"课程体系，连续多年实现"中进高出、高进优出"。',
   highlights: [
-    { label: '办学历史', value: '101', suffix: '年', description: '百年名校，薪火相传' },
-    { label: '在校学生', value: '3100', suffix: '余人', description: '初高中两个校区' },
-    { label: '专任教师', value: '260', suffix: '余名', description: '师德高尚，业务精湛' },
-    { label: '校区占地', value: '57', suffix: '亩', description: '交通便利，环境优美' },
+    { label: '办学历史', value: String(yearsSinceFounded()), suffix: '年', description: '百年名校，薪火相传' },
+    { label: '在校学生', value: String(SCHOOL_FACTS.students), suffix: '余人', description: '初高中两个校区' },
+    { label: '教职工', value: String(SCHOOL_FACTS.staff), suffix: '人', description: '师德高尚，业务精湛' },
+    { label: '校区占地', value: String(SCHOOL_FACTS.campusAreaMu), suffix: '亩', description: '交通便利，环境优美' },
   ],
   requirements: [
     '热爱祖国，拥护中国共产党的领导，品德优良，遵纪守法',
@@ -64,8 +69,8 @@ export const MOCK_ADMISSION_INFO: IAdmissionInfo = {
     '艺体特长生需参加我校专业测试并达到合格标准',
   ],
   contact: {
-    address: '初中部：锦江区工农院街69号（莲新片区）　高中部：锦江区顺江路369号',
-    phone: '028-84551880',
+    address: `初中部：${SCHOOL_FACTS.juniorAddress}（莲新片区）；高中部：${SCHOOL_FACTS.seniorAddress}`,
+    phone: SCHOOL_FACTS.phone,
     email: 'cdtjbzx@163.com',
     website: 'https://tjb.petricw.com',
     officeHours: '工作日 8:00-12:00, 14:30-17:30',
@@ -74,18 +79,6 @@ export const MOCK_ADMISSION_INFO: IAdmissionInfo = {
 };
 
 export const MOCK_ADMISSION_FEATURES: IAdmissionFeature[] = [
-  {
-    id: 'f1',
-    title: '六年贯通培养',
-    subtitle: '初高中一体化育人',
-    description: '成都市六年贯通培养试点学校，初高中课程衔接一体化设计，学生发展更连贯。',
-    icon: 'graduation-cap',
-    highlights: [
-      '初高中课程无缝衔接，减少学段转换损耗',
-      '六年一贯制培养方案，个性化发展路径',
-      '优先享受高中优质教育资源辐射',
-    ],
-  },
   {
     id: 'f2',
     title: '科创教育特色',
@@ -101,8 +94,8 @@ export const MOCK_ADMISSION_FEATURES: IAdmissionFeature[] = [
   {
     id: 'f3',
     title: '心理健康教育',
-    subtitle: '四川省首批引领校',
-    description: '四川省首批中小学心理健康教育引领校，5名专职心理教师，"馨田"心育课程体系。',
+    subtitle: '成都市特色学校',
+    description: '成都市中小学心理健康教育特色学校，5名专职心理教师，"馨田"心育课程体系。',
     icon: 'heart',
     highlights: [
       '5名专职心理教师，师资雄厚',
@@ -210,66 +203,67 @@ export const MOCK_ADMISSION_SCORES: IAdmissionScore[] = [
 
 export const MOCK_ADMISSION_FAQ: IAdmissionFaq[] = [
   {
-    id: 'faq1',
+    id: 'faq-area',
+    question: '学校面向哪些区域招生？',
+    answer:
+      '学校高中面向成都市「5+2」区域招生。具体招生区域与志愿设置，以当年成都市教育局公布的中考政策为准。',
+  },
+  {
+    id: 'faq-plan',
     question: '学校今年的招生计划是多少？',
     answer:
-      '我校2026年高中面向"5+2"区域招收600名学生，开设六年贯通培养试点班。具体招生计划以成都市教育局正式公布为准。',
+      '2025年高中招收550名，其中统招475名（含指标到校生238名），调剂生75名。每年招生计划以成都市教育局正式公布为准。',
   },
   {
-    id: 'faq2',
-    question: '学校有哪些特色班型？',
-    answer:
-      '我校高中设有"科创班/AI实验班"、"火箭班"、"重点班/课改班"、"实验班"、"平行班"等多层次班型。科创班与香港田家炳基金会合作，侧重人工智能与科技创新教育；火箭班面向成绩优异学生，目标100%上本科、96%以上上一本。实施"大分层、小分类、个别化"的差异化教学策略。',
+    id: 'faq-boarding',
+    question: '学校提供住校吗？',
+    answer: SCHOOL_FACTS.boarding
+      ? '学校可为部分学生提供住校，具体安排请咨询学校。'
+      : '学校为走读制，不提供住校，学生每日到校上课、放学后回家。',
   },
   {
-    id: 'faq3',
-    question: '艺体特长生如何报考？',
-    answer:
-      '艺体特长生需先参加我校组织的专业测试，测试合格后在中考志愿中填报我校艺体特长生志愿。招生项目包括：美术、音乐、舞蹈、体育（田径、篮球、足球等）。具体招生项目和人数以当年招生简章为准。',
+    id: 'faq-phone',
+    question: '招生咨询电话是多少？',
+    answer: `学校办公室 ${SCHOOL_FACTS.phone}，招生咨询 ${SCHOOL_FACTS.admissionPhone}，招生监督 ${SUPERVISION_PHONE}。建议在工作日办公时间来电。`,
   },
   {
-    id: 'faq4',
-    question: '学校是否为寄宿制学校？',
+    id: 'faq-class',
+    question: '学校高中的班型如何设置？',
     answer:
-      '我校为走读制学校，不提供住宿。学生每日到校上课，放学后由家长接回。学校特别重视走读学生的安全管理，放学后提供晚自习辅导（自愿参加），由任课教师或班主任值守，确保学生在校期间的安全和学习质量。',
+      '高中设置实验班与平行班，依据学生学业基础与发展需要组织教学，实行分层分类的差异化教学策略。',
   },
   {
-    id: 'faq5',
-    question: '学校的伙食怎么样？',
+    id: 'faq-quota',
+    question: '指标到校生如何录取？',
     answer:
-      '学校食堂建筑面积3000余平方米，可同时容纳2000余人就餐。食堂菜品丰富，营养搭配合理，提供套餐、面食、小吃等多种选择，满足不同口味需求。严格执行食品安全管理制度，确保师生饮食安全。',
-  },
-  {
-    id: 'faq6',
-    question: '学校的交通是否便利？',
-    answer:
-      '学校位于成都市锦江区顺江路369号，交通十分便利。地铁6号线、13号线三官堂站A口出站50米即达，公交3路、18路、56路、68路、77路、82路、106路、1107路等多条线路直达学校门口。',
-  },
-  {
-    id: 'faq7',
-    question: '学校是否有奖学金和助学金政策？',
-    answer:
-      '学校设有"田家炳奖学金"、"校长奖学金"等多项奖学金，奖励品学兼优的学生。同时对家庭经济困难学生提供助学金，确保每一位学生都能顺利完成学业。具体政策可咨询学校学生处。',
-  },
-  {
-    id: 'faq8',
-    question: '如何获取最新的招生信息？',
-    answer:
-      '考生和家长可通过以下方式获取最新招生信息：1. 学校官网（tjb.petricw.com）招生专栏；2. 学校官方微信公众号"成都市田家炳中学"；3. 拨打招生咨询电话028-84551880；4. 参加校园开放日活动。',
-  },
-  {
-    id: 'faq9',
-    question: '学校的食堂和作息怎么样？',
-    answer:
-      '学校食堂提供午餐和晚餐，实行选餐制，每周更新食谱，提供A餐和B餐选择，师生同桌就餐、同材同价同窗口。作息方面，早上七点半到校，高一高二晚自习九点结束，高三十点结束。学校为走读制，不提供住宿。',
-  },
-  {
-    id: 'faq10',
-    question: '学校有哪些国际合作与交流？',
-    answer:
-      '学校是教育部中外人文交流项目特色学校、成都市教育国际化窗口学校。与法国巴黎东郊国际高中、香港仁爱堂田家炳中学等建立友好学校关系。2025年与香港田家炳基金会合作开设AI实验班，全国166所田家炳中学中仅上海和成都开设。学校还联合川大"博士达"研究中心开展双语教学。',
+      '指标到校按成都市教育局当年政策执行，名额分配、资格条件与录取办法以当年公布的细则为准。',
   },
 ];
+
+/** 招生咨询电话（学校办公室 / 招生咨询 / 招生监督） */
+export const ADMISSION_PHONES: { label: string; value: string }[] = [
+  { label: '学校办公室', value: SCHOOL_FACTS.phone },
+  { label: '招生咨询', value: SCHOOL_FACTS.admissionPhone },
+  { label: '招生监督', value: SUPERVISION_PHONE },
+];
+
+export interface IAdmissionPlan {
+  year: string;
+  rows: { label: string; count: number; note: string }[];
+  total: number;
+  note: string;
+}
+
+/** 2025年高中招生计划结构 */
+export const MOCK_ADMISSION_PLAN: IAdmissionPlan = {
+  year: '2025',
+  rows: [
+    { label: '统招生', count: 475, note: '含指标到校生 238 名' },
+    { label: '调剂生', count: 75, note: '面向成都市「5+2」区域' },
+  ],
+  total: 550,
+  note: '数据来源：2025年成都市高中阶段教育学校统一招生计划。每年招生计划与结构以成都市教育局正式公布为准。',
+};
 
 export const MOCK_ADMISSION_FACULTY_STATS: IFacultyStat[] = [
   { label: '正高级教师', value: '3', suffix: '人' },
@@ -323,9 +317,9 @@ export const MOCK_CAMPUSES: ICampus[] = [
     id: 'campus-senior',
     name: '高中部',
     stage: '高中',
-    address: '锦江区顺江路369号',
+    address: SCHOOL_FACTS.seniorAddress,
     mapKeyword: '成都市田家炳中学 高中部 顺江路369号',
-    description: '学校主校区，坐落于锦江北岸三官堂片区，与四川大学隔江相望，占地约57亩（含初中部），校舍建筑面积45940余平方米。',
+    description: '学校主校区，坐落于锦江北岸三官堂片区，与四川大学隔江相望，占地约46.24亩（含初中部），校舍建筑面积约26386平方米。',
     amapUrl: 'https://uri.amap.com/search?keyword=%E6%88%90%E9%83%BD%E5%B8%82%E7%94%B0%E5%AE%B6%E7%82%B3%E4%B8%AD%E5%AD%A6%E9%A1%BA%E6%B1%9F%E8%B7%AF369%E5%8F%B7',
     baiduUrl: 'https://map.baidu.com/search/%E6%88%90%E9%83%BD%E5%B8%82%E7%94%B0%E5%AE%B6%E7%82%B3%E4%B8%AD%E5%AD%A6/@12797744.28,3582823.55,12z',
   },
@@ -333,7 +327,7 @@ export const MOCK_CAMPUSES: ICampus[] = [
     id: 'campus-junior',
     name: '初中部',
     stage: '初中',
-    address: '锦江区工农院街69号（莲新片区）',
+    address: `${SCHOOL_FACTS.juniorAddress}（莲新片区）`,
     mapKeyword: '成都市田家炳中学 初中部 工农院街69号',
     description: '初中部校区，位于锦江区莲新片区工农院街69号，2007—2008年学校整合莲新中学、锦江育才中学后形成一校两区格局。',
     amapUrl: 'https://uri.amap.com/search?keyword=%E6%88%90%E9%83%BD%E5%B8%82%E7%94%B0%E5%AE%B6%E7%82%B3%E4%B8%AD%E5%AD%A6%E5%B7%A5%E5%86%9C%E9%99%A2%E8%A1%9769%E5%8F%B7',
@@ -341,25 +335,25 @@ export const MOCK_CAMPUSES: ICampus[] = [
   },
 ];
 
-/** 交通指引（高中部；公交线路不确认不写） */
+/** 交通指引（高中部；具体出口与步行距离未经核实，不写） */
 export const MOCK_TRANSPORT: ITransport[] = [
   {
     id: 'transport-metro',
     mode: '地铁',
     title: '地铁6号线／13号线',
-    detail: '乘坐地铁6号线或13号线至「三官堂」站，A口出站步行约50米即达高中部。',
+    detail: '乘坐地铁6号线或13号线至「三官堂」站，出站即到三官堂站附近的高中部（顺江路369号）。',
   },
   {
     id: 'transport-bus',
     mode: '公交',
     title: '三官堂／顺江路沿线',
-    detail: '多条公交线路途经三官堂、顺江路一带，可在「三官堂」或「顺江路」公交站下车步行前往。',
+    detail: '在三官堂站可换乘公交前往学校；顺江路沿线亦有多条公交线路途经，具体线路以实际运营为准。',
   },
   {
     id: 'transport-drive',
     mode: '自驾',
     title: '导航至「成都市田家炳中学」',
-    detail: '自驾车可导航至「成都市田家炳中学高中部」（顺江路369号）或「初中部」（工农院街69号），学校周边有公共交通与慢行系统接驳。',
+    detail: '自驾可导航至高中部（顺江路369号）或初中部（工农院街69号），学校周边有公共交通与慢行系统接驳。',
   },
 ];
 

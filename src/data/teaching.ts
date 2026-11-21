@@ -28,12 +28,12 @@ export interface ITeachingSection {
 export const MOCK_TEACHING_SECTION: ITeachingSection = {
   title: '教学教研',
   description:
-    '成都市田家炳中学坚持"科研兴校、质量立校"的办学方略，构建"实际、实在、实效"的"三实"课堂和"实学、实用、实慧、实德"的"四实"课程体系。学校是四川省普通高中课程改革省级样本校、教育部人工智能教育"双试点"单位，国家社科基金教育学重大课题项目学校。90%以上的新高一教师来自原高三毕业班，实施"大分层、小分类、个别化"的差异化教学。',
+    '成都市田家炳中学坚持"科研兴校、质量立校"的办学方略，构建"实际、实在、实效"的"三实"课堂和"实学、实用、实慧、实德"的"四实"课程体系。学校是四川省普通高中课程改革省级样本校、国家社科基金教育学重大课题项目学校。90%以上的新高一教师来自原高三毕业班，实施"大分层、小分类、个别化"的差异化教学。',
   image: '/images/BwGQ1wfhTy.webp',
   features: [
     { label: '"三实"课堂', description: '国家社科基金课题项目，"实际、实在、实效"的生本教学模式，获国家级一等奖' },
     { label: '"四实"课程', description: '"实学、实用、实慧、实德"校本课程体系，每周五下午开设30余门选修课' },
-    { label: 'AI融合教学', description: '教育部"双试点"单位，22门AI教育课程+4门本校开发选修课程，AI辅助分层备课' },
+    { label: 'AI融合教学', description: '22门AI教育课程+4门本校开发选修课程，AI辅助分层备课' },
     { label: '青蓝工程', description: '师徒结对培养青年教师，新教师四阶段成长目标：站稳讲台→受学生喜爱→有育人成绩→管好学生' },
     { label: '分层教学', description: '基于教育大数据的"大分层、小分类、个别化"教学，探索选课走班多种形式' },
     { label: '贯通培养', description: '与四川大学共建"智能制造少年班"，聘请电子科大、西南交大专家组建导师团' },
@@ -114,6 +114,80 @@ export const MOCK_TEACHERS: ITeacherProfile[] = [
     avatar: '',
   },
 ];
+
+export interface ICourseQuadrant {
+  key: string;
+  title: string;
+  subtitle: string;
+  description: string;
+  items: string[];
+}
+
+/** 「实学、实用、实慧、实德」四实课程图谱 */
+export const FOUR_REAL_COURSES: ICourseQuadrant[] = [
+  {
+    key: 'shixue',
+    title: '实学',
+    subtitle: '夯实基础 · 学有根基',
+    description: '以国家课程为主体，扎实推进学科基础，落实分层分类的课程实施路径。',
+    items: ['国家课程校本化实施', '学科拓展课程', '每周五下午 30 余门选修课', '大分层、小分类、个别化教学'],
+  },
+  {
+    key: 'shiyong',
+    title: '实用',
+    subtitle: '知行合一 · 学以致用',
+    description: '打通课堂与真实情境，让学生在项目与实践中学用结合。',
+    items: ['跨学科项目学习', '综合实践活动', 'AI 融合课程', '机器人、3D 打印等科创实践'],
+  },
+  {
+    key: 'shihui',
+    title: '实慧',
+    subtitle: '启迪思维 · 学会学习',
+    description: '以思维发展为核心，在问题探究中培育学生的学习智慧。',
+    items: ['深度学习课堂', '思辨性阅读教学', '课题探究与小组合作', '学习方法指导'],
+  },
+  {
+    key: 'shide',
+    title: '实德',
+    subtitle: '润心铸魂 · 以德立身',
+    description: '将品格教育融入课程，在体验与践行中涵养学生德性。',
+    items: ['主题班会课程', '「馨田」心育课程', '田家炳精神主题德育', '志愿服务与社会实践'],
+  },
+];
+
+export interface IThreeRealClassroom {
+  title: string;
+  description: string;
+  dimensions: { label: string; description: string }[];
+  achievement: { title: string; level: string; description: string };
+}
+
+/** 「实际、实在、实效」三实课堂与课程改革省级样本校成果 */
+export const THREE_REAL_CLASSROOM: IThreeRealClassroom = {
+  title: '「三实」课堂',
+  description:
+    '学校依托国家社科基金教育学重大课题，构建「实际、实在、实效」的生本课堂：以真实学情为起点，以扎实过程为路径，以学习实效为检验。',
+  dimensions: [
+    {
+      label: '实际',
+      description: '从学生真实学情与生活情境出发，让教学目标可感、可及、可达成。',
+    },
+    {
+      label: '实在',
+      description: '教学环节扎实落地，以校本教研与集体备课保障每一节课的质量。',
+    },
+    {
+      label: '实效',
+      description: '以学习效果为唯一检验标准，用数据诊断和改进课堂教学。',
+    },
+  ],
+  achievement: {
+    title: '四川省普通高中课程改革省级样本校',
+    level: '省级',
+    description:
+      '学校是四川省普通高中课程改革省级样本校，课堂教学改革走在全省前列。以「三实」课堂为抓手，持续推进校本教研与课题研究，形成可复制、可推广的课堂改革经验。',
+  },
+};
 
 export const MOCK_ACHIEVEMENTS: ITeachingAchievement[] = [
   {

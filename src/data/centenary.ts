@@ -89,15 +89,14 @@ export const CENTENARY_STATS: ICentenaryStat[] = [
   { value: '1925', label: '肇始之年', description: '成城公学于东马棚街创立，开启百年办学历程' },
   { value: '100', suffix: '载', label: '弦歌不辍', description: '四易其名、薪火相传，2025 年迎来建校百年' },
   { value: '2', suffix: '校区', label: '双璧辉映', description: '高中部坐落于锦江北岸，初中部毗邻莲馨片区' },
-  { value: '260', suffix: '余名', label: '教职工', description: '结构合理、素质优良的师资队伍（以学校官方发布为准）' },
+  { value: '273', suffix: '人', label: '教职工', description: '结构合理、素质优良的师资队伍' },
 ];
 
 /** 校名沿革时间轴（画册《百年历路 世纪跫音》） */
 export const CENTENARY_MILESTONES: ICentenaryMilestone[] = [
   { year: '1925', title: '成城公学创立', description: '在东马棚街创立「成城公学」，取「众志成城」之意，是为百年办学之始。创校先贤陶亮生、文百川等以「教育救国」为志，开启民智。' },
   { year: '1937', title: '迁址三官堂街', description: '学校迁址三官堂街（即今高中部所在地），与锦江、川大为邻，办学规模逐步扩大。' },
-  { year: '1952', title: '政府接办更名', description: '学校由政府接办并调整更名（画册标注为「成都市第九初级中学」，校名以学校档案为准）。' },
-  { year: '1957', title: '更名成都市第十九中学', description: '学校更名为「成都市第十九中学」，进入新中国基础教育发展的新阶段。' },
+  { year: '1952', title: '定名成都市第十九中学', description: '学校由政府接办，定名为「成都市第十九中学」，进入新中国基础教育发展的新阶段。' },
   { year: '1960', title: '改名四川大学附属中学', description: '学校改名为「四川大学附属中学」，依托高校资源提升办学水平。' },
   { year: '1962', title: '恢复第十九中学校名', description: '校名恢复为「成都市第十九中学」，此后数十年间以「十九中」之名深耕教坛。' },
   { year: '2003', title: '更名成都市田家炳中学', description: '香港实业家、慈善家田家炳先生捐资修建学校，学校更名为「成都市田家炳中学」，成为全国田家炳系列学校之一。' },
@@ -205,9 +204,33 @@ export const CENTENARY_GALA: ICentenaryGala = {
   ],
 };
 
+/** 百年办学成果展暨西部田家炳中学年会·活动回顾 */
+export interface ICentenaryActivity {
+  no: string;
+  title: string;
+  desc: string;
+}
+
+export const CENTENARY_ANNIVERSARY_ACTIVITIES: ICentenaryActivity[] = [
+  { no: '01', title: '教育教学成果展', desc: '集中呈现学校百年办学历程与教育教学成果，课程建设、课堂改革与育人实践的积淀集中亮相。' },
+  { no: '02', title: '科创集市', desc: '师生乐享「科技大餐」，科创社团与创客项目集中亮相，展现人工智能与创新教育成果。' },
+  { no: '03', title: '文艺汇演', desc: '师生同台演出，以歌声与舞姿礼赞百年田中，浸润心灵、致敬弦歌。' },
+  { no: '04', title: '校长主题报告', desc: '校长罗秀云作主题报告，回望百年办学历程；党委书记郑朝晖与嘉宾共同启幕。' },
+];
+
+/** 校友故事征集 */
+export const CENTENARY_STORY_CALL = {
+  title: '校友故事征集',
+  desc: '面向海内外校友长期征集在校记忆、师长故事与成长经历，让百年田中的每一段青春都被看见、被铭记。',
+  channels: [
+    { label: '学校办公室', note: '联系学校办公室投稿' },
+    { label: '官方微信公众号', note: '在官方微信公众号后台留言' },
+  ],
+} as const;
+
 /** 办学特色词条（画册章节） */
 export const CENTENARY_FEATURES: ICentenaryFeature[] = [
-  { title: '立德树人·五育并举', desc: '构建「课程、文化、活动、实践」四位一体育人生态，获评全国国际教育示范学校、四川省首批心理健康教育引领校。' },
+  { title: '立德树人·五育并举', desc: '构建「课程、文化、活动、实践」四位一体育人生态，获评全国国际教育示范学校、成都市中小学心理健康教育特色学校。' },
   { title: '智创未来·科创领航', desc: '教育部人工智能教育试点校，构建「初中—高中—高校」贯通式培养路径，与川大、电子科大、西南交大共建导师团队。' },
   { title: '教研并举·知行合一', desc: '「分层培养、精准赋能」的教师发展体系，依托「名师工作室、青蓝工程」助力教师成长，践行「三实」课堂教学模式。' },
   { title: '以美育人·向美而行', desc: '以艺术节、书画展、文艺汇演浸润心灵，让文化浸润品格、提升学生审美素养和人文情怀。' },

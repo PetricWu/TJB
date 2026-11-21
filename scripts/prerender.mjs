@@ -22,7 +22,7 @@ const { render } = await import(pathToFileURL(path.join(SERVER_OUT, 'entry-serve
 // 3. 路由 + meta 清单（title/description 与各页 useSEO 一致）
 const summaries = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/article-summaries-auto.json'), 'utf-8'));
 const staticRoutes = [
-  { path: '/', title: '成都市田家炳中学官网 - 百年名校·四川省一级示范性普通高中', desc: '成都市田家炳中学官网（tjb.petricw.com）。始建于1925年，始称成城公学，百年名校。四川省一级示范性普通高中，全国国防教育示范校、教育部人工智能教育双试点单位。招生咨询电话：028-84551880。' },
+  { path: '/', title: '成都市田家炳中学官网 - 百年名校·四川省二级示范性普通高中', desc: '成都市田家炳中学官网（tjb.petricw.com）。始建于1925年，前身为成城公学，四川省二级示范性普通高中（已通过省一级现场评审），全国国防教育示范校。招生咨询电话：028-84551880。' },
   { path: '/about', title: '学校概况 — 成都市田家炳中学官网', desc: '百年校史、办学理念、师资队伍、校园环境、荣誉资质。' },
   { path: '/news', title: '新闻中心 — 成都市田家炳中学官网', desc: '校园要闻、通知公告、教学教研、校庆专题。' },
   { path: '/teaching', title: '教学教研 — 成都市田家炳中学官网', desc: '课程体系、教师发展、教学成果。' },

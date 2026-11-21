@@ -96,6 +96,91 @@ export const MOCK_ALUMNI_NEWS: IAlumniNewsRef[] = [
   },
 ];
 
+/* ===== 校友名录 · 按年代 ===== */
+
+export interface IAlumniEra {
+  id: string;
+  label: string;
+  figures: IAlumniFigure[];
+  note?: string;
+}
+
+/** 仅复用已有条目，不新增人物；无资料的年代以「征集中」呈现 */
+export const MOCK_ALUMNI_ERAS: IAlumniEra[] = [
+  {
+    id: 'era-1925',
+    label: '1925 — 建校初期',
+    figures: MOCK_ALUMNI_FOUNDERS,
+    note: '创校先贤，非校友，列此以见办学源流。',
+  },
+  {
+    id: 'era-1950s',
+    label: '1950s — 建校后第一批学子',
+    figures: MOCK_ALUMNI_REPRESENTATIVES,
+  },
+  {
+    id: 'era-1970s-1990s',
+    label: '1970s — 1990s',
+    figures: [],
+    note: '该年代校友资料正在征集中。',
+  },
+  {
+    id: 'era-2000s',
+    label: '2000s 至今',
+    figures: [],
+    note: '该年代校友资料正在征集中。',
+  },
+];
+
+/* ===== 校友故事征集 ===== */
+
+export interface IStoryChannel {
+  label: string;
+  detail: string;
+}
+
+export const ALUMNI_STORY_CALL = {
+  title: '校友故事征集',
+  description:
+    '学校长期征集校友的在校记忆、师长故事与成长经历。无论是一张老照片、一段课堂往事，还是一段走出校门后的奋斗历程，都值得被记录，成为田中百年记忆的一部分。',
+  topics: ['在校记忆', '师长故事', '成长经历'] as string[],
+  channels: [
+    { label: '学校办公室', detail: '联系学校办公室，说明您的姓名、入学年份与故事线索。' },
+    { label: '官方微信公众号', detail: '在「成都市田家炳中学」官方微信公众号后台留言。' },
+  ] as IStoryChannel[],
+};
+
+/* ===== 返校活动 ===== */
+
+export interface IHomecomingItem {
+  id: string;
+  title: string;
+  timing: string;
+  description: string;
+}
+
+export const MOCK_ALUMNI_HOMECOMING: IHomecomingItem[] = [
+  {
+    id: 'homecoming-anniversary',
+    title: '百年办学成果展暨西部田家炳中学年会',
+    timing: '2025 年',
+    description:
+      '2025年，学校举办百年办学成果展暨西部田家炳中学年会，各界校友返校参与，共忆同窗岁月、共话学校发展。',
+  },
+  {
+    id: 'homecoming-day',
+    title: '校友返校日',
+    timing: '定期举办',
+    description: '邀请校友回到顺江路校园，看望师长、走访教室，与在校学生交流成长体会。',
+  },
+  {
+    id: 'homecoming-lecture',
+    title: '校友讲堂',
+    timing: '定期举办',
+    description: '邀请不同领域的校友回到学校开讲，把求学与职业经历分享给在校学子。',
+  },
+];
+
 /** 资料来源区块（每条均可溯源） */
 export const MOCK_ALUMNI_SOURCES: ISourceItem[] = [
   {
