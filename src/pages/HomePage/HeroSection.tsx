@@ -52,7 +52,7 @@ export default function HeroSection() {
   return (
     <section className="hero-section relative w-full overflow-hidden" style={{ height: 'calc(100svh - 64px)', minHeight: '600px' }}>
       {/* 背景图片层：CSS 类而非内联 style，保证 <768px 用移动图（命中预加载），>=768px 用桌面图 */}
-      <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-[url('/hero-bg-mobile-hd.webp')] md:bg-[url('/hero-bg-hd.webp')]" />
+      <div className="absolute inset-0 w-full h-full bg-cover bg-center bg-[url('/hero-bg-mobile-hd-960.webp')] md:bg-[url('/hero-bg-hd.webp')]" />
       <style>{`
         @media (min-width: 768px) {
           section.hero-section {

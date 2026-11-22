@@ -64,7 +64,7 @@ export default function VideoSection() {
                 >
                   <img
                     src="/hero-bg-hd.webp"
-                    srcSet="/hero-bg-mobile-hd.webp 1280w, /hero-bg-hd.webp 1920w"
+                    srcSet="/hero-bg-mobile-hd-960.webp 960w, /hero-bg-hd.webp 1920w"
                     sizes="(max-width: 1023px) 100vw, 66vw"
                     alt=""
                     loading="lazy"
