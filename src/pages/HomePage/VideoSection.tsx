@@ -1,4 +1,5 @@
-import { ExternalLink } from 'lucide-react';
+import { useState } from 'react';
+import { ExternalLink, Play } from 'lucide-react';
 
 const BVID = 'BV1T5yVzjE6V';
 const VIDEO_PAGE = `https://www.bilibili.com/video/${BVID}`;
@@ -6,9 +7,11 @@ const PLAYER_URL = `https://player.bilibili.com/player.html?bvid=${BVID}&page=1&
 
 /**
  * 首页「校园映像」宣传片
- * 直接使用 B 站内嵌播放器（封面由播放器提供），懒加载避免影响首屏。
+ * 默认只渲染封面；点击后才挂载 B 站 iframe，避免播放器资源进入首屏关键路径。
  */
 export default function VideoSection() {
+  const [playing, setPlaying] = useState(false);
+
   return (
     <section className="w-full bg-ink text-white">
       <div className="max-w-7xl mx-auto px-4 md:px-6 section-y">
@@ -41,16 +44,47 @@ export default function VideoSection() {
 
           <div className="lg:col-span-8">
             <div className="relative aspect-video overflow-hidden rounded-sm border-2 border-white/20 bg-black">
-              <iframe
-                src={PLAYER_URL}
-                title="成都市田家炳中学百年校庆宣传片"
-                allow="fullscreen; picture-in-picture"
-                allowFullScreen
-                loading="lazy"
-                frameBorder="no"
-                scrolling="no"
-                className="absolute inset-0 h-full w-full"
-              />
+              {playing ? (
+                <iframe
+                  src={PLAYER_URL}
+                  title="成都市田家炳中学百年校庆宣传片"
+                  allow="fullscreen; picture-in-picture"
+                  allowFullScreen
+                  loading="lazy"
+                  frameBorder="no"
+                  scrolling="no"
+                  className="absolute inset-0 h-full w-full"
+                />
+              ) : (
+                <button
+                  type="button"
+                  onClick={() => setPlaying(true)}
+                  aria-label="播放校园宣传片"
+                  className="group absolute inset-0 h-full w-full text-left"
+                >
+                  <img
+                    src="/images/video/centenary-cover.webp"
+                    alt="百年成城 炳新而行——成都市田家炳中学百年校庆宣传片封面"
+                    width={1024}
+                    height={576}
+                    loading="lazy"
+                    decoding="async"
+                    className="absolute inset-0 h-full w-full object-cover transition-transform duration-500 group-hover:scale-[1.02]"
+                  />
+                  <span
+                    aria-hidden
+                    className="absolute inset-0 bg-gradient-to-t from-ink/85 via-ink/25 to-transparent"
+                  />
+                  <span className="absolute inset-0 flex items-center justify-center">
+                    <span className="flex size-16 md:size-20 items-center justify-center rounded-full bg-accent text-white border-2 border-white/70 shadow-lg transition-transform duration-300 group-hover:scale-110">
+                      <Play className="size-7 md:size-8 ml-1" fill="currentColor" />
+                    </span>
+                  </span>
+                  <span className="absolute left-4 bottom-4 md:left-6 md:bottom-5 text-sm font-bold text-white/90">
+                    播放宣传片
+                  </span>
+                </button>
+              )}
             </div>
           </div>
         </div>
