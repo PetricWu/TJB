@@ -4,10 +4,9 @@
 # 新增文章只需在下方追加一行链接即可
 
 # ===== 核心指定文章（请勿删除、请勿调整顺序） =====
-# 顺序：525活动、春季运动会、社团、高三启动仪式、艺术节、百年校庆
+# 顺序：525活动、春季运动会、高三启动仪式、艺术节、百年校庆
 https://mp.weixin.qq.com/s/kgdyYsIwsMRG8WL4W-vPzQ
 https://mp.weixin.qq.com/s/hKZlMYfjHIQ3azXfxQAdrQ
-https://mp.weixin.qq.com/s/ZhT_FPlWuF0LSO-MT87zhQ
 https://mp.weixin.qq.com/s/GKuaecAoTNosaqBz2x7JlQ
 https://mp.weixin.qq.com/s/GHbLqdSNx1qGWUP0Dg1ASA
 https://mp.weixin.qq.com/s/0ol4DU9TIzB1dFq9luhrpw
@@ -16,8 +15,10 @@ https://mp.weixin.qq.com/s/0ol4DU9TIzB1dFq9luhrpw
 # 后续新增文章在此追加一行链接即可
 # 格式：https://mp.weixin.qq.com/s/xxxxxx
 # 也支持手动指定分类：[分类名] https://mp.weixin.qq.com/s/xxxxxx
-
-# ===== 测试文章 =====
-https://mp.weixin.qq.com/s/tODemOHMC7zzVN2W21Zj3w
-https://mp.weixin.qq.com/s/OaOIzRKaIXRVytn6If2BVg
-https://mp.weixin.qq.com/s/_eCCV59ycOF-d0_6_CivzQ
+https://mp.weixin.qq.com/s/b9zdj_Hmq56RayxVneI_WA
+https://mp.weixin.qq.com/s/k2KR15Wgn0IZsApgDn8BFQ
+https://mp.weixin.qq.com/s/PL0shPhF95t0adtk6CXP0A
+https://mp.weixin.qq.com/s/0cMsRIUHRaUQRSVLkuAuAw
+https://mp.weixin.qq.com/s/4Pf4zvCpPuMKGfd7NhL6qg
+https://mp.weixin.qq.com/s/IY6_bdNULswcHRgkex4VYA
+https://mp.weixin.qq.com/s/bbgUMYPZe-C6gb8wnMoQSQ

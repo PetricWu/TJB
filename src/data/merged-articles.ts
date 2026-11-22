@@ -17,6 +17,9 @@ interface CrawledArticle {
   sourceUrl?: string;
   coverImage: string;
   coverImage4x3?: string;
+  coverImageOriginal?: string;
+  coverWidth?: number;
+  coverHeight?: number;
 }
 
 const crawled = articlesData as CrawledArticle[];
@@ -24,21 +27,27 @@ const manualById = new Map(articleSummaries.map((a) => [a.id, a]));
 const crawledIds = new Set(crawled.map((a) => a.id));
 
 // 以构建时抓取的 articles.json 为基底（articles.txt 新增文章必然出现），
-// 同 id 时手写精修字段（摘要/分类/日期/置顶）优先覆盖抓取值
-const fromCrawled: ArticleSummary[] = crawled.map((a) => ({
-  id: a.id,
-  title: a.title,
-  summary: a.summary,
-  category: a.category,
-  publishDate: a.publishDate,
-  author: a.author,
-  viewCount: a.viewCount ?? 0,
-  isPinned: a.isPinned ?? false,
-  sourceUrl: a.sourceUrl,
-  coverImage: a.coverImage,
-  coverImage4x3: a.coverImage4x3 ?? a.coverImage,
-  ...(manualById.get(a.id) ?? {}),
-}));
+// 同 id 时手写精修字段（摘要/分类/日期/作者/浏览量/置顶）优先覆盖抓取值；
+// 封面字段一律以抓取+构建产物为准，避免手写路径注入不存在的图片
+const fromCrawled: ArticleSummary[] = crawled.map((a) => {
+  const manual = manualById.get(a.id);
+  return {
+    id: a.id,
+    title: a.title,
+    summary: manual?.summary ?? a.summary,
+    category: manual?.category ?? a.category,
+    publishDate: manual?.publishDate ?? a.publishDate,
+    author: manual?.author ?? a.author,
+    viewCount: manual?.viewCount ?? a.viewCount ?? 0,
+    isPinned: manual?.isPinned ?? a.isPinned ?? false,
+    sourceUrl: a.sourceUrl,
+    coverImage: a.coverImage,
+    coverImage4x3: a.coverImage4x3 ?? a.coverImage,
+    coverImageOriginal: a.coverImageOriginal,
+    coverWidth: a.coverWidth,
+    coverHeight: a.coverHeight,
+  };
+});
 
 // 兜底：构建时抓取失败的文章，手写数据不丢失
 const manualOnly = articleSummaries.filter((a) => !crawledIds.has(a.id));

@@ -10,6 +10,9 @@ export interface ArticleSummary {
   sourceUrl?: string;
   coverImage: string;
   coverImage4x3?: string;
+  coverImageOriginal?: string;
+  coverWidth?: number;
+  coverHeight?: number;
 }
 
 export const articleSummaries: ArticleSummary[] = [
@@ -38,19 +41,6 @@ export const articleSummaries: ArticleSummary[] = [
     sourceUrl: "https://mp.weixin.qq.com/s/hKZlMYfjHIQ3azXfxQAdrQ",
     coverImage: "/article-images/hKZlMYfjHIQ3azXfxQAdrQ/cover-16x9.webp",
     coverImage4x3: "/article-images/hKZlMYfjHIQ3azXfxQAdrQ/cover-4x3.webp"
-  },
-  {
-    id: "ZhT_FPlWuF0LSO-MT87zhQ",
-    title: "校园新视角 课程\u201c心\u201d体验",
-    summary: "社团课程全面升级，四大类30+社团助力学生多元发展。从学术科技到文化艺术，从体育运动到实践创新，每个学生都能找到属于自己的舞台。",
-    category: "学生发展",
-    publishDate: "2026-03-16",
-    author: "成都市田家炳中学",
-    viewCount: 1849,
-    isPinned: false,
-    sourceUrl: "https://mp.weixin.qq.com/s/ZhT_FPlWuF0LSO-MT87zhQ",
-    coverImage: "/article-images/ZhT_FPlWuF0LSO-MT87zhQ/cover-16x9.webp",
-    coverImage4x3: "/article-images/ZhT_FPlWuF0LSO-MT87zhQ/cover-4x3.webp"
   },
   {
     id: "GKuaecAoTNosaqBz2x7JlQ",

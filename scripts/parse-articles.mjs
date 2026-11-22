@@ -119,6 +119,21 @@ function extractArticleId(url) {
   return match ? match[1] : null;
 }
 
+/** 检查文章的封面产物是否齐全（照片墙依赖这两个文件） */
+function coverFilesExist(articleId) {
+  const dir = path.join(IMAGES_DIR, articleId);
+  return ['cover-16x9.webp', 'cover-4x3.webp'].every((name) => fs.existsSync(path.join(dir, name)));
+}
+
+/** 清空封面字段，让缺图文章从照片墙隐藏 */
+function clearCoverFields(article) {
+  article.coverImage = '';
+  article.coverImage4x3 = '';
+  article.coverImageOriginal = '';
+  delete article.coverWidth;
+  delete article.coverHeight;
+}
+
 function autoClassify(title, articleId) {
   if (articleId && FIXED_CATEGORY_MAP[articleId]) {
     return FIXED_CATEGORY_MAP[articleId];
@@ -410,11 +425,21 @@ async function processImages(article) {
       .webp({ quality: 75 })
       .toFile(cover43Path);
 
+    // 生成原比例封面（照片墙/卡片流用，避免裁切丢失主体）
+    const coverNaturalPath = path.join(articleImagesDir, 'cover-natural.webp');
+    const naturalWidth = Math.min(coverImage.width, 1000);
+    const naturalInfo = await sharp(path.join(articleImagesDir, coverImage.fileName))
+      .resize(naturalWidth, null, { withoutEnlargement: true })
+      .webp({ quality: 78, effort: 6 })
+      .toFile(coverNaturalPath);
+
     article.coverImage = `/article-images/${articleId}/cover-16x9.webp`;
     article.coverImage4x3 = `/article-images/${articleId}/cover-4x3.webp`;
+    article.coverImageOriginal = `/article-images/${articleId}/cover-natural.webp`;
+    article.coverWidth = naturalInfo.width;
+    article.coverHeight = naturalInfo.height;
   } else {
-    article.coverImage = '';
-    article.coverImage4x3 = '';
+    clearCoverFields(article);
     console.warn(`⚠️  无合格实拍图，将使用占位图`);
   }
 
@@ -477,6 +502,49 @@ async function main() {
       let article = parseArticleHtml(html, url);
       const previous = previousArticles.get(article.id);
       if (previous && (!article.content || article.publishDate === '待完善')) {
+        // 上次数据引用的封面文件可能并未进入部署产物，重新抓取补齐后再走正常流程
+        if (!coverFilesExist(article.id)) {
+          console.warn(`⚠️  封面文件缺失，尝试重新抓取：${previous.title}`);
+          let retried = null;
+          for (let attempt = 0; attempt < 2 && !retried; attempt++) {
+            await new Promise((resolve) => setTimeout(resolve, 3000));
+            try {
+              const retryHtml = await fetchArticleHtml(url);
+              if (!retryHtml) continue;
+              const retryArticle = parseArticleHtml(retryHtml, url);
+              if (retryArticle.content && retryArticle.publishDate !== '待完善') {
+                retried = retryArticle;
+              }
+            } catch (error) {
+              console.warn(`⚠️  重新抓取解析失败：${error.message}`);
+            }
+          }
+
+          if (retried) {
+            console.log(`✅ 重新抓取成功：${retried.title.substring(0, 30)}...`);
+            article = retried;
+            if (manualCategory) {
+              article.category = manualCategory;
+            }
+            const imageStats = await processImages(article);
+            stats.push({
+              id: article.id,
+              title: article.title,
+              success: true,
+              ...imageStats,
+            });
+            articles.push(article);
+            continue;
+          }
+
+          console.warn(`⚠️  封面文件缺失，已从照片墙隐藏：${previous.title}`);
+          const reused = { ...previous, ...(manualCategory ? { category: manualCategory } : {}) };
+          clearCoverFields(reused);
+          articles.push(reused);
+          stats.push({ id: previous.id, title: previous.title, success: true, reused: true });
+          continue;
+        }
+
         console.warn(`⚠️  解析不完整，沿用已有数据：${previous.title}`);
         articles.push({ ...previous, ...(manualCategory ? { category: manualCategory } : {}) });
         stats.push({ id: previous.id, title: previous.title, success: true, reused: true });
@@ -519,6 +587,15 @@ async function main() {
     process.exit(1);
   }
 
+  // 构建产物校验：封面文件不存在的文章一律清空封面字段，避免线上照片墙破图
+  for (const article of articles) {
+    const cover169 = path.join(IMAGES_DIR, article.id, 'cover-16x9.webp');
+    if (article.coverImage && !fs.existsSync(cover169)) {
+      console.warn(`⚠️  封面文件缺失，已从照片墙隐藏：${article.title}`);
+      clearCoverFields(article);
+    }
+  }
+
   console.log('\n📝 正在生成 articles.json...');
 
   const outputData = {
@@ -549,6 +626,9 @@ async function main() {
     sourceUrl: a.sourceUrl,
     coverImage: a.coverImage,
     coverImage4x3: a.coverImage4x3,
+    coverImageOriginal: a.coverImageOriginal,
+    coverWidth: a.coverWidth,
+    coverHeight: a.coverHeight,
   }));
   const SUMMARY_JSON = path.join(ROOT_DIR, 'src', 'data', 'article-summaries-auto.json');
   fs.writeFileSync(SUMMARY_JSON, JSON.stringify(summaries, null, 2), 'utf-8');
