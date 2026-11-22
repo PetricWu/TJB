@@ -24,7 +24,7 @@ const SITE_URL = 'https://tjb.petricw.com';
 const BASE_TITLE = '成都市田家炳中学官网';
 const BASE_DESC = '成都市田家炳中学官网（tjb.petricw.com）。始建于1925年，前身为成城公学，四川省二级示范性普通高中（已通过省一级现场评审），全国国防教育示范校。坐落于成都市锦江区顺江路369号。招生咨询电话：028-84551880。';
 const BASE_KEYWORDS = '成都市田家炳中学官网,成都市田家炳中学,田家炳中学,成都田中,田家炳中学官网,四川省二级示范性普通高中,成都高中排名,锦江区中学,顺江路369号,百年名校,成城公学,国防教育示范校,人工智能教育';
-const DEFAULT_OG_IMAGE = `${SITE_URL}/hero-bg.webp`;
+const DEFAULT_OG_IMAGE = `${SITE_URL}/hero-bg-hd.webp`;
 
 /**
  * SEO Hook — 动态设置页面标题、描述、关键词、canonical URL、

@@ -22,7 +22,7 @@ const ARTICLE_DATA_DIR = path.join(ROOT_DIR, 'dist', 'client', 'article-data');
 const SITE_TITLE = '成都市田家炳中学官网 - 百年名校·四川省二级示范性普通高中';
 const SITE_DESCRIPTION = '成都市田家炳中学始建于1925年，前身为成城公学，是四川省二级示范性普通高中（已通过省一级现场评审），全国国防教育示范校。百年名校，薪火相传，秉承履仁崇智 明德卓行校训，提供优质初中、高中教育。位于成都市锦江区顺江路369号。';
 const FAVICON_PATH = '/favicon.jpg';
-const OG_IMAGE = 'https://tjb.petricw.com/hero-bg.webp';
+const OG_IMAGE = 'https://tjb.petricw.com/hero-bg-hd.webp';
 
 function fixHtml() {
   if (!fs.existsSync(HTML_PATH)) {
@@ -82,11 +82,11 @@ function fixHtml() {
   // Fix OG image dimensions that may have been corrupted by appAvatar replacement
   html = html.replace(
     /<meta property="og:image:width" content="[^"]*">/,
-    '<meta property="og:image:width" content="1200">'
+    '<meta property="og:image:width" content="1920">'
   );
   html = html.replace(
     /<meta property="og:image:height" content="[^"]*">/,
-    '<meta property="og:image:height" content="630">'
+    '<meta property="og:image:height" content="1285">'
   );
   html = html.replace(/\{\{appId\}\}/g, '');
   html = html.replace(/\{\{userId\}\}/g, '');

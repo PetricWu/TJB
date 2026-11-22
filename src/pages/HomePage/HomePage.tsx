@@ -5,6 +5,7 @@ import NewsSection from '@/pages/HomePage/NewsSection';
 import FeaturesSection from '@/pages/HomePage/FeaturesSection';
 import EventsSection from '@/pages/HomePage/EventsSection';
 import CampusLifeSection from '@/pages/HomePage/CampusLifeSection';
+import VideoSection from '@/pages/HomePage/VideoSection';
 import { SectionHeader } from '@/components/SectionHeader';
 import CountUp from '@/components/CountUp';
 import { FEATURED_HONORS, type IHonorItem } from '@/data/honors';
@@ -105,6 +106,7 @@ export default function HomePage() {
       <NewsSection />
       <EventsSection />
       <CampusLifeSection />
+      <VideoSection />
 
       {/* 科创成果数字条 */}
       <section className="w-full bg-paper-deep border-y-2 border-ink/10">

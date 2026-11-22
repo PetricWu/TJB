@@ -204,6 +204,88 @@ export const CENTENARY_GALA: ICentenaryGala = {
   ],
 };
 
+/** 百年校庆实拍影像（学校公众号） */
+export interface ICentenaryPhoto {
+  src: string;
+  width: number;
+  height: number;
+  alt: string;
+  caption: string;
+}
+
+export const CENTENARY_GALLERY: ICentenaryPhoto[] = [
+  {
+    src: '/images/centenary/gala-01.webp',
+    width: 1200,
+    height: 800,
+    alt: '校庆红色展板长廊，展板上写着「一分钟，带你走过田中的奋斗百年」',
+    caption: '校庆展板长廊：一分钟，带你走过田中的奋斗百年',
+  },
+  {
+    src: '/images/centenary/gala-02.webp',
+    width: 1200,
+    height: 800,
+    alt: '学生在舞台上表演鼓舞，背景为「百年成城 炳新而行」',
+    caption: '文艺汇演 · 鼓舞《百年成城 炳新而行》',
+  },
+  {
+    src: '/images/centenary/gala-03.webp',
+    width: 1200,
+    height: 800,
+    alt: '学生校庆手作展台，陈列校徽刺绣与文创作品',
+    caption: '学生校庆手作：校徽刺绣与文创作品',
+  },
+  {
+    src: '/images/centenary/gala-04.webp',
+    width: 1200,
+    height: 800,
+    alt: '百年教育教学成果展暨西部田家炳中学年会会场全景',
+    caption: '百年教育教学成果展暨西部田家炳中学年会会场',
+  },
+  {
+    src: '/images/centenary/gala-05.webp',
+    width: 1200,
+    height: 800,
+    alt: '学生集体朗诵，背景屏幕写着「为中华之崛起而读书」',
+    caption: '学生朗诵《为中华之崛起而读书》',
+  },
+  {
+    src: '/images/centenary/gala-06.webp',
+    width: 1200,
+    height: 800,
+    alt: '校庆大会嘉宾在讲台致辞',
+    caption: '校庆大会嘉宾致辞',
+  },
+  {
+    src: '/images/centenary/gala-07.webp',
+    width: 1200,
+    height: 800,
+    alt: '校庆大会现场，观众全体起立',
+    caption: '校庆大会现场',
+  },
+  {
+    src: '/images/centenary/gala-08.webp',
+    width: 1200,
+    height: 800,
+    alt: '教学楼前的校园成果展板长廊',
+    caption: '校园成果展板长廊',
+  },
+  {
+    src: '/images/centenary/gala-09.webp',
+    width: 1200,
+    height: 800,
+    alt: '80 年代校友、原北海舰队校友代表陈新在讲台致辞',
+    caption: '80 年代校友、原北海舰队校友代表陈新致辞',
+  },
+  {
+    src: '/images/centenary/gala-10.webp',
+    width: 900,
+    height: 1358,
+    alt: '「1925—1952 毕业照」校史展墙，陈列历年毕业合影',
+    caption: '「1925—1952 毕业照」校史展墙',
+  },
+];
+
 /** 百年办学成果展暨西部田家炳中学年会·活动回顾 */
 export interface ICentenaryActivity {
   no: string;

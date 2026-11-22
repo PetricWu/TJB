@@ -1,8 +1,11 @@
+import { useState } from 'react';
 import { Link } from 'react-router-dom';
 import {
   Award,
   BookOpen,
   Calendar,
+  ChevronLeft,
+  ChevronRight,
   ExternalLink,
   Flag,
   GraduationCap,
@@ -13,6 +16,7 @@ import {
   Users,
 } from 'lucide-react';
 import { Badge } from '@/components/ui/badge';
+import { Dialog, DialogContent, DialogTitle } from '@/components/ui/dialog';
 import { Image } from '@/components/ui/image';
 import { PageHero } from '@/components/PageHero';
 import { SectionHeader } from '@/components/SectionHeader';
@@ -29,6 +33,7 @@ import {
   CENTENARY_ALUMNI,
   CENTENARY_YOUNG_ALUMNI,
   CENTENARY_GALA,
+  CENTENARY_GALLERY,
   CENTENARY_ANNIVERSARY_ACTIVITIES,
   CENTENARY_STORY_CALL,
   CENTENARY_FEATURES,
@@ -37,6 +42,14 @@ import {
 } from '@/data/centenary';
 
 export default function CentenaryPage() {
+  const [activePhoto, setActivePhoto] = useState<number | null>(null);
+  const showPrev = () =>
+    setActivePhoto((index) =>
+      index === null ? index : (index - 1 + CENTENARY_GALLERY.length) % CENTENARY_GALLERY.length
+    );
+  const showNext = () =>
+    setActivePhoto((index) => (index === null ? index : (index + 1) % CENTENARY_GALLERY.length));
+
   useSEO({
     title: '百年田中',
     description:
@@ -455,11 +468,48 @@ export default function CentenaryPage() {
           </div>
         </section>
 
-        {/* 07 成果展与年会回顾 */}
-        <section id="review" className="scroll-mt-32">
+        {/* 07 校庆影像 */}
+        <section id="gallery" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
               no="07"
+              en="Gallery"
+              title="校庆影像"
+              desc="2025 年 12 月 5 日，百年校庆系列活动实拍。点击照片可放大查看。"
+            />
+            <div className="columns-1 sm:columns-2 lg:columns-3 gap-4">
+              {CENTENARY_GALLERY.map((photo, index) => (
+                <figure key={photo.src} className="break-inside-avoid mb-4">
+                  <button
+                    type="button"
+                    onClick={() => setActivePhoto(index)}
+                    aria-label={`放大查看：${photo.caption}`}
+                    className="group block w-full overflow-hidden rounded-sm border-2 border-ink/15 bg-card hover:border-ink transition-colors"
+                  >
+                    <Image
+                      src={photo.src}
+                      alt={photo.alt}
+                      width={photo.width}
+                      height={photo.height}
+                      className="w-full h-auto object-cover transition-transform duration-500 group-hover:scale-[1.03]"
+                      loading="lazy"
+                    />
+                  </button>
+                  <figcaption className="mt-2 text-xs text-muted-foreground leading-relaxed">
+                    {photo.caption}
+                  </figcaption>
+                </figure>
+              ))}
+            </div>
+            <p className="mt-3 text-xs text-muted-foreground">摄影：校庆活动现场（学校公众号）</p>
+          </div>
+        </section>
+
+        {/* 08 成果展与年会回顾 */}
+        <section id="review" className="scroll-mt-32">
+          <div className="reveal-up">
+            <SectionHeader
+              no="08"
               en="Review"
               title="百年办学成果展暨西部田家炳中学年会回顾"
               desc="2025 年 12 月 5 日，四项主题活动串联起百年田中的高光时刻。"
@@ -502,11 +552,11 @@ export default function CentenaryPage() {
           </div>
         </section>
 
-        {/* 08 荣誉百年 */}
+        {/* 09 荣誉百年 */}
         <section id="honors" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
-              no="08"
+              no="09"
               en="Honors"
               title="荣誉百年"
               desc="从「校风示范学校」到「教育部人工智能教育试点校」，百年积淀，实至名归。"
@@ -544,11 +594,11 @@ export default function CentenaryPage() {
           </div>
         </section>
 
-        {/* 09 资料来源 */}
+        {/* 10 资料来源 */}
         <section id="sources" className="scroll-mt-32">
           <div className="reveal-up">
             <SectionHeader
-              no="09"
+              no="10"
               en="Sources"
               title="资料来源"
               desc="本页内容以建校百年纪念画册为准，校庆活动信息以权威媒体报道补充，逐条可溯源。"
@@ -619,6 +669,50 @@ export default function CentenaryPage() {
           </div>
         </section>
       </main>
+
+      {activePhoto !== null && (
+        <Dialog
+          open
+          onOpenChange={(open) => {
+            if (!open) setActivePhoto(null);
+          }}
+        >
+          <DialogContent
+            className="max-w-5xl p-0 gap-0 overflow-hidden rounded-sm border-2 border-ink bg-ink text-white"
+            aria-describedby={undefined}
+          >
+            <DialogTitle className="sr-only">{CENTENARY_GALLERY[activePhoto].caption}</DialogTitle>
+            <img
+              src={CENTENARY_GALLERY[activePhoto].src}
+              alt={CENTENARY_GALLERY[activePhoto].alt}
+              className="max-h-[72vh] w-full object-contain bg-black"
+            />
+            <div className="flex items-center justify-between gap-4 px-4 py-3">
+              <p className="text-xs md:text-sm text-white/85 leading-relaxed">
+                {CENTENARY_GALLERY[activePhoto].caption}
+              </p>
+              <div className="flex items-center gap-2 shrink-0">
+                <button
+                  type="button"
+                  onClick={showPrev}
+                  aria-label="上一张"
+                  className="flex size-9 items-center justify-center rounded-sm border-2 border-white/25 text-white/80 hover:text-white hover:border-white/60 transition-colors"
+                >
+                  <ChevronLeft className="size-5" />
+                </button>
+                <button
+                  type="button"
+                  onClick={showNext}
+                  aria-label="下一张"
+                  className="flex size-9 items-center justify-center rounded-sm border-2 border-white/25 text-white/80 hover:text-white hover:border-white/60 transition-colors"
+                >
+                  <ChevronRight className="size-5" />
+                </button>
+              </div>
+            </div>
+          </DialogContent>
+        </Dialog>
+      )}
     </div>
   );
 }
