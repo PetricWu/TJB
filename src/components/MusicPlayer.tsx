@@ -50,6 +50,12 @@ export default function MusicPlayer() {
 
     const isStopped = () => unlocked.current || userPaused.current;
 
+    // 自动尝试是否已启动（推迟到 window.load，避免与首屏资源争抢带宽）
+    let booted = false;
+    let retryTimers: ReturnType<typeof setTimeout>[] = [];
+    let pollInterval: ReturnType<typeof setInterval> | undefined;
+    let pollStop: ReturnType<typeof setTimeout> | undefined;
+
     // === 策略 1：muted autoplay → unmute ===
     const tryMutedAutoplay = () => {
       if (isStopped()) return;
@@ -197,7 +203,7 @@ export default function MusicPlayer() {
     // 滚动专用处理：节流更宽松，确保滑动一定触发
     let lastScrollTime = 0;
     const handleScroll = () => {
-      if (isStopped()) return;
+      if (!booted || isStopped()) return;
       const now = performance.now();
       if (now - lastScrollTime < 500) return;
       lastScrollTime = now;
@@ -218,44 +224,55 @@ export default function MusicPlayer() {
     interactionEvents.forEach((ev) => document.addEventListener(ev, handleGesture, opts));
     document.addEventListener('scroll', handleScroll, opts);
 
-    // === 策略 7：立即尝试 ===
-    tryMutedAutoplay();
+    // === 策略 7-8-11：首屏渲染完成后再启动自动尝试 ===
+    // 背景音乐 753KB，提前下载会与首屏图片/字体争抢带宽；播放策略本身不变。
+    const boot = () => {
+      if (booted) return;
+      booted = true;
 
-    // === 策略 8：延迟重试 ===
-    const retryTimers = [500, 1000, 2000, 5000].map(ms =>
-      setTimeout(() => {
-        if (!isStopped()) tryMutedAutoplay();
-      }, ms)
-    );
+      // 策略 7：立即尝试
+      tryMutedAutoplay();
+
+      // 策略 8：延迟重试
+      retryTimers = [500, 1000, 2000, 5000].map(ms =>
+        setTimeout(() => {
+          if (!isStopped()) tryMutedAutoplay();
+        }, ms)
+      );
+
+      // 策略 11：持续轮询（每 3s，持续 30s）
+      pollInterval = setInterval(() => {
+        if (isStopped()) {
+          clearInterval(pollInterval);
+          return;
+        }
+        tryMutedAutoplay();
+      }, 3000);
+      pollStop = setTimeout(() => clearInterval(pollInterval), 30000);
+    };
+
+    // window.load 已结束时立即启动（快网下行为与改动前一致）
+    if (document.readyState === 'complete') boot();
 
     // === 策略 9：页面可见性变化 ===
     const onVisible = () => {
+      if (!booted) return;
       if (!isStopped() && !document.hidden) {
         tryMutedAutoplay();
       }
     };
     document.addEventListener('visibilitychange', onVisible);
 
-    // === 策略 10：窗口加载 ===
+    // === 策略 10：窗口加载（若尚未启动，由 boot 启动）===
     const onLoad = () => {
-      if (!isStopped()) tryMutedAutoplay();
+      boot();
     };
     window.addEventListener('load', onLoad);
-
-    // === 策略 11：持续轮询（每 3s，持续 30s）===
-    const pollInterval = setInterval(() => {
-      if (isStopped()) {
-        clearInterval(pollInterval);
-        return;
-      }
-      tryMutedAutoplay();
-    }, 3000);
-    const pollStop = setTimeout(() => clearInterval(pollInterval), 30000);
 
     // === 策略 12：鼠标移动 + 页面焦点 ===
     let lastMouseTime = 0;
     const onMouseMove = () => {
-      if (isStopped()) return;
+      if (!booted || isStopped()) return;
       const now = performance.now();
       if (now - lastMouseTime < 500) return;
       lastMouseTime = now;
@@ -266,6 +283,7 @@ export default function MusicPlayer() {
     document.addEventListener('mousemove', onMouseMove, { passive: true });
 
     const onFocus = () => {
+      if (!booted) return;
       if (!isStopped()) tryMutedAutoplay();
     };
     window.addEventListener('focus', onFocus);

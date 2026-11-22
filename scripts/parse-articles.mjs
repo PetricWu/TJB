@@ -451,6 +451,16 @@ async function main() {
   const articles = [];
   const stats = [];
 
+  // 反爬/页面改版可能让单篇解析成空正文或“待完善”日期：保留上一次成功的数据
+  const previousArticles = (() => {
+    try {
+      const data = JSON.parse(fs.readFileSync(OUTPUT_JSON, 'utf-8'));
+      return new Map((data.articles || []).map((a) => [a.id, a]));
+    } catch {
+      return new Map();
+    }
+  })();
+
   for (let i = 0; i < articleLinks.length; i++) {
     const { url, category: manualCategory } = articleLinks[i];
     const articleId = extractArticleId(url);
@@ -465,6 +475,13 @@ async function main() {
       }
 
       let article = parseArticleHtml(html, url);
+      const previous = previousArticles.get(article.id);
+      if (previous && (!article.content || article.publishDate === '待完善')) {
+        console.warn(`⚠️  解析不完整，沿用已有数据：${previous.title}`);
+        articles.push({ ...previous, ...(manualCategory ? { category: manualCategory } : {}) });
+        stats.push({ id: previous.id, title: previous.title, success: true, reused: true });
+        continue;
+      }
       if (manualCategory) {
         article.category = manualCategory;
       }

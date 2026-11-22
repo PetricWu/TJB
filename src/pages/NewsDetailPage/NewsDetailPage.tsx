@@ -1,19 +1,58 @@
-import { useMemo } from 'react';
+import { useEffect, useMemo, useState } from 'react';
 import { useParams, useNavigate, Link } from 'react-router-dom';
 import { ArrowLeft, Calendar, Eye, User, ChevronLeft, ChevronRight, ExternalLink, Home } from "lucide-react";
 import { Button } from '@/components/ui/button';
 import { Badge } from '@/components/ui/badge';
 import { Image } from '@/components/ui/image';
 import { UniversalLink } from '@/components/UniversalLink';
-import { MOCK_NEWS } from '@/data/news';
+import autoSummaries from '@/data/article-summaries-auto.json';
+import type { ArticleSummary } from '@/data/article-summaries';
+import { fetchArticle, getInitialArticle } from '@/data/article-runtime';
 import type { INews } from '@/types/news';
 import { useSEO } from '@/hooks/useSEO';
+
+/** 与 articles.json 同序的精简列表（仅 id/标题/分类/封面，避免引入全文） */
+const ARTICLE_LIST = autoSummaries as ArticleSummary[];
 
 export default function NewsDetailPage() {
   const { id } = useParams<{ id: string }>();
   const navigate = useNavigate();
 
-  const news: INews | undefined = MOCK_NEWS.find((n) => n.id === id);
+  // 首帧数据：直接打开时来自预渲染 HTML 内嵌 JSON，站内跳转时按需拉取
+  const [news, setNews] = useState<INews | undefined>(() => (id ? getInitialArticle(id) : undefined));
+  const [loading, setLoading] = useState(!news);
+
+  useEffect(() => {
+    if (!id) {
+      setNews(undefined);
+      setLoading(false);
+      return;
+    }
+
+    const initial = getInitialArticle(id);
+    if (initial) {
+      setNews(initial);
+      setLoading(false);
+      return;
+    }
+
+    let cancelled = false;
+    setLoading(true);
+    fetchArticle(id)
+      .then((article) => {
+        if (cancelled) return;
+        setNews(article);
+        setLoading(false);
+      })
+      .catch(() => {
+        if (cancelled) return;
+        setNews(undefined);
+        setLoading(false);
+      });
+    return () => {
+      cancelled = true;
+    };
+  }, [id]);
 
   useSEO({
     title: news?.title || '新闻详情',
@@ -41,8 +80,17 @@ export default function NewsDetailPage() {
   // 同分类相关推荐（排除当前文章，最多3篇）
   const relatedNews = useMemo(() => {
     if (!news) return [];
-    return MOCK_NEWS.filter((n) => n.id !== id && n.category === news.category).slice(0, 3);
+    return ARTICLE_LIST.filter((n) => n.id !== id && n.category === news.category).slice(0, 3);
   }, [news, id]);
+
+  // 正文加载中（仅站内跳转会出现；直接打开由内嵌 JSON 首帧渲染）
+  if (!news && loading) {
+    return (
+      <div className="min-h-[60vh] flex flex-col items-center justify-center gap-3">
+        <p className="text-sm text-muted-foreground">正在加载文章…</p>
+      </div>
+    );
+  }
 
   // 未找到新闻
   if (!news) {
@@ -63,10 +111,10 @@ export default function NewsDetailPage() {
     );
   }
 
-  // 前后新闻导航
-  const currentIndex = MOCK_NEWS.findIndex((n) => n.id === id);
-  const prevNews = currentIndex > 0 ? MOCK_NEWS[currentIndex - 1] : null;
-  const nextNews = currentIndex < MOCK_NEWS.length - 1 ? MOCK_NEWS[currentIndex + 1] : null;
+  // 前后新闻导航（与 articles.json 同序，保持原有导航语义）
+  const currentIndex = id ? ARTICLE_LIST.findIndex((n) => n.id === id) : -1;
+  const prevNews = currentIndex > 0 ? ARTICLE_LIST[currentIndex - 1] : null;
+  const nextNews = currentIndex >= 0 && currentIndex < ARTICLE_LIST.length - 1 ? ARTICLE_LIST[currentIndex + 1] : null;
 
   return (
     <div className="min-h-screen bg-transparent">

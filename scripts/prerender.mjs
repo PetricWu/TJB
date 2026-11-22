@@ -21,6 +21,10 @@ const { render } = await import(pathToFileURL(path.join(SERVER_OUT, 'entry-serve
 
 // 3. 路由 + meta 清单（title/description 与各页 useSEO 一致）
 const summaries = JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/article-summaries-auto.json'), 'utf-8'));
+// 详情页完整正文：同时内嵌到 HTML，供客户端首帧同步读取（避免闪烁与首屏加载 1.35MB JSON）
+const fullArticles = new Map(
+  JSON.parse(fs.readFileSync(path.join(ROOT, 'src/data/articles.json'), 'utf-8')).articles.map((a) => [a.id, a])
+);
 const staticRoutes = [
   { path: '/', title: '成都市田家炳中学官网 - 百年名校·四川省二级示范性普通高中', desc: '成都市田家炳中学官网（tjb.petricw.com）。始建于1925年，前身为成城公学，四川省二级示范性普通高中（已通过省一级现场评审），全国国防教育示范校。招生咨询电话：028-84551880。' },
   { path: '/about', title: '学校概况 — 成都市田家炳中学官网', desc: '百年校史、办学理念、师资队伍、校园环境、荣誉资质。' },
@@ -45,11 +49,19 @@ const esc = (s) => String(s).replace(/&/g, '&amp;').replace(/</g, '&lt;').replac
 
 for (const route of routes) {
   const appHtml = render(route.path);
-  const html = template
+  let html = template
     .replace(/<div id="root">[\s\S]*?<\/div>(?=\s*<script)/, `<div id="root">${appHtml}</div>`)
     .replace(/<title>[\s\S]*?<\/title>/, `<title>${esc(route.title)}</title>`)
     .replace(/(<meta name="description" content=")[^"]*(")/, `$1${esc(route.desc)}$2`)
     .replace(/(<link rel="canonical" href=")[^"]*(")/, `$1${SITE_URL}${route.path}$2`);
+
+  if (route.path.startsWith('/news/')) {
+    const article = fullArticles.get(route.path.slice('/news/'.length));
+    if (article) {
+      const json = JSON.stringify(article).replace(/</g, '\\u003c');
+      html = html.replace('</body>', `<script type="application/json" id="__ARTICLE_DATA__">${json}</script></body>`);
+    }
+  }
   const outFile = route.path === '/' ? path.join(DIST, 'index.html') : path.join(DIST, route.path.replace(/^\//, ''), 'index.html');
   fs.mkdirSync(path.dirname(outFile), { recursive: true });
   fs.writeFileSync(outFile, html);

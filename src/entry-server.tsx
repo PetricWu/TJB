@@ -2,6 +2,8 @@
 import { renderToString } from 'react-dom/server';
 import { MemoryRouter } from 'react-router';
 import { Routes, Route } from 'react-router-dom';
+import articlesData from '@/data/articles.json';
+import type { INews } from '@/types/news';
 import { Layout } from '@/components/Layout';
 import HomePage from '@/pages/HomePage/HomePage';
 import AboutPage from '@/pages/AboutPage/AboutPage';
@@ -17,8 +19,15 @@ import TianjiabingPage from '@/pages/TianjiabingPage/TianjiabingPage';
 import CentenaryPage from '@/pages/CentenaryPage/CentenaryPage';
 import NotFoundPage from '@/pages/NotFoundPage/NotFoundPage';
 
+const ALL_ARTICLES = articlesData.articles as INews[];
+
 /** 渲染指定路由为 HTML 字符串（与 app.tsx 路由结构保持一致） */
 export function render(url: string): string {
+  // 详情页需要完整正文（article-summaries 只有摘要），按路由注入供页面同步读取
+  const match = url.match(/^\/news\/([^/?#]+)/);
+  const article = match ? ALL_ARTICLES.find((item) => item.id === match[1]) : undefined;
+  (globalThis as unknown as { __ARTICLE__?: INews }).__ARTICLE__ = article;
+
   return renderToString(
     <MemoryRouter initialEntries={[url]}>
       <Routes>

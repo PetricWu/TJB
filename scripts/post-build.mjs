@@ -16,6 +16,8 @@ const __dirname = path.dirname(__filename);
 const ROOT_DIR = path.resolve(__dirname, '..');
 const HTML_PATH = path.join(ROOT_DIR, 'dist', 'client', 'index.html');
 const ASSETS_DIR = path.join(ROOT_DIR, 'dist', 'client', 'assets');
+const ARTICLES_JSON = path.join(ROOT_DIR, 'src', 'data', 'articles.json');
+const ARTICLE_DATA_DIR = path.join(ROOT_DIR, 'dist', 'client', 'article-data');
 
 const SITE_TITLE = '成都市田家炳中学官网 - 百年名校·四川省二级示范性普通高中';
 const SITE_DESCRIPTION = '成都市田家炳中学始建于1925年，前身为成城公学，是四川省二级示范性普通高中（已通过省一级现场评审），全国国防教育示范校。百年名校，薪火相传，秉承履仁崇智 明德卓行校训，提供优质初中、高中教育。位于成都市锦江区顺江路369号。';
@@ -316,10 +318,38 @@ function removeMiaodaFeishu() {
   }
 }
 
+/**
+ * Split articles.json into per-article JSON files.
+ * The detail page fetches only the current article instead of bundling all 1.35MB.
+ */
+function emitArticleData() {
+  if (!fs.existsSync(ARTICLES_JSON)) {
+    console.log('⚠️  No articles.json found, skipping article data split');
+    return;
+  }
+
+  const { articles } = JSON.parse(fs.readFileSync(ARTICLES_JSON, 'utf-8'));
+  fs.rmSync(ARTICLE_DATA_DIR, { recursive: true, force: true });
+  fs.mkdirSync(ARTICLE_DATA_DIR, { recursive: true });
+
+  let count = 0;
+  for (const article of articles) {
+    if (!article?.id) continue;
+    fs.writeFileSync(
+      path.join(ARTICLE_DATA_DIR, `${article.id}.json`),
+      JSON.stringify(article),
+      'utf-8'
+    );
+    count++;
+  }
+  console.log(`✅ Article data split: ${count} files -> dist/client/article-data/`);
+}
+
 fixHtml();
 fixCssFiles();
 fixJsFiles();
 removeMiaodaFeishu();
+emitArticleData();
 
 // Delete source map files from production build
 const mapFiles = fs.existsSync(ASSETS_DIR)

@@ -20,7 +20,7 @@ const FOOTER_LINKS = [
     title: '新闻中心',
     links: [
       { label: '德育活动', path: '/news?category=德育活动' },
-      { label: '学生发展', path: '/news?category=学生发展' },
+      { label: '学生发展动态', path: '/news?category=学生发展' },
       { label: '校庆专题', path: '/news?category=校庆专题' },
       { label: '全部新闻', path: '/news' },
     ],

@@ -41,6 +41,7 @@
     "concurrently": "^9",
     "eslint": "^9",
     "sharp": "^0.35.2",
+    "subset-font": "^2.9.0",
     "typescript": "~5.9",
     "vite": "^8"
   },
